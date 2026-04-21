@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proyecto — Malenfocat Studio">
+  <link rel="icon" href="../assets/images/favicon-light.ico" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="../assets/images/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+  <title>VIDEO — Malenfocat</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/project.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <script src="../components/components.js" defer></script>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur"><div id="cur-inner"></div></div>
+
+<div id="nav-placeholder"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO DEL PROYECTO
+     Cambia: data-category, el h1, el subtítulo y las etiquetas
+═══════════════════════════════════════════════════════════ -->
+<header class="proj-hero">
+  <div class="proj-hero-meta">
+    <span class="proj-num">002</span>           <!-- número del proyecto -->
+    <span class="proj-category">Vídeo</span> <!-- categoría -->
+    <span class="proj-year">2024</span>           <!-- año -->
+  </div>
+  <h1 class="proj-title">Vídeo Reel</h1>
+  <p class="proj-subtitle">Eventos corporativos, cultura, belleza y momentos únicos — una mirada que busca lo que otros pasan por alto.</p>
+  <div class="proj-tags">
+    <span>Vídeo</span>
+    <span>Edición</span>
+    <span>Postproducción</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     IMAGEN DE PORTADA
+     Sustituye src por tu imagen real
+═══════════════════════════════════════════════════════════ -->
+<div class="proj-cover">
+  <img src="../assets/images/projects/photo-cover.jpg" alt="Photo Portfolio — Malenfocat">
+  <!-- Si no tienes imagen aún, deja el div vacío y el placeholder CSS se muestra -->
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     INTRO / BRIEF
+═══════════════════════════════════════════════════════════ -->
+<section class="proj-section proj-intro">
+  <div class="proj-col-label">Contexto</div>
+  <div class="proj-col-content">
+    <p>Descripción general del proyecto. Qué era, para quién, cuál era el reto. 2-3 frases máximo — directo y honesto.</p>
+    <p>Si el proyecto tiene una segunda capa o un dato curioso que lo hace diferente, aquí es donde va.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     GALERÍA — bloque de 2 columnas
+     Añade o elimina <img> según necesites
+     Sustituye src por tus rutas reales
+═══════════════════════════════════════════════════════════ -->
+<section class="proj-section">
+  <div class="proj-col-label">Imágenes</div>
+  <div class="proj-col-content">
+    <div class="proj-grid-2">
+      <div class="proj-img-wrap"><img src="../assets/images/projects/photo-01.jpg" alt=""></div>
+      <div class="proj-img-wrap"><img src="../assets/images/projects/photo-02.jpg" alt=""></div>
+      <div class="proj-img-wrap"><img src="../assets/images/projects/photo-03.jpg" alt=""></div>
+      <div class="proj-img-wrap"><img src="../assets/images/projects/photo-04.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     IMAGEN ANCHA — ocupa todo el ancho
+═══════════════════════════════════════════════════════════ -->
+<div class="proj-full-img">
+  <img src="../assets/images/projects/photo-wide.jpg" alt="">
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROCESO
+═══════════════════════════════════════════════════════════ -->
+<section class="proj-section">
+  <div class="proj-col-label">Proceso</div>
+  <div class="proj-col-content">
+    <p>Cómo lo hiciste. Qué decisiones tomaste y por qué. Qué aprendiste. Este bloque es el más importante — es donde se ve cómo piensas, no solo qué produces.</p>
+    <p>Si hubo un problema concreto que resolviste de forma no obvia, cuéntalo aquí.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VÍDEO EMBED — YouTube o Vimeo
+     Sustituye el src del iframe por tu URL de embed:
+       YouTube: https://www.youtube.com/embed/VIDEO_ID
+       Vimeo:   https://player.vimeo.com/video/VIDEO_ID
+     Si el proyecto no tiene vídeo, elimina este bloque entero
+═══════════════════════════════════════════════════════════ -->
+<section class="proj-section">
+  <div class="proj-col-label">Vídeo</div>
+  <div class="proj-col-content">
+    <div class="proj-video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/VIDEO_ID"
+        title="Vídeo del proyecto"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     GALERÍA — bloque de 3 columnas
+═══════════════════════════════════════════════════════════ -->
+<section class="proj-section">
+  <div class="proj-col-label">Más imágenes</div>
+  <div class="proj-col-content">
+    <div class="proj-grid-3">
+      <div class="proj-img-wrap"><img src="../assets/images/projects/photo-05.jpg" alt=""></div>
+      <div class="proj-img-wrap"><img src="../assets/images/projects/photo-06.jpg" alt=""></div>
+      <div class="proj-img-wrap"><img src="../assets/images/projects/photo-07.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FICHA TÉCNICA
+     Cambia los valores según cada proyecto
+═══════════════════════════════════════════════════════════ -->
+<section class="proj-section proj-specs">
+  <div class="proj-col-label">Ficha</div>
+  <div class="proj-col-content">
+    <div class="proj-specs-grid">
+      <div class="proj-spec"><span class="spec-label">Rol</span><span class="spec-val">Fotografía · Postproducción</span></div>
+      <div class="proj-spec"><span class="spec-label">Cliente</span><span class="spec-val">Varios</span></div>
+      <div class="proj-spec"><span class="spec-label">Año</span><span class="spec-val">2023 — 2024</span></div>
+      <div class="proj-spec"><span class="spec-label">Herramientas</span><span class="spec-val">Sony A7 · Lightroom · Photoshop</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVEGACIÓN ENTRE PROYECTOS
+     Cambia los href y los textos según el orden de tus proyectos
+═══════════════════════════════════════════════════════════ 
+<nav class="proj-nav-between">
+  <a href="video.html" class="proj-nav-prev">
+    <span class="pnb-label">← Anterior</span>
+    <span class="pnb-title">Video Portfolio</span>
+  </a>
+  <a href="../index.html#work-sec" class="proj-nav-all">Ver todos</a>
+  <a href="tania-costa.html" class="proj-nav-next">
+    <span class="pnb-label">Siguiente →</span>
+    <span class="pnb-title">Tània Costa — TFG</span>
+  </a>
+</nav>-->
+
+
+<div id="footer-placeholder"></div> 
+
+<script src="../js/project.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>

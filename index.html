@@ -5,33 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portfolio creativo de Malenfocat Studio">
   <link rel="icon" href="assets/images/favicon-light.ico" media="(prefers-color-scheme: light)">
-<link rel="icon" href="assets/images/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/images/favicon-dark.ico" media="(prefers-color-scheme: dark)">
   <title>Malenfocat by Martí</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <script src="./components/components.js" defer></script>
 </head>
 
 <body>
-
 <div id="cur"><div id="cur-inner"></div></div>
-
-<nav>
-  <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
-    <rect x="14" y="18" width="11" height="64" fill="var(--txt)"/>
-    <rect x="28" y="18" width="5" height="64" fill="var(--txt)"/>
-    <circle cx="50" cy="50" r="30" stroke="var(--txt)" stroke-width="4.5" fill="none"/>
-    <circle cx="50" cy="50" r="18" stroke="var(--txt)" stroke-width="2.5" fill="none"/>
-    <polygon points="37,28 63,28 63,72 50,56 37,72" fill="var(--txt)"/>
-    <rect x="67" y="18" width="5" height="64" fill="var(--txt)"/>
-    <rect x="75" y="18" width="11" height="64" fill="var(--txt)"/>
-  </svg>
-  <ul>
-    <li><a href="#" data-target="h2-work">Trabajo</a></li>
-    <li><a href="#sobremi">Sobre mí</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-    <li><button class="nav-btn" id="dark-toggle">☽ Dark</button></li>
-    <li><button class="nav-btn" id="lang-toggle">EN</button></li>
-  </ul>
-</nav>
+<div id="nav-placeholder"></div>
 
 <div id="sticky-wrap">
   <div id="sticky-scene">
@@ -65,6 +48,15 @@
   </div>
 </div>
 
+<div id="manifesto-sec">
+  <canvas id="mcanvas"></canvas>
+  <div id="manifesto-inner">
+    <span class="m-label" id="m-label">Malenfocat Studio</span>
+    <p class="m-line" id="m-line1">"No todo lo que parece mal hecho</p>
+    <p class="m-line" id="m-line2">está mal pensado."</p>
+  </div>
+</div>
+
 <div id="after">
   <div id="about-skills">
     <div class="about-intro">
@@ -72,6 +64,7 @@
       <h2 id="h2-about">Multidisciplinar<br>por necesidad</h2>
       <p id="about-p1" style="margin-top:1.2rem;">Soy creativo con base en <strong>Madrid</strong>, disponible en toda España y para proyectos remotos en cualquier parte. Me muevo entre la cámara, el código y el píxel con la misma comodidad — no porque no haya elegido, sino porque los mejores proyectos <strong>viven en la intersección</strong> de todas esas disciplinas.</p>
       <p id="about-p2" style="margin-top:.8rem;">"Malenfocat" viene del catalán <em>mal enfocado</em> — una referencia al mundo audiovisual y a lo que vengo a resolver. El nombre no es una excusa; es una <strong>declaración de intenciones</strong>: lo que para otros es ruido, para mí es el punto de partida.</p>
+      <p id="about-p3" style="margin-top:.8rem;">El proyecto busca eso: mirar las cosas desde otro ángulo, evitar lo típico y encontrar una forma más honesta de contar historias, ya sea para una marca, un evento o una persona.</p>
     </div>
     <p class="sec-label" id="label-skills">Habilidades</p>
     <div class="skills-grid" id="skills-list">
@@ -88,9 +81,9 @@
     <p class="wlabel" id="label-work">02 — Proyectos</p>
     <h2 class="wh" id="h2-work">Trabajo selecto</h2>
     <div class="pgrid">
-      <div class="pc"><div class="pc-cover"></div><span class="pc-num">001</span><div><h3 class="pc-title">Photo Portfolio</h3><div class="pc-tag"><span>Foto</span><span>Arte</span></div></div></div>
-      <div class="pc"><div class="pc-cover"></div><span class="pc-num">002</span><div><h3 class="pc-title">Video Reel</h3><div class="pc-tag"><span>Video</span><span>Edición</span></div></div></div>
-      <div class="pc"><div class="pc-cover"></div><span class="pc-num">003</span><div><h3 class="pc-title">IA & Diseño</h3><div class="pc-tag"><span>IA</span><span>Cartelería</span></div></div></div>
+      <a href="./projects/photo.html"><div class="pc"><div class="pc-cover"></div><span class="pc-num">001</span><div><h3 class="pc-title">Photo Portfolio</h3><div class="pc-tag"><span>Foto</span><span>Arte</span></div></div></div></a>
+      <a href="./projects/video.html"><div class="pc"><div class="pc-cover"></div><span class="pc-num">002</span><div><h3 class="pc-title">Video Reel</h3><div class="pc-tag"><span>Video</span><span>Edición</span></div></div></div></a>
+      <a href="./projects/tfg.html"><div class="pc"><div class="pc-cover"></div><span class="pc-num">003</span><div><h3 class="pc-title">Influencer IA</h3><div class="pc-tag"><span>IA</span><span>Vídeo</span><span>Webs</span></div></div></div></a>
     </div>
   </div>
 
@@ -106,12 +99,15 @@
       <line x1="0" y1="165" x2="700" y2="165" stroke="currentColor" stroke-width="1" opacity=".04"/>
       <line x1="0" y1="335" x2="700" y2="335" stroke="currentColor" stroke-width="1" opacity=".04"/>
     </svg>
-    <p class="cpre" id="cpre">04 — Contacto</p>
+    <!-- FIX 4: "04 — Contacto" corregido a "03 — Contacto" -->
+    <p class="cpre" id="cpre">03 — Contacto</p>
     <h2 class="ch" id="ch">¿Trabajamos<br><strong>juntos?</strong></h2>
-    <p class="cdesc" id="cdesc">Basado en Madrid, disponible en toda España y para proyectos remotos en cualquier parte del mundo.</p>
+    <p class="cdesc" id="cdesc">Si tienes una idea, un proyecto o simplemente quieres hacer algo diferente, escríbeme. <br>Trabajo en toda España y también en remoto.</p>
     <a href="mailto:malenfocat@gmail.com" class="cta" id="cta-link">malenfocat@gmail.com →</a>
   </div>
 </div>
+
+<div id="footer-placeholder"></div> 
 
 <script src="js/main.js"></script>
 

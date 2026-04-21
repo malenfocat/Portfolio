@@ -1,17 +1,41 @@
 const curEl=document.getElementById('cur');
 let MX=300,MY=300,CX=300,CY=300;
-document.addEventListener('mousemove',e=>{MX=e.clientX;MY=e.clientY;});
-(function cl(){CX+=(MX-CX)*.13;CY+=(MY-CY)*.13;curEl.style.left=CX+'px';curEl.style.top=CY+'px';requestAnimationFrame(cl);})();
-document.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+
+// FIX 2: Detectar touch — si es dispositivo táctil, desactivar cursor custom y restaurar cursor por defecto
+const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+if (isTouch) {
+  document.body.style.cursor = 'auto';
+  if (curEl) curEl.style.display = 'none';
+} else {
+  document.addEventListener('mousemove',e=>{MX=e.clientX;MY=e.clientY;});
+  (function cl(){CX+=(MX-CX)*.13;CY+=(MY-CY)*.13;if(curEl){curEl.style.left=CX+'px';curEl.style.top=CY+'px';}requestAnimationFrame(cl);})();
+}
+
+// FIX 1: Eliminado el e.preventDefault() global que bloqueaba TODOS los anchors (incluyendo el mailto del CTA)
+// document.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+// Ahora solo el nav tiene preventDefault, aplicado directamente en su propio listener más abajo
 
 let pulling=false;
 document.addEventListener('mousedown',()=>{pulling=true;document.body.classList.add('pulling');});
 document.addEventListener('mouseup',()=>{pulling=false;document.body.classList.remove('pulling');});
 
-document.getElementById('dark-toggle').addEventListener('click',()=>{
-  document.body.classList.toggle('dark');
-  document.getElementById('dark-toggle').textContent=document.body.classList.contains('dark')?'☀ Light':'☽ Dark';
-});
+// En lugar de buscar el botón inmediatamente, esperar a que el nav esté listo
+function initNav() {
+  const langToggleBtn = document.getElementById('lang-toggle');
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener('click', () => {
+      lang = lang === 'es' ? 'en' : 'es';
+      langToggleBtn.textContent = lang === 'es' ? 'EN' : 'ES';
+      applyLang();
+      setTimeout(() => applyManifestoLang(lang), 0);
+    });
+  }
+}
+
+// Escuchar el evento que dispara components.js cuando el nav está listo
+window.addEventListener('nav:ready', initNav);
+// Por si el nav ya estaba en el HTML directamente (sin components.js)
+if (document.getElementById('dark-toggle')) initNav();
 
 const TEXTS={
   es:{
@@ -32,7 +56,8 @@ const TEXTS={
     skNames:['Fotografía','Video & Edición','Generación con IA','Diseño Gráfico','Desarrollo Web','Diseño UX/UI'],
     skDescs:['Retrato, producto, evento y dirección de arte visual.','Grabación, montaje, color grading y postproducción.','Midjourney, Stable Diffusion y flujos generativos creativos.','Identidad visual, cartelería, composición y tipografía.','HTML, CSS, JS, WordPress y sitios estáticos modernos.','Wireframes, prototipos y sistemas de diseño en Figma.'],
     labelWork:'02 — Proyectos',h2Work:'Trabajo selecto',
-    cpre:'04 — Contacto',ch:'¿Trabajamos<br><strong>juntos?</strong>',
+    // FIX 4: Contacto pasa de "04" a "03"
+    cpre:'03 — Contacto',ch:'¿Trabajamos<br><strong>juntos?</strong>',
     cdesc:'Basado en Madrid, disponible en toda España y para proyectos remotos en cualquier parte del mundo.',
     subHero:'Diseño · Foto · Video · Código · IA',
     scrollHint:'Scroll para revelar',
@@ -55,7 +80,8 @@ const TEXTS={
     skNames:['Photography','Video & Editing','AI Generation','Graphic Design','Web Development','UX/UI Design'],
     skDescs:['Portrait, product, event and visual art direction.','Filming, editing, color grading and post-production.','Midjourney, Stable Diffusion and generative creative workflows.','Visual identity, poster design, composition and typography.','HTML, CSS, JS, WordPress and modern static sites.','Wireframes, prototypes and design systems in Figma.'],
     labelWork:'02 — Projects',h2Work:'Selected work',
-    cpre:'04 — Contact',ch:'Shall we work<br><strong>together?</strong>',
+    // FIX 4: Contacto pasa de "04" a "03"
+    cpre:'03 — Contact',ch:'Shall we work<br><strong>together?</strong>',
     cdesc:'Based in Madrid, available across Spain and for remote projects anywhere in the world.',
     subHero:'Design · Photo · Video · Code · AI',
     scrollHint:'Scroll to reveal',
@@ -63,11 +89,7 @@ const TEXTS={
 };
 
 let lang='es';
-document.getElementById('lang-toggle').addEventListener('click',()=>{
-  lang=lang==='es'?'en':'es';
-  document.getElementById('lang-toggle').textContent=lang==='es'?'EN':'ES';
-  applyLang();
-});
+
 
 function applyLang(){
   const t=TEXTS[lang];
@@ -110,7 +132,16 @@ document.getElementById('rew-close').addEventListener('click',()=>document.getEl
 const canvas=document.getElementById('c');
 const ctx=canvas.getContext('2d');
 let W,H;
-function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;computeLetterPos();}
+
+// FIX 3: resize guarda estado del juego y solo recalcula dimensiones + posiciones de letras
+// Las shapes NO se reinician para no perder el progreso del challenge
+function resize(){
+  W=canvas.width=canvas.offsetWidth;
+  H=canvas.height=canvas.offsetHeight;
+  computeLetterPos();
+  // Solo reiniciar shapes si todavía no se han creado (primera carga)
+  if(shapes.length===0) init();
+}
 
 const TEAL='#3a8f8c',BLACK='#111111';
 const word='MALENFOCAT®';
@@ -232,7 +263,9 @@ function collide(a,b){
   }
 }
 
+// FIX 3: shapes declarado antes de resize para que la guardia shapes.length===0 funcione
 let shapes=[];
+
 function init(){
   shapes=[];
   const d=[
@@ -275,8 +308,10 @@ function computeLetterPos(){
   }
 }
 
-resize();window.addEventListener('resize',()=>{resize();init();});init();
+resize();
 
+// FIX 3: el listener de resize ya no llama a init(), solo redimensiona y recalcula letras
+window.addEventListener('resize',()=>{ resize(); });
 
 const tealBar=document.getElementById('teal-bar');
 let scrollP=0,prevScrollP=0;
@@ -371,17 +406,146 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.2});
 obs.observe(document.getElementById('skills-list'));
 
+// FIX 1: preventDefault solo en los links del nav, no de forma global
 document.querySelectorAll("nav a[data-target]").forEach(link => {
   link.addEventListener("click", e => {
     e.preventDefault();
-
     const id = link.getAttribute("data-target");
     const el = document.getElementById(id);
-
     if (el) {
-      el.scrollIntoView({
-        behavior: "smooth"
-      });
+      el.scrollIntoView({ behavior: "smooth" });
     }
   });
 });
+
+/* ── MANIFIESTO CANVAS ──────────────────────────────────────── */
+(function(){
+  const mc = document.getElementById('mcanvas');
+  if (!mc) return;
+  const mctx = mc.getContext('2d');
+  let MW, MH;
+ 
+  function mresize() {
+    MW = mc.width = mc.offsetWidth;
+    MH = mc.height = mc.offsetHeight;
+  }
+  mresize();
+  window.addEventListener('resize', mresize);
+ 
+  // Formas lentas de fondo — misma paleta pero más tenues
+  const MTEAL = 'rgba(58,143,140,';
+  const MWHITE = 'rgba(240,240,240,';
+ 
+  const mshapes = [
+    { type:'circle', x:.12, y:.2,  size:80,  color:MTEAL,  opacity:.07, vx:.12, vy:.08,  rot:0, vrot:.002  },
+    { type:'circle', x:.85, y:.75, size:55,  color:MTEAL,  opacity:.05, vx:-.09,vy:-.06, rot:0, vrot:.001  },
+    { type:'rect',   x:.7,  y:.15, size:45,  color:MWHITE, opacity:.04, vx:-.1, vy:.1,   rot:.4,vrot:.003  },
+    { type:'rect',   x:.25, y:.8,  size:30,  color:MTEAL,  opacity:.06, vx:.08, vy:-.07, rot:.8,vrot:-.002 },
+    { type:'tri',    x:.5,  y:.5,  size:60,  color:MWHITE, opacity:.03, vx:.07, vy:.09,  rot:.2,vrot:.004  },
+    { type:'tri',    x:.9,  y:.4,  size:35,  color:MTEAL,  opacity:.08, vx:-.08,vy:.05,  rot:1, vrot:-.003 },
+    { type:'diamond',x:.15, y:.6,  size:40,  color:MWHITE, opacity:.04, vx:.1,  vy:-.08, rot:0, vrot:.002  },
+    { type:'circle', x:.6,  y:.88, size:25,  color:MWHITE, opacity:.05, vx:-.07,vy:-.09, rot:0, vrot:0     },
+    { type:'line',   x:.4,  y:.3,  size:70,  color:MTEAL,  opacity:.06, vx:.06, vy:.07,  rot:.3,vrot:.001  },
+    { type:'diamond',x:.78, y:.55, size:20,  color:MTEAL,  opacity:.09, vx:-.1, vy:.08,  rot:.5,vrot:-.004 },
+  ].map(s => ({
+    ...s,
+    x: s.x * (MW || window.innerWidth),
+    y: s.y * (MH || window.innerHeight),
+  }));
+ 
+  function mdraw() {
+    mctx.clearRect(0, 0, MW, MH);
+ 
+    mshapes.forEach(s => {
+      // mover suavemente, rebotar en bordes
+      s.x += s.vx;
+      s.y += s.vy;
+      s.rot += s.vrot;
+ 
+      const margin = s.size + 10;
+      if (s.x < margin || s.x > MW - margin) s.vx *= -1;
+      if (s.y < margin || s.y > MH - margin) s.vy *= -1;
+ 
+      mctx.save();
+      mctx.translate(s.x, s.y);
+      mctx.rotate(s.rot);
+      mctx.strokeStyle = s.color + s.opacity + ')';
+      mctx.fillStyle   = s.color + (s.opacity * .3) + ')';
+      mctx.lineWidth = 1.5;
+ 
+      mctx.beginPath();
+      const sz = s.size;
+      if (s.type === 'circle')       { mctx.arc(0, 0, sz, 0, Math.PI*2); }
+      else if (s.type === 'rect')    { mctx.rect(-sz/2, -sz/2, sz, sz); }
+      else if (s.type === 'tri')     { mctx.moveTo(0,-sz); mctx.lineTo(sz*.87,sz*.5); mctx.lineTo(-sz*.87,sz*.5); mctx.closePath(); }
+      else if (s.type === 'diamond') { mctx.moveTo(0,-sz); mctx.lineTo(sz*.6,0); mctx.lineTo(0,sz); mctx.lineTo(-sz*.6,0); mctx.closePath(); }
+      else if (s.type === 'line')    { mctx.moveTo(-sz,0); mctx.lineTo(sz,0); }
+ 
+      mctx.stroke();
+      if (s.type !== 'line') mctx.fill();
+      mctx.restore();
+    });
+ 
+    requestAnimationFrame(mdraw);
+  }
+  mdraw();
+ 
+  // Reveal por scroll con IntersectionObserver
+  const msec = document.getElementById('manifesto-sec');
+  const mobs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      msec.classList.add('m-visible');
+      mobs.disconnect();
+    }
+  }, { threshold: .35 });
+  mobs.observe(msec);
+ 
+  // Traducción integrada con el toggle de idioma existente
+  const MTEXTS = {
+    es: { label:'Malenfocat Studio', l1:'No todo lo que parece mal hecho', l2:'está mal pensado.' },
+    en: { label:'Malenfocat Studio', l1:'Not everything that looks poorly made', l2:'is poorly thought.' },
+  };
+ 
+  function applyManifestoLang(l) {
+    const t = MTEXTS[l];
+    document.getElementById('m-label').textContent  = t.label;
+    document.getElementById('m-line1').textContent  = t.l1;
+    document.getElementById('m-line2').textContent  = t.l2;
+  }
+ 
+ // Esperar a que el nav esté listo antes de enganchar el toggle
+  window.addEventListener('nav:ready', () => {
+    const langBtn = document.getElementById('lang-toggle');
+    if (langBtn) langBtn.addEventListener('click', () => {
+      setTimeout(() => applyManifestoLang(lang), 0);
+    });
+  });
+})();
+
+/* ── NAV ADAPTATIVO — detecta fondo oscuro bajo el nav ─────── */
+(function(){
+  // Secciones que tienen fondo oscuro (negro) independientemente del tema
+  const darkSections = ['manifesto-sec', 'work-sec'];
+
+  function updateNav() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  const checkY = nav.offsetHeight + 2;
+
+  let isDark = false;
+  darkSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= checkY && rect.bottom >= checkY) isDark = true;
+  });
+
+  isDark ? nav.classList.add('nav-light') : nav.classList.remove('nav-light');
+}
+
+  // No llamar updateNav() directamente — esperar a que el nav esté en el DOM
+  window.addEventListener('scroll', updateNav, { passive: true });
+  window.addEventListener('resize', updateNav, { passive: true });
+  window.addEventListener('nav:ready', updateNav); // ejecutar cuando el nav esté listo
+})();
+
