@@ -41,8 +41,20 @@ const TEXTS={
   es:{
     nav:['Trabajo','Sobre mí','Contacto'],
     challenge:['Agrupa las formas NEGRAS en el centro','Lleva las formas TEAL a la derecha','Agrupa TODAS las formas arriba'],
-    skills:['Disciplina desbloqueada','Disciplina desbloqueada','Disciplina desbloqueada'],
-    hint:'Empuja las formas · Click para atraer · Scroll para revelar',
+ 
+    // NUEVO: textos que aparecen al completar cada reto
+    skillFlashTitle:['+ de 30 eventos cubiertos.','IA generativa integrada.','Soluciones 360.'],
+    skillFlashSub:[
+      'Desde bodas hasta rebranding corporativo.',
+      'No como tendencia. Como herramienta.',
+      'Foto, vídeo, web y diseño. Un interlocutor para todo.'
+    ],
+ 
+    hint:'Empuja · Click para atraer · Scroll para revelar',
+ 
+    // NUEVO: texto de bienvenida abajo izquierda
+    welcome:'¿Vienes a mirar o a jugar?\nScroll para descubrirlo todo ↓',
+ 
     rewPre:'🎉 Has completado el juego',
     rewTitle:'Primera consulta<br>gratis para ti',
     rewDesc:'Como recompensa por descubrir Malenfocat Studio, te regalo una sesión de briefing sin coste — foto, vídeo, web o diseño. Tú eliges el proyecto, yo pongo las primeras horas.',
@@ -56,7 +68,6 @@ const TEXTS={
     skNames:['Fotografía','Video & Edición','Generación con IA','Diseño Gráfico','Desarrollo Web','Diseño UX/UI'],
     skDescs:['Retrato, producto, evento y dirección de arte visual.','Grabación, montaje, color grading y postproducción.','Midjourney, Stable Diffusion y flujos generativos creativos.','Identidad visual, cartelería, composición y tipografía.','HTML, CSS, JS, WordPress y sitios estáticos modernos.','Wireframes, prototipos y sistemas de diseño en Figma.'],
     labelWork:'02 — Proyectos',h2Work:'Trabajo selecto',
-    // FIX 4: Contacto pasa de "04" a "03"
     cpre:'03 — Contacto',ch:'¿Trabajamos<br><strong>juntos?</strong>',
     cdesc:'Basado en Madrid, disponible en toda España y para proyectos remotos en cualquier parte del mundo.',
     subHero:'Diseño · Foto · Video · Código · IA',
@@ -65,8 +76,17 @@ const TEXTS={
   en:{
     nav:['Work','About','Contact'],
     challenge:['Group the BLACK shapes in the center','Move the TEAL shapes to the right','Group ALL shapes at the top'],
-    skills:['Skill unlocked','Skill unlocked','Skill unlocked'],
-    hint:'Push shapes · Click to attract · Scroll to reveal',
+ 
+    skillFlashTitle:['30+ events covered.','Generative AI integrated.','360 solutions.'],
+    skillFlashSub:[
+      'From weddings to corporate rebranding.',
+      'Not as a trend. As a tool.',
+      'Photo, video, web and design. One contact for everything.'
+    ],
+ 
+    hint:'Push · Click to attract · Scroll to reveal',
+    welcome:'Here to look or to play?\nScroll to discover everything ↓',
+ 
     rewPre:'🎉 You completed the game',
     rewTitle:'First consultation<br>free for you',
     rewDesc:'As a reward for discovering Malenfocat Studio, I offer you a free briefing session — photo, video, web or design. You choose the project, I put in the first hours.',
@@ -80,7 +100,6 @@ const TEXTS={
     skNames:['Photography','Video & Editing','AI Generation','Graphic Design','Web Development','UX/UI Design'],
     skDescs:['Portrait, product, event and visual art direction.','Filming, editing, color grading and post-production.','Midjourney, Stable Diffusion and generative creative workflows.','Visual identity, poster design, composition and typography.','HTML, CSS, JS, WordPress and modern static sites.','Wireframes, prototypes and design systems in Figma.'],
     labelWork:'02 — Projects',h2Work:'Selected work',
-    // FIX 4: Contacto pasa de "04" a "03"
     cpre:'03 — Contact',ch:'Shall we work<br><strong>together?</strong>',
     cdesc:'Based in Madrid, available across Spain and for remote projects anywhere in the world.',
     subHero:'Design · Photo · Video · Code · AI',
@@ -173,6 +192,10 @@ function buildDots(){
 }
 
 function showChallenge(){
+  const wb = document.getElementById('welcome-box');
+  if(wb && currentChallenge > 0) wb.classList.add('hidden');
+  // O ocultarlo cuando se completa el primer reto — dentro de triggerReveal:
+  if(ch.key === 0) { const wb = document.getElementById('welcome-box'); if(wb) wb.classList.add('hidden'); }
   if(gameOver)return;
   challengeTextEl.textContent=TEXTS[lang].challenge[currentChallenge];
   buildDots();challengeBox.style.opacity='1';skillFlash.classList.remove('show');
@@ -181,19 +204,25 @@ showChallenge();
 
 function triggerReveal(ch){
   challengeComplete=true;
-  sfWord.textContent=TEXTS[lang].skNames[ch.key];
-  sfWord.style.color=ch.isTeal?TEAL:BLACK;
-  document.getElementById('sf-label').textContent=TEXTS[lang].skills[ch.key];
-  skillFlash.classList.add('show');challengeBox.style.opacity='0';
-  completedChallenges.push(currentChallenge);buildDots();
+ 
+  const title = document.getElementById('sf-title');
+  const sub   = document.getElementById('sf-sub');
+  if(title) title.textContent = TEXTS[lang].skillFlashTitle[ch.key];
+  if(sub)   sub.textContent   = TEXTS[lang].skillFlashSub[ch.key];
+ 
+  skillFlash.classList.add('show');
+  challengeBox.style.opacity='0';
+  completedChallenges.push(currentChallenge); buildDots();
   clearTimeout(revealTimer);
   revealTimer=setTimeout(()=>{
-    skillFlash.classList.remove('show');currentChallenge++;challengeComplete=false;
+    skillFlash.classList.remove('show'); currentChallenge++; challengeComplete=false;
     if(currentChallenge>=CHALLENGES.length){
-      gameOver=true;challengeBox.style.opacity='0';hintBox.textContent='';
+      gameOver=true;
+      challengeBox.style.opacity='0';
+      hintBox.textContent='';
       setTimeout(()=>rewardOverlay.classList.add('show'),600);
     } else showChallenge();
-  },2000);
+  },3000); // 3s para que dé tiempo a leerlo
 }
 
 function getZoneRect(zone){
