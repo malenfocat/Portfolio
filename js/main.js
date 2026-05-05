@@ -6,6 +6,9 @@ const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches
 if (isTouch) {
   document.body.style.cursor = 'auto';
   if (curEl) curEl.style.display = 'none';
+  // En mobile: sustituir el hint del juego por aviso de desktop
+  const hintEl = document.getElementById('hint-box');
+  if (hintEl) hintEl.textContent = 'El juego interactivo solo está disponible en escritorio — ¡pruébalo desde tu ordenador!';
 } else {
   document.addEventListener('mousemove',e=>{MX=e.clientX;MY=e.clientY;});
   (function cl(){CX+=(MX-CX)*.13;CY+=(MY-CY)*.13;if(curEl){curEl.style.left=CX+'px';curEl.style.top=CY+'px';}requestAnimationFrame(cl);})();
