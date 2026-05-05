@@ -241,6 +241,12 @@ nav.nav-light svg circle[fill="none"] {
   fill: none;
   stroke: #f0f0f0;
 }
+nav.nav-light .nav-logo img {
+  filter: invert(1);
+}
+body.dark nav .nav-logo img {
+  filter: invert(1);
+}
 
 nav.nav-light .nav-btn {
   border-color: rgba(240,240,240,.3);
@@ -275,4 +281,88 @@ nav.nav-link{
   font-size: 18px;
   color: var(--txt3);
   letter-spacing: .1em;
+}
+
+/* ── MOBILE ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  body { cursor: auto; }
+
+  /* NAV */
+  nav {
+    padding: .9rem 1.2rem;
+  }
+  nav ul {
+    gap: .7rem;
+  }
+  nav ul li:has(.nav-link) {
+    display: none;
+  }
+
+  /* HERO — bienvenida y juego */
+  #welcome-box {
+    left: 1.2rem;
+    bottom: 5.5rem;
+  }
+  #welcome-line1 { font-size: 18px; }
+  #welcome-line2 { font-size: 14px; }
+
+  #challenge-text {
+    font-size: 12px;
+    letter-spacing: .1em;
+    padding: 0 1.2rem;
+  }
+  #hint-box {
+    font-size: 9px;
+    padding: 0 1.2rem;
+    text-align: center;
+  }
+
+  /* Reward card */
+  #reward-card {
+    padding: 1.8rem 1.4rem;
+    margin: 1rem;
+    max-width: calc(100vw - 2rem);
+  }
+  .rew-btns { flex-direction: column; }
+  .rew-btn, .rew-btn-alt { width: 100%; }
+
+  /* Skill flash */
+  #skill-flash {
+    width: calc(100% - 2.4rem);
+    padding: 1.5rem 1.2rem;
+  }
+
+  /* SOBRE MÍ */
+  #about-skills {
+    padding: 3.5rem 1.2rem;
+  }
+  .about-intro p { font-size: .88rem; }
+  h2 { font-size: 1.5rem; }
+
+  /* Skills: 1 columna */
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* TRABAJO SELECTO */
+  #work-sec {
+    padding: 3.5rem 1.2rem;
+  }
+  .pgrid {
+    grid-template-columns: 1fr;
+    margin-top: 2rem;
+  }
+  .pc { min-height: 160px; }
+
+  /* CONTACTO */
+  #contact-sec {
+    padding: 4rem 1.2rem;
+  }
+  .ch { font-size: clamp(2rem, 10vw, 3rem); }
+  .cta {
+    font-size: 10px;
+    padding: .8rem 1.4rem;
+    word-break: break-all;
+  }
 }

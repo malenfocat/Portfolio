@@ -57,4 +57,36 @@
   color: #333;
   margin-top: .5rem;
   text-transform: uppercase;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2.5rem;
+}
+
+@media (max-width: 768px) {
+  #site-footer {
+    padding: 3rem 1.2rem 2rem;
+  }
+  .footer-inner {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .footer-brand img {
+    width: 160px;
+  }
+  .footer-claim {
+    font-size: 14px;
+  }
+  .footer-links {
+    gap: 1.2rem;
+  }
+  .footer-links a {
+    font-size: 12px;
+  }
+  .footer-copy {
+    padding: 0;
+    font-size: 11px;
+    color: #555;
+    margin-top: 1.5rem;
+  }
 }

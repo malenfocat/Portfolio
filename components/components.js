@@ -81,7 +81,8 @@
     // Nav adaptativo (secciones oscuras) — solo en index
     if (typeof darkSections !== 'undefined') return;
     const nav = document.querySelector('nav');
-    const darkIds = ['manifesto-sec', 'work-sec', 'proj-hero'];
+    const darkIds = ['manifesto-sec', 'work-sec'];
+    const darkClasses = ['.proj-hero'];
     function updateNavColor() {
       const navH = nav ? nav.offsetHeight : 0;
       const checkY = navH + 2;
@@ -92,8 +93,12 @@
         const rect = el.getBoundingClientRect();
         if (rect.top <= checkY && rect.bottom >= checkY) isDark = true;
       });
-      // El hero de proyecto siempre es oscuro
-      if (document.querySelector('.proj-hero')) isDark = true;
+      darkClasses.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= checkY && rect.bottom >= checkY) isDark = true;
+      });
       nav && (isDark ? nav.classList.add('nav-light') : nav.classList.remove('nav-light'));
     }
     window.addEventListener('scroll', updateNavColor, { passive: true });
