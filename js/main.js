@@ -430,6 +430,24 @@ function frame(){
 }
 frame();
 
+/* ── POPUP INSTRUCCIONES ──────────────────────────────────── */
+(function(){
+  const btn   = document.getElementById('info-btn');
+  const popup = document.getElementById('info-popup');
+  const close = document.getElementById('info-close');
+  if (!btn || !popup) return;
+
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    popup.classList.toggle('open');
+  });
+  close.addEventListener('click', () => popup.classList.remove('open'));
+  document.addEventListener('click', e => {
+    if (!popup.contains(e.target) && e.target !== btn)
+      popup.classList.remove('open');
+  });
+})();
+
 const obs=new IntersectionObserver(entries=>{
   if(entries[0].isIntersecting){
     document.querySelectorAll('.sc-fill').forEach((f,i)=>setTimeout(()=>f.classList.add('vis'),i*140));
