@@ -5,13 +5,13 @@
 ────────────────────────────────────────────────────────────── */
 
 (function () {
-  // Detectar profundidad de ruta para ajustar el path a /components/
   const depth = location.pathname.split('/').filter(Boolean).length;
   const isSubpage = depth > 1 || location.pathname.includes('/projects/');
   const base = isSubpage ? '../' : './';
   const compBase = base + 'components/';
+  // Raíz del sitio: en producción '/', en local file:// usamos base
+  const root = location.protocol === 'file:' ? base : '/';
 
-  /* ── Inyectar un componente en un selector ── */
   async function loadComponent(selector, file, callback) {
     const el = document.querySelector(selector);
     if (!el) return;
@@ -20,6 +20,10 @@
       if (!res.ok) return;
       const html = await res.text();
       el.innerHTML = html;
+      // Ajustar rutas de assets en componentes según profundidad
+      el.querySelectorAll('img[data-src-root]').forEach(img => {
+        img.src = base + img.getAttribute('data-src-root');
+      });
       if (callback) callback();
     } catch (e) {
       console.warn('Component load failed:', file, e);
@@ -28,10 +32,13 @@
 
   /* ── NAV ── */
   loadComponent('#nav-placeholder', 'nav.html', () => {
-    // Dark mode toggle
+    // Logo src dinámico
+    const logoImg = document.querySelector('.nav-logo img');
+    if (logoImg) logoImg.src = base + 'assets/logo.svg';
+
+    // Dark mode
     const darkBtn = document.getElementById('dark-toggle');
     if (darkBtn) {
-      // Restaurar preferencia guardada
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark');
         darkBtn.textContent = '☀ Light';
@@ -44,62 +51,61 @@
       });
     }
 
-    // Lang toggle — solo en index, en subpáginas se oculta si no hay i18n
+    // Lang toggle — ocultar en subpáginas sin i18n
     const langBtn = document.getElementById('lang-toggle');
     if (langBtn && typeof applyLang === 'undefined') {
-      // Estamos en una subpágina sin i18n — ocultar el botón
       langBtn.style.display = 'none';
     }
 
-    // Links del nav: si estamos en index, scroll suave; si no, navegar a index + hash
+    // Helper: construir URL a index con idioma preservado
+    function indexUrl(hash) {
+      const lang = typeof window.lang !== 'undefined' ? window.lang : localStorage.getItem('lang') || 'es';
+      const params = lang === 'en' ? '?lang=en' : '';
+      const fragment = hash ? '#' + hash : '';
+      return root + params + fragment;
+    }
+
+    // Nav links
     document.querySelectorAll('[data-nav-link]').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const target = link.getAttribute('data-target');
-        if (location.pathname === '/' || location.pathname.endsWith('index.html')) {
-          // Estamos en index — scroll suave
+        const onIndex = location.pathname === '/' || location.pathname.endsWith('index.html') || location.pathname === root;
+        if (onIndex) {
           const el = document.getElementById(target);
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         } else {
-          // Estamos en subpágina — ir a index con hash
-          location.href = base + 'index.html#' + target;
+          location.href = indexUrl(target);
         }
       });
     });
 
-    // Logo — siempre va a index
+    // Logo — siempre a la raíz
     const logo = document.querySelector('[data-nav-home]');
     if (logo) {
       logo.addEventListener('click', e => {
         e.preventDefault();
-        location.href = base + 'index.html';
+        location.href = indexUrl();
       });
     }
 
     window.dispatchEvent(new Event('nav:ready'));
 
-    // Nav adaptativo (secciones oscuras) — solo en index
-    if (typeof darkSections !== 'undefined') return;
+    // Nav adaptativo
     const nav = document.querySelector('nav');
     const darkIds = ['manifesto-sec', 'work-sec'];
-    const darkClasses = ['.proj-hero'];
     function updateNavColor() {
-      const navH = nav ? nav.offsetHeight : 0;
-      const checkY = navH + 2;
+      if (!nav) return;
+      const checkY = nav.offsetHeight + 2;
       let isDark = false;
       darkIds.forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= checkY && rect.bottom >= checkY) isDark = true;
+        const el = document.getElementById(id); if (!el) return;
+        const r = el.getBoundingClientRect();
+        if (r.top <= checkY && r.bottom >= checkY) isDark = true;
       });
-      darkClasses.forEach(sel => {
-        const el = document.querySelector(sel);
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= checkY && rect.bottom >= checkY) isDark = true;
-      });
-      nav && (isDark ? nav.classList.add('nav-light') : nav.classList.remove('nav-light'));
+      const hero = document.querySelector('.proj-hero');
+      if (hero) { const r = hero.getBoundingClientRect(); if (r.top <= checkY && r.bottom >= checkY) isDark = true; }
+      isDark ? nav.classList.add('nav-light') : nav.classList.remove('nav-light');
     }
     window.addEventListener('scroll', updateNavColor, { passive: true });
     window.addEventListener('resize', updateNavColor, { passive: true });
@@ -108,14 +114,14 @@
 
   /* ── FOOTER ── */
   loadComponent('#footer-placeholder', 'footer.html', () => {
-    // Año dinámico
     const yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+    // Logo del footer con ruta dinámica
+    const footerLogo = document.querySelector('.footer-brand img');
+    if (footerLogo) footerLogo.src = base + 'assets/logos/malenfocat_logotipo blanc.png';
   });
 
-  /* ── Restaurar tema antes de que cargue el nav (evita flash) ── */
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark');
-  }
+  /* ── Restaurar tema ── */
+  if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
 })();
 
