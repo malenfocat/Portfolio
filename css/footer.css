@@ -26,7 +26,7 @@
   font-size: 16px;
   color: #444;
   font-style: italic;
-  max-width: 400px;
+  max-width: 500px;
   line-height: 1.6;
   margin-bottom: 10px;
 }
@@ -67,7 +67,7 @@
   #site-footer { padding: 3rem 1.2rem 2rem; }
   .footer-inner { flex-direction: column; gap: 2rem; }
   .footer-brand img { width: 160px; }
-  .footer-claim { font-size: 15px; color: #888; }
+  .footer-claim { font-size: 15px; color: #888;  }
   .footer-links { gap: 1.2rem; }
   .footer-links a { font-size: 13px; color: #888; }
   .footer-copy {

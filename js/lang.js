@@ -1,6 +1,6 @@
 const TEXTS = {
   es: {
-    nav: ['Trabajo','Sobre mí','Contacto'],
+    nav: ['Sobre mí','Trabajo','Contacto'],
     challenge: ['Agrupa las formas NEGRAS en el centro','Lleva las formas TEAL a la derecha','Agrupa TODAS las formas arriba'],
     skillFlashTitle: ['+ de 30 eventos cubiertos.','IA generativa integrada.','Soluciones 360.'],
     skillFlashSub: ['Desde bodas hasta rebranding corporativo.','No como tendencia. Como herramienta.','Foto, vídeo, web y diseño. Un interlocutor para todo.'],
@@ -13,6 +13,7 @@ const TEXTS = {
     labelAbout: '01 — Sobre mí', h2About: 'Multidisciplinar<br>por necesidad',
     p1: 'Soy creativo con base en <strong>Madrid</strong>, disponible en toda España y para proyectos remotos en cualquier parte. Me muevo entre la cámara, el código y el píxel con la misma comodidad — no porque no haya elegido, sino porque los mejores proyectos <strong>viven en la intersección</strong> de todas esas disciplinas.',
     p2: '"Malenfocat" viene del catalán <em>mal enfocado</em> — una referencia al mundo audiovisual y a lo que vengo a resolver. El nombre no es una excusa; es una <strong>declaración de intenciones</strong>: lo que para otros es ruido, para mí es el punto de partida.',
+    p3: 'El proyecto busca eso: mirar las cosas desde otro ángulo, evitar lo típico y encontrar una forma más honesta de contar historias, ya sea para una marca, un evento o una persona.',
     labelSkills: 'Habilidades',
     skNames: ['Fotografía','Video & Edición','Generación con IA','Diseño Gráfico','Desarrollo Web','Diseño UX/UI'],
     skDescs: ['Retrato, producto, evento y dirección de arte visual.','Grabación, montaje, color grading y postproducción.','Midjourney, Stable Diffusion y flujos generativos creativos.','Identidad visual, cartelería, composición y tipografía.','HTML, CSS, JS, WordPress y sitios estáticos modernos.','Wireframes, prototipos y sistemas de diseño en Figma.'],
@@ -21,9 +22,17 @@ const TEXTS = {
     cdesc: 'Basado en Madrid, disponible en toda España y para proyectos remotos en cualquier parte del mundo.',
     subHero: 'Diseño · Foto · Video · Código · IA',
     manifesto: { label: 'Malenfocat Studio', l1: 'No todo lo que parece mal hecho', l2: 'está mal pensado.' },
+    footerClaim: 'No todo lo que parece mal hecho está mal pensado.',
+    footerCopy: 'Desde Madrid para todo el mundo',
+    navPrev: '← Anterior', navNext: 'Siguiente →', navAll: 'Ver todos',
+    infoTitle: 'Cómo jugar',
+    infoL1a: 'Mueve el cursor', infoL1b: ' para empujar las formas',
+    infoL2a: 'Click sostenido', infoL2b: ' para atraerlas hacia ti',
+    infoL3a: '3 retos', infoL3b: ' para desbloquear la recompensa',
+    infoL4a: 'Scroll', infoL4b: ' para revelar el portfolio',
   },
   en: {
-    nav: ['Work','About','Contact'],
+    nav: ['About','Work','Contact'],
     challenge: ['Group the BLACK shapes in the center','Move the TEAL shapes to the right','Group ALL shapes at the top'],
     skillFlashTitle: ['30+ events covered.','Generative AI integrated.','360 solutions.'],
     skillFlashSub: ['From weddings to corporate rebranding.','Not as a trend. As a tool.','Photo, video, web and design. One contact for everything.'],
@@ -36,6 +45,7 @@ const TEXTS = {
     labelAbout: '01 — About', h2About: 'Multidisciplinary<br>by necessity',
     p1: 'I\'m a creative based in <strong>Madrid</strong>, available across Spain and for remote projects anywhere. I move between camera, code and pixel with equal ease — not because I haven\'t chosen, but because the best projects <strong>live at the intersection</strong> of all those disciplines.',
     p2: '"Malenfocat" comes from Catalan for <em>out of focus</em> — a reference to the audiovisual world and what I\'m here to solve. The name isn\'t an excuse; it\'s a <strong>declaration of intent</strong>: what others call noise, I call a starting point.',
+    p3: 'The project is about that: looking at things from a different angle, avoiding the typical and finding a more honest way to tell stories — whether for a brand, an event or a person.',
     labelSkills: 'Skills',
     skNames: ['Photography','Video & Editing','AI Generation','Graphic Design','Web Development','UX/UI Design'],
     skDescs: ['Portrait, product, event and visual art direction.','Filming, editing, color grading and post-production.','Midjourney, Stable Diffusion and generative creative workflows.','Visual identity, poster design, composition and typography.','HTML, CSS, JS, WordPress and modern static sites.','Wireframes, prototypes and design systems in Figma.'],
@@ -44,6 +54,14 @@ const TEXTS = {
     cdesc: 'Based in Madrid, available across Spain and for remote projects anywhere in the world.',
     subHero: 'Design · Photo · Video · Code · AI',
     manifesto: { label: 'Malenfocat Studio', l1: 'Not everything that looks poorly made', l2: 'is poorly thought.' },
+    footerClaim: 'Not everything that looks poorly made is poorly thought.',
+    footerCopy: 'From Madrid to the world',
+    navPrev: '← Previous', navNext: 'Next →', navAll: 'All work',
+    infoTitle: 'How to play',
+    infoL1a: 'Move the cursor', infoL1b: ' to push the shapes',
+    infoL2a: 'Click and hold', infoL2b: ' to attract them toward you',
+    infoL3a: '3 challenges', infoL3b: ' to unlock the reward',
+    infoL4a: 'Scroll', infoL4b: ' to reveal the portfolio',
   }
 };
 
@@ -80,12 +98,18 @@ function applyLang() {
   $('h2-about').innerHTML       = t.h2About;
   $('about-p1').innerHTML       = t.p1;
   $('about-p2').innerHTML       = t.p2;
+  if ($('about-p3')) $('about-p3').innerHTML = t.p3;
   $('label-skills').textContent = t.labelSkills;
   $('label-work').textContent   = t.labelWork;
   $('h2-work').textContent      = t.h2Work;
   $('cpre').textContent         = t.cpre;
   $('ch').innerHTML             = t.ch;
   $('cdesc').textContent        = t.cdesc;
+  // Popup instrucciones
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (!key.startsWith('nav') && t[key] !== undefined) el.textContent = t[key];
+  });
   for (let i = 1; i <= 6; i++) {
     $(`sk${i}n`).textContent = t.skNames[i - 1];
     $(`sk${i}d`).textContent = t.skDescs[i - 1];
@@ -94,6 +118,13 @@ function applyLang() {
     $('challenge-text').textContent = t.challenge[currentChallenge];
   currentSubHero = t.subHero;
   applyManifestoLang();
+
+  // Links "ver todos" con idioma + hash correcto
+  document.querySelectorAll('.proj-nav-all').forEach(a => {
+    const base = a.getAttribute('data-href') || a.getAttribute('href').split('?')[0].split('#')[0];
+    a.setAttribute('data-href', base);
+    a.setAttribute('href', lang === 'en' ? base + '?lang=en#work-sec' : base + '#work-sec');
+  });
 }
 
 function applyManifestoLang() {

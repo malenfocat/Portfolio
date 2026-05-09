@@ -1,14 +1,16 @@
 window.addEventListener('DOMContentLoaded', () => {
-  // Resize inicial del juego
   resizeGame();
   window.addEventListener('resize', resizeGame);
-
-  // Arrancar juego
   showChallenge();
   gameFrame();
 
-  // Nav toggle de idioma (esperar al nav inyectado por components.js)
   window.addEventListener('nav:ready', () => {
-    applyLang(); // aplicar idioma guardado al nav recién montado
+    applyLang();
   });
+
+  // Si hay hash en la URL (#work-sec, etc.), scroll suave al cargar
+  if (window.location.hash) {
+    const target = document.getElementById(window.location.hash.slice(1));
+    if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 300);
+  }
 });

@@ -16,13 +16,31 @@ if (isTouch) {
 document.addEventListener('mousedown', () => { pulling=true;  document.body.classList.add('pulling'); });
 document.addEventListener('mouseup',   () => { pulling=false; document.body.classList.remove('pulling'); });
 
+// ── IDIOMA: fuente única de verdad ───────────────────────────
+// Prioridad: ?lang en URL > localStorage > 'es'
+(function(){
+  const urlLang = new URLSearchParams(window.location.search).get('lang');
+  const target  = (urlLang==='en'||urlLang==='es') ? urlLang
+                : (localStorage.getItem('lang')||'es');
+  lang = target;
+  // URL limpia cuando es español
+  if (urlLang && lang === 'es') {
+    const url = new URL(window.location);
+    url.searchParams.delete('lang');
+    window.history.replaceState({}, '', url);
+  }
+})();
+
+// Aplicar cuando el nav esté listo
+window.addEventListener('nav:ready', () => applyLang());
+
 // ── LANG TOGGLE ──────────────────────────────────────────────
 function initLangToggle() {
   const btn = document.getElementById('lang-toggle');
   if (!btn) return;
+  btn.textContent = lang === 'es' ? 'EN' : 'ES';
   btn.addEventListener('click', () => {
     lang = lang==='es' ? 'en' : 'es';
-    btn.textContent = lang==='es' ? 'EN' : 'ES';
     localStorage.setItem('lang', lang);
     const url = new URL(window.location);
     if (lang==='en') url.searchParams.set('lang','en');
@@ -32,25 +50,34 @@ function initLangToggle() {
   });
 }
 window.addEventListener('nav:ready', initLangToggle);
-if (document.getElementById('lang-toggle')) initLangToggle();
 
-// Restaurar idioma: URL tiene prioridad, luego localStorage
-(function(){
-  const params = new URLSearchParams(window.location.search);
-  const urlLang = params.get('lang');
-  const saved   = localStorage.getItem('lang');
-  const target  = (urlLang==='en'||urlLang==='es') ? urlLang : (saved||'es');
-  if (target !== lang) { lang=target; applyLang(); }
-})();
+// ── PROPAGAR IDIOMA EN NAVEGACIÓN ────────────────────────────
+// Intercepta clicks — no modifica hrefs estáticos nunca
+// Excluye links de nav (scroll suave) y logo
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href]');
+  if (!a) return;
+  if (a.hasAttribute('data-nav-link') || a.hasAttribute('data-nav-home')) return;
+  const href = a.getAttribute('href');
+  if (!href || href.startsWith('mailto') || href.startsWith('http') || href.startsWith('#')) return;
+  if (lang === 'es') return;
+  e.preventDefault();
+  const url = new URL(href, window.location.href);
+  url.searchParams.set('lang', 'en');
+  window.location.href = url.pathname + url.search;
+});
 
 // ── REWARD CARD ──────────────────────────────────────────────
-document.getElementById('code-wrap').addEventListener('click', () => {
-  navigator.clipboard?.writeText('MALENFOCAT-FREE').catch(()=>{});
-  document.getElementById('copy-hint').style.display = 'none';
-  document.getElementById('copy-confirm').style.display = 'block';
-});
-document.getElementById('rew-contact').addEventListener('click', () => document.getElementById('reward-overlay').classList.remove('show'));
-document.getElementById('rew-close').addEventListener('click',   () => document.getElementById('reward-overlay').classList.remove('show'));
+const codeWrap = document.getElementById('code-wrap');
+if (codeWrap) {
+  codeWrap.addEventListener('click', () => {
+    navigator.clipboard?.writeText('MALENFOCAT-FREE').catch(()=>{});
+    document.getElementById('copy-hint').style.display = 'none';
+    document.getElementById('copy-confirm').style.display = 'block';
+  });
+  document.getElementById('rew-contact').addEventListener('click', () => document.getElementById('reward-overlay').classList.remove('show'));
+  document.getElementById('rew-close').addEventListener('click',   () => document.getElementById('reward-overlay').classList.remove('show'));
+}
 
 // ── POPUP INSTRUCCIONES ──────────────────────────────────────
 (function(){
@@ -64,20 +91,13 @@ document.getElementById('rew-close').addEventListener('click',   () => document.
 })();
 
 // ── SKILLS OBSERVER ──────────────────────────────────────────
-new IntersectionObserver(entries => {
-  if (entries[0].isIntersecting) {
-    document.querySelectorAll('.sc-fill').forEach((f,i) => setTimeout(()=>f.classList.add('vis'), i*140));
-  }
-}, {threshold:.2}).observe(document.getElementById('skills-list'));
-
-// ── NAV SCROLL LINKS ─────────────────────────────────────────
-document.querySelectorAll('nav a[data-target]').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const el = document.getElementById(link.getAttribute('data-target'));
-    if (el) el.scrollIntoView({behavior:'smooth'});
-  });
-});
+const skillsList = document.getElementById('skills-list');
+if (skillsList) {
+  new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting)
+      document.querySelectorAll('.sc-fill').forEach((f,i) => setTimeout(()=>f.classList.add('vis'), i*140));
+  }, {threshold:.2}).observe(skillsList);
+}
 
 // ── NAV ADAPTATIVO ───────────────────────────────────────────
 (function(){
@@ -91,7 +111,6 @@ document.querySelectorAll('nav a[data-target]').forEach(link => {
       const r=el.getBoundingClientRect();
       if(r.top<=checkY && r.bottom>=checkY) isDark=true;
     });
-    // proj-hero en páginas de proyecto
     const hero=document.querySelector('.proj-hero');
     if(hero){const r=hero.getBoundingClientRect();if(r.top<=checkY&&r.bottom>=checkY)isDark=true;}
     isDark ? nav.classList.add('nav-light') : nav.classList.remove('nav-light');
