@@ -1,0 +1,19 @@
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;position:fixed;top:0;width:100%;z-index:300;backdrop-filter:blur(12px);background:rgba(255,255,255,0.01);border-bottom:.5px solid transparent;transition:border-color .3s;}
+body.dark nav{background:rgba(14,14,14,0.01);}
+nav ul{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+nav a{font-size:12px;color:var(--txt);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
+nav a:hover{opacity:1;}
+.nav-btn{background:none;border:.5px solid var(--border2);color:var(--txt);font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .7rem;cursor:pointer;transition:all .2s;opacity:.7;}
+.nav-btn:hover{opacity:1;background:var(--bg2);}
+.nav-link{font-size:12px;}
+
+nav.nav-light a,
+nav.nav-light .nav-btn { color: #f0f0f0; }
+nav.nav-light svg rect,
+nav.nav-light svg circle,
+nav.nav-light svg polygon { fill: #f0f0f0; }
+nav.nav-light svg circle[fill="none"] { fill: none; stroke: #f0f0f0; }
+nav.nav-light .nav-logo img { filter: invert(1); }
+nav.nav-light .nav-btn { border-color: rgba(240,240,240,.3); }
+nav.nav-light .nav-btn:hover { background: rgba(240,240,240,.1); }
+body.dark nav .nav-logo img { filter: invert(1); }

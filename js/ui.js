@@ -1,0 +1,102 @@
+// ── CURSOR ───────────────────────────────────────────────────
+const curEl = document.getElementById('cur');
+let MX=300, MY=300, CX=300, CY=300;
+
+const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+if (isTouch) {
+  document.body.style.cursor = 'auto';
+  if (curEl) curEl.style.display = 'none';
+  const hintEl = document.getElementById('hint-box');
+  if (hintEl) hintEl.textContent = 'El juego interactivo solo está disponible en escritorio — ¡pruébalo desde tu ordenador!';
+} else {
+  document.addEventListener('mousemove', e => { MX=e.clientX; MY=e.clientY; });
+  (function cl(){ CX+=(MX-CX)*.13; CY+=(MY-CY)*.13; if(curEl){curEl.style.left=CX+'px';curEl.style.top=CY+'px';} requestAnimationFrame(cl); })();
+}
+
+document.addEventListener('mousedown', () => { pulling=true;  document.body.classList.add('pulling'); });
+document.addEventListener('mouseup',   () => { pulling=false; document.body.classList.remove('pulling'); });
+
+// ── LANG TOGGLE ──────────────────────────────────────────────
+function initLangToggle() {
+  const btn = document.getElementById('lang-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    lang = lang==='es' ? 'en' : 'es';
+    btn.textContent = lang==='es' ? 'EN' : 'ES';
+    localStorage.setItem('lang', lang);
+    const url = new URL(window.location);
+    if (lang==='en') url.searchParams.set('lang','en');
+    else url.searchParams.delete('lang');
+    window.history.replaceState({}, '', url);
+    applyLang();
+  });
+}
+window.addEventListener('nav:ready', initLangToggle);
+if (document.getElementById('lang-toggle')) initLangToggle();
+
+// Restaurar idioma: URL tiene prioridad, luego localStorage
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get('lang');
+  const saved   = localStorage.getItem('lang');
+  const target  = (urlLang==='en'||urlLang==='es') ? urlLang : (saved||'es');
+  if (target !== lang) { lang=target; applyLang(); }
+})();
+
+// ── REWARD CARD ──────────────────────────────────────────────
+document.getElementById('code-wrap').addEventListener('click', () => {
+  navigator.clipboard?.writeText('MALENFOCAT-FREE').catch(()=>{});
+  document.getElementById('copy-hint').style.display = 'none';
+  document.getElementById('copy-confirm').style.display = 'block';
+});
+document.getElementById('rew-contact').addEventListener('click', () => document.getElementById('reward-overlay').classList.remove('show'));
+document.getElementById('rew-close').addEventListener('click',   () => document.getElementById('reward-overlay').classList.remove('show'));
+
+// ── POPUP INSTRUCCIONES ──────────────────────────────────────
+(function(){
+  const btn   = document.getElementById('info-btn');
+  const popup = document.getElementById('info-popup');
+  const close = document.getElementById('info-close');
+  if (!btn||!popup) return;
+  btn.addEventListener('click', e => { e.stopPropagation(); popup.classList.toggle('open'); });
+  close.addEventListener('click', () => popup.classList.remove('open'));
+  document.addEventListener('click', e => { if(!popup.contains(e.target)&&e.target!==btn) popup.classList.remove('open'); });
+})();
+
+// ── SKILLS OBSERVER ──────────────────────────────────────────
+new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    document.querySelectorAll('.sc-fill').forEach((f,i) => setTimeout(()=>f.classList.add('vis'), i*140));
+  }
+}, {threshold:.2}).observe(document.getElementById('skills-list'));
+
+// ── NAV SCROLL LINKS ─────────────────────────────────────────
+document.querySelectorAll('nav a[data-target]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.getElementById(link.getAttribute('data-target'));
+    if (el) el.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// ── NAV ADAPTATIVO ───────────────────────────────────────────
+(function(){
+  const darkSections = ['manifesto-sec','work-sec'];
+  function updateNav() {
+    const nav = document.querySelector('nav'); if (!nav) return;
+    const checkY = nav.offsetHeight+2;
+    let isDark = false;
+    darkSections.forEach(id => {
+      const el=document.getElementById(id); if(!el) return;
+      const r=el.getBoundingClientRect();
+      if(r.top<=checkY && r.bottom>=checkY) isDark=true;
+    });
+    // proj-hero en páginas de proyecto
+    const hero=document.querySelector('.proj-hero');
+    if(hero){const r=hero.getBoundingClientRect();if(r.top<=checkY&&r.bottom>=checkY)isDark=true;}
+    isDark ? nav.classList.add('nav-light') : nav.classList.remove('nav-light');
+  }
+  window.addEventListener('scroll', updateNav, {passive:true});
+  window.addEventListener('resize', updateNav, {passive:true});
+  window.addEventListener('nav:ready', updateNav);
+})();

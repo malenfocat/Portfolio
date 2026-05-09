@@ -1,0 +1,46 @@
+@media (max-width: 768px) {
+  body { cursor: auto; }
+
+  nav { padding: .9rem 1.2rem; }
+  nav ul { gap: .7rem; }
+  nav ul li:has(.nav-link) { display: none; }
+
+  #challenge-box { display: none; }
+  #hint-box { font-size: 11px; padding: 0 1.5rem; text-align: center; color: var(--txt3); line-height: 1.6; }
+
+  #reward-card { padding: 1.8rem 1.4rem; margin: 1rem; max-width: calc(100vw - 2rem); }
+  .rew-btns { flex-direction: column; }
+  .rew-btn, .rew-btn-alt { width: 100%; }
+
+  #skill-flash { width: calc(100% - 2.4rem); padding: 1.5rem 1.2rem; }
+  .sf-title { font-size: 1.2rem; }
+  .sf-sub { font-size: .9rem; }
+
+  #manifesto-sec { height: auto; min-height: 60vh; padding: 4rem 1.5rem; }
+  .m-line { font-size: clamp(1.4rem, 6vw, 2.2rem); }
+  .m-label { margin-bottom: 1.5rem; }
+
+  #about-skills { padding: 3rem 1.2rem; }
+  h2 { font-size: 1.6rem; }
+  .about-intro p { font-size: 1rem; }
+  .sec-label { font-size: 11px; }
+
+  .skills-grid { grid-template-columns: 1fr; }
+  .skill-card { padding: 1.4rem 1.2rem; }
+  .sc-name { font-size: 1rem; }
+  .sc-disc { font-size: .85rem; }
+  .sc-pct { font-size: 13px; }
+
+  #work-sec { padding: 3rem 1.2rem; }
+  h2.wh { font-size: 1.6rem; }
+  .pgrid { grid-template-columns: 1fr; margin-top: 2rem; }
+  .pc { min-height: 140px; padding: 1.5rem 1.2rem; }
+  .pc-title { font-size: 1.1rem; }
+  .pc-tag span { font-size: 11px; padding: 4px 10px; }
+
+  #contact-sec { padding: 4rem 1.2rem; }
+  .ch { font-size: clamp(2rem, 10vw, 3rem); }
+  .cdesc { font-size: 1rem; }
+  .cta { font-size: 11px; padding: .9rem 1.4rem; word-break: break-all; }
+  .cpre { font-size: 11px; }
+}

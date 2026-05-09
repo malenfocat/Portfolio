@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+@font-face {
+  font-family: 'Aloevera';
+  src: url('../assets/fonts/AloeveraDisplay-Bold.woff2') format('woff2'),
+       url('../assets/fonts/AloeveraDisplay-Bold.woff') format('woff'),
+       url('../assets/fonts/AloeveraDisplay-Regular.woff') format('woff'),
+       url('../assets/fonts/AloeveraDisplay-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#ffffff;--bg2:#f7f7f5;--bg3:#f0f0ec;
+  --txt:#111111;--txt2:#555555;--txt3:#999999;
+  --teal:#3a8f8c;--teal-bg:#e6f4f3;
+  --border:#e0e0e0;--border2:#cccccc;
+  --card:#ffffff;
+}
+body.dark{
+  --bg:#0e0e0e;--bg2:#161616;--bg3:#1e1e1e;
+  --txt:#f0f0f0;--txt2:#a0a0a0;--txt3:#555555;
+  --teal:#4db3af;--teal-bg:#0f2928;
+  --border:#2a2a2a;--border2:#3a3a3a;
+  --card:#161616;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;cursor:none;transition:background .4s,color .4s;}
+
+#cur{position:fixed;pointer-events:none;z-index:9999;mix-blend-mode:difference;}
+#cur-inner{width:12px;height:12px;background:#fff;border-radius:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transition:width .15s,height .15s;}
+body.pulling #cur-inner{width:36px;height:36px;}
+
+.section{padding:5rem 2.5rem;}
+.sec-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;font-weight:500;}
+h2{font-size:1.9rem;font-weight:300;letter-spacing:-.02em;line-height:1.25;color:var(--txt);}
+#after{background:var(--bg);transition:background .4s;}
