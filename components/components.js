@@ -39,10 +39,8 @@
     // Dark mode
     const darkBtn = document.getElementById('dark-toggle');
     if (darkBtn) {
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark');
-        darkBtn.textContent = '☀ Light';
-      }
+      const isDarkNow = document.body.classList.contains('dark');
+      darkBtn.textContent = isDarkNow ? '☀ Light' : '☽ Dark';
       darkBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark');
         const isDark = document.body.classList.contains('dark');
@@ -110,6 +108,8 @@
     window.addEventListener('scroll', updateNavColor, { passive: true });
     window.addEventListener('resize', updateNavColor, { passive: true });
     updateNavColor();
+    // Segundo disparo tras render completo por si el layout no estaba listo
+    requestAnimationFrame(updateNavColor);
   });
 
   /* ── FOOTER ── */
@@ -122,6 +122,13 @@
   });
 
   /* ── Restaurar tema ── */
-  if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark');
+  } else if (!savedTheme) {
+    // Sin preferencia guardada: light por defecto, limpiar cualquier clase dark residual
+    document.body.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+  }
 })();
 

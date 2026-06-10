@@ -1,0 +1,171 @@
+/* ══════════════════════════════════════════════════════
+   VIDEO.CSS — estilos específicos de la página de vídeo
+══════════════════════════════════════════════════════ */
+
+/* ── TÍTULO DE CAMPAÑA ── */
+.video-campaign-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--txt);
+  margin-bottom: .6rem;
+  letter-spacing: -.01em;
+}
+
+/* ── GRID DE VÍDEOS ── */
+.video-reel-grid {
+  display: grid;
+  gap: 1.5rem;
+  padding: 0 2.5rem 3rem;
+}
+.video-reel-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.video-reel-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.video-reel-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.video-reel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── VIDEO CARD — contenedor con borde y fondo ── */
+.video-card {
+  position: relative;
+  width: 100%;
+  border: .5px solid var(--border);
+  background: var(--bg2);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.video-card:hover {
+  border-color: var(--border2);
+}
+
+/* Aspecto por defecto: horizontal 16/9 */
+.video-card .proj-video-wrap {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  position: relative;
+  background: #000;
+}
+
+/* Aspecto vertical 9/16 para reels */
+.reel-vertical .video-card .proj-video-wrap {
+  aspect-ratio: 9 / 16;
+}
+
+.video-card .proj-video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ── BADGE DE PLATAFORMA ── */
+.video-badge {
+  position: absolute;
+  top: .6rem;
+  right: .6rem;
+  z-index: 10;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  pointer-events: none;
+}
+.badge-ig {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  color: #fff;
+}
+.badge-yt {
+  background: #ff0000;
+  color: #fff;
+}
+.badge-tk {
+  background: #000;
+  color: #fff;
+}
+
+/* ── IMG CARD — imágenes verticales con mismo aspecto que los reels ── */
+.video-card.img-card {
+  display: block;
+  overflow: hidden;
+}
+.video-card.img-card img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  transition: transform .4s cubic-bezier(.16,1,.3,1);
+}
+.video-card.img-card:hover img {
+  transform: scale(1.03);
+}
+
+/* ── CAPTION ── */
+.video-caption {
+  margin-top: .6rem;
+  font-size: .8rem;
+  color: var(--txt3);
+  text-align: center;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* ── PLACEHOLDER PRÓXIMAMENTE ── */
+.video-card.video-soon {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg3);
+  border: .5px dashed var(--border2);
+  min-height: 160px;
+}
+.reel-vertical .video-card.video-soon {
+  aspect-ratio: 9 / 16;
+}
+.soon-inner {
+  text-align: center;
+}
+.soon-num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--border2);
+  line-height: 1;
+  margin-bottom: .4rem;
+}
+.soon-label {
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--txt3);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .video-reel-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .video-reel-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .video-reel-grid { padding: 0 1.2rem 2rem; gap: 1rem; }
+  .video-reel-grid.cols-2,
+  .video-reel-grid.cols-3,
+  .video-reel-grid.cols-4 { grid-template-columns: 1fr; }
+  /* En mobile los reels verticales se muestran a 9/16 pero con max-width */
+  .reel-vertical .video-card .proj-video-wrap {
+    aspect-ratio: 9 / 16;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .reel-vertical .video-card.video-soon {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
