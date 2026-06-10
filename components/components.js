@@ -87,6 +87,14 @@
       });
     }
 
+    // Ajustar rutas del dropdown según profundidad
+    document.querySelectorAll('.nav-drop-link').forEach(a => {
+      const href = a.getAttribute('href');
+      if (href && href.startsWith('/projects/')) {
+        a.setAttribute('href', base + 'projects/' + href.replace('/projects/', ''));
+      }
+    });
+
     window.dispatchEvent(new Event('nav:ready'));
 
     // Nav adaptativo

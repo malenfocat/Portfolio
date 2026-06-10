@@ -7,6 +7,63 @@ nav a:hover{opacity:1;}
 .nav-btn:hover{opacity:1;background:var(--bg2);}
 .nav-link{font-size:12px;}
 
+/* ── DROPDOWN ────────────────────────────────────────── */
+.nav-has-dropdown{position:relative;}
+
+/* Chevron — indicador visual de que hay desplegable */
+.nav-has-dropdown > a.nav-link::after{
+  content:' ⌵';
+  font-size:9px;
+  opacity:.5;
+  margin-left:3px;
+  display:inline-block;
+  transition:transform .18s;
+  vertical-align:middle;
+}
+.nav-has-dropdown:hover > a.nav-link::after{
+  transform:rotate(180deg);
+  opacity:1;
+}
+
+.nav-dropdown{
+  position:absolute;top:calc(100% + .3rem);left:50%;
+  background:var(--bg);border:.5px solid var(--border);
+  list-style:none;display:flex;flex-direction:column;gap:0;
+  min-width:160px;padding:.4rem 0;
+  opacity:0;pointer-events:none;
+  transform:translateX(-50%) translateY(-4px);
+  transition:opacity .18s,transform .18s;
+  z-index:400;
+}
+/* Puente invisible que rellena el gap entre el link y el dropdown */
+.nav-dropdown::before{
+  content:'';
+  position:absolute;
+  top:-.8rem;left:0;right:0;
+  height:.8rem;
+}
+body.dark .nav-dropdown{background:var(--bg2);}
+.nav-has-dropdown:hover .nav-dropdown,
+.nav-has-dropdown:focus-within .nav-dropdown{
+  opacity:1;pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+.nav-dropdown li a.nav-drop-link{
+  display:block;padding:.55rem 1.2rem;
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--txt);opacity:.6;white-space:nowrap;
+  transition:opacity .15s,background .15s;
+}
+.nav-dropdown li a.nav-drop-link:hover{opacity:1;background:var(--bg2);}
+body.dark .nav-dropdown li a.nav-drop-link:hover{background:var(--bg3);}
+.nav-dropdown li+li{border-top:.5px solid var(--border);}
+
+/* nav-light */
+nav.nav-light .nav-dropdown{background:rgba(10,10,10,.95);border-color:rgba(255,255,255,.12);}
+nav.nav-light .nav-drop-link{color:#f0f0f0 !important;}
+nav.nav-light .nav-dropdown li+li{border-color:rgba(255,255,255,.08);}
+nav.nav-light .nav-dropdown li a.nav-drop-link:hover{background:rgba(255,255,255,.07);}
+
 nav.nav-light a,
 nav.nav-light .nav-btn { color: #f0f0f0; }
 nav.nav-light svg rect,
