@@ -13,8 +13,8 @@ if (isTouch) {
   (function cl(){ CX+=(MX-CX)*.13; CY+=(MY-CY)*.13; if(curEl){curEl.style.left=CX+'px';curEl.style.top=CY+'px';} requestAnimationFrame(cl); })();
 }
 
-document.addEventListener('mousedown', () => { pulling=true;  document.body.classList.add('pulling'); });
-document.addEventListener('mouseup',   () => { pulling=false; document.body.classList.remove('pulling'); });
+document.addEventListener('mousedown', () => { if(typeof pulling !== 'undefined') { pulling=true; document.body.classList.add('pulling'); } });
+document.addEventListener('mouseup',   () => { if(typeof pulling !== 'undefined') { pulling=false; document.body.classList.remove('pulling'); } });
 
 // ── IDIOMA: fuente única de verdad ───────────────────────────
 // Prioridad: ?lang en URL > localStorage > 'es'

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Proyecto — Malenfocat Studio">
+  <meta name="description" content="AI Influencer — Malenfocat Studio">
   <link rel="icon" href="../assets/images/favicon-light.ico" media="(prefers-color-scheme: light)">
   <link rel="icon" href="../assets/images/favicon-dark.ico" media="(prefers-color-scheme: dark)">
   <title>AI INFLUENCER — Malenfocat</title>
@@ -14,20 +14,14 @@
 </head>
 <body>
 
-<!-- CURSOR -->
 <div id="cur"><div id="cur-inner"></div></div>
-
 <div id="nav-placeholder"></div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     HERO DEL PROYECTO
-     Cambia: data-category, el h1, el subtítulo y las etiquetas
-═══════════════════════════════════════════════════════════ -->
 <header class="proj-hero">
   <div class="proj-hero-meta">
-    <span class="proj-num">003</span>           <!-- número del proyecto -->
-    <span class="proj-category">TFG</span> <!-- categoría -->
-    <span class="proj-year">2023</span>           <!-- año -->
+    <span class="proj-num">003</span>
+    <span class="proj-category">TFG</span>
+    <span class="proj-year">2023</span>
   </div>
   <h1 class="proj-title">AI Influencer</h1>
   <p class="proj-subtitle">Creación de identidad digital, narrativa visual y mundo ficticio; explorando los límites de la imagen generada.</p>
@@ -44,39 +38,26 @@
     <span class="pnb-title">Vídeo Reel</span>
   </a>
   <a href="../#work-sec" class="proj-nav-all" data-i18n="navAll">Ver todos</a>
-  <a href="photo.html" class="proj-nav-next">
+  <a href="tour-virtual.html" class="proj-nav-next">
     <span class="pnb-label" data-i18n="navNext">Siguiente →</span>
-    <span class="pnb-title">Photo Portfolio</span>
+    <span class="pnb-title">Tour Virtual 360°</span>
   </a>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     IMAGEN DE PORTADA
-     Sustituye src por tu imagen real
-═══════════════════════════════════════════════════════════ -->
 <div class="proj-cover">
-  <img src="../assets/projects/ia/ComfyUI_00424_.png" alt="Photo Portfolio — Malenfocat">
-  <!-- Si no tienes imagen aún, deja el div vacío y el placeholder CSS se muestra -->
+  <img src="../assets/projects/ia/ComfyUI_00424_.png" alt="AI Influencer — Malenfocat">
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     INTRO / BRIEF
-═══════════════════════════════════════════════════════════ -->
 <section class="proj-section proj-intro">
-  <div class="proj-col-label">Contexto</div>
+  <div class="proj-col-label" data-i18n-sec="secContext">Contexto</div>
   <div class="proj-col-content">
-    <p>Trabajo Final de Grado centrado en la creación de una influencer virtual, Tania Costa, y su entorno: la ciudad ficticia de Kernel, dentro de una estética solarpunk.</p>
-  <p>El reto principal era conseguir consistencia visual en un momento en el que la generación de imagen y vídeo con IA todavía era inestable y poco predecible.</p>
+    <p data-i18n-ctx="0">Trabajo Final de Grado centrado en la creación de una influencer virtual, Tania Costa, y su entorno: la ciudad ficticia de Kernel, dentro de una estética solarpunk.</p>
+    <p data-i18n-ctx="1">El reto principal era conseguir consistencia visual en un momento en el que la generación de imagen y vídeo con IA todavía era inestable y poco predecible.</p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     GALERÍA — bloque de 2 columnas
-     Añade o elimina <img> según necesites
-     Sustituye src por tus rutas reales
-═══════════════════════════════════════════════════════════ -->
 <section class="proj-section">
-  <div class="proj-col-label">Imágenes</div>
+  <div class="proj-col-label" data-i18n-sec="secImages">Imágenes</div>
   <div class="proj-col-content">
     <div class="proj-grid-2">
       <div class="proj-img-wrap"><img src="../assets/projects/ia/ComfyUI_00393_.png" alt=""></div>
@@ -87,55 +68,36 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     IMAGEN ANCHA — ocupa todo el ancho
-═══════════════════════════════════════════════════════════ -->
 <div class="proj-full-img">
   <img src="../assets/projects/ia/ComfyUI_00546_.png" alt="">
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PROCESO
-═══════════════════════════════════════════════════════════ -->
 <section class="proj-section">
-  <div class="proj-col-label">Proceso</div>
+  <div class="proj-col-label" data-i18n-sec="secProcess">Proceso</div>
   <div class="proj-col-content">
-    <p>El proyecto se construyó utilizando herramientas open source como ComfyUI y modelos basados en Stable Diffusion, trabajando con distintas variantes, checkpoints y LoRAs para definir tanto el personaje como su entorno.</p>
-  <p>Uno de los puntos clave fue desarrollar un sistema de trabajo que permitiera mantener coherencia entre imágenes: controlando prompts, semillas, referencias visuales y entrenando estilos específicos para Tania Costa.</p>
-  <p>En lugar de buscar resultados aislados, el enfoque fue crear un flujo reproducible. Esto implicó pruebas constantes, iteración y ajuste fino de parámetros hasta conseguir que el personaje mantuviera identidad entre distintas escenas, poses y contextos.</p>
-  <p>La ciudad de Kernel se planteó como un espacio coherente dentro del universo visual, explorando una estética solarpunk que combinara tecnología y sostenibilidad, alejándose de los imaginarios más distópicos habituales.</p>
-  <p>Uno de los principales problemas fue la inconsistencia facial y corporal típica de estos modelos en ese momento. Se resolvió combinando LoRAs específicos, control de composición y postproducción en Photoshop para corregir pequeños errores sin perder naturalidad.</p>
-  <p>El proyecto no solo busca un resultado visual, sino entender hasta qué punto estas herramientas pueden utilizarse para construir identidades digitales creíbles.</p>
+    <p data-i18n-proc="0">El proyecto se construyó utilizando herramientas open source como ComfyUI y modelos basados en Stable Diffusion, trabajando con distintas variantes, checkpoints y LoRAs para definir tanto el personaje como su entorno.</p>
+    <p data-i18n-proc="1">Uno de los puntos clave fue desarrollar un sistema de trabajo que permitiera mantener coherencia entre imágenes: controlando prompts, semillas, referencias visuales y entrenando estilos específicos para Tania Costa.</p>
+    <p data-i18n-proc="2">En lugar de buscar resultados aislados, el enfoque fue crear un flujo reproducible. Esto implicó pruebas constantes, iteración y ajuste fino de parámetros hasta conseguir que el personaje mantuviera identidad entre distintas escenas, poses y contextos.</p>
+    <p data-i18n-proc="3">La ciudad de Kernel se planteó como un espacio coherente dentro del universo visual, explorando una estética solarpunk que combinara tecnología y sostenibilidad, alejándose de los imaginarios más distópicos habituales.</p>
+    <p data-i18n-proc="4">Uno de los principales problemas fue la inconsistencia facial y corporal típica de estos modelos en ese momento. Se resolvió combinando LoRAs específicos, control de composición y postproducción en Photoshop para corregir pequeños errores sin perder naturalidad.</p>
+    <p data-i18n-proc="5">El proyecto no solo busca un resultado visual, sino entender hasta qué punto estas herramientas pueden utilizarse para construir identidades digitales creíbles.</p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     VÍDEO EMBED — YouTube o Vimeo
-     Sustituye el src del iframe por tu URL de embed:
-       YouTube: https://www.youtube.com/embed/VIDEO_ID
-       Vimeo:   https://player.vimeo.com/video/VIDEO_ID
-     Si el proyecto no tiene vídeo, elimina este bloque entero
-═══════════════════════════════════════════════════════════ -->
 <section class="proj-section">
-  <div class="proj-col-label">Vídeo</div>
+  <div class="proj-col-label" data-i18n-sec="secVideo">Vídeo</div>
   <div class="proj-col-content">
     <div class="proj-video-wrap">
-      <iframe
-        src="https://www.youtube.com/embed/H1HswBwkoEM"
-        title="Vídeo del proyecto"
-        frameborder="0"
+      <iframe src="https://www.youtube.com/embed/H1HswBwkoEM"
+        title="AI Influencer — Tania Costa" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+        allowfullscreen></iframe>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     GALERÍA — bloque de 3 columnas
-═══════════════════════════════════════════════════════════ -->
 <section class="proj-section">
-  <div class="proj-col-label">Más imágenes</div>
+  <div class="proj-col-label" data-i18n-sec="secMore">Más imágenes</div>
   <div class="proj-col-content">
     <div class="proj-grid-3">
       <div class="proj-img-wrap"><img src="../assets/projects/ia/ComfyUI_00359_.png" alt=""></div>
@@ -161,49 +123,37 @@
 </section>
 
 <section class="proj-section">
-  <div class="proj-col-label">Vídeo</div>
+  <div class="proj-col-label" data-i18n-sec="secVideo">Vídeo</div>
   <div class="proj-col-content">
-    <div class="proj-video-wrap bottom-space">
-      <iframe
-        src="https://www.youtube.com/embed/QMxykXYDlDU"
-        title="Vídeo del proyecto"
-        frameborder="0"
+    <div class="proj-video-wrap" style="margin-bottom:1.5rem;">
+      <iframe src="https://www.youtube.com/embed/QMxykXYDlDU"
+        title="AI Influencer — Making of" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+        allowfullscreen></iframe>
     </div>
-    <div class="proj-col-content">
-      <div class="proj-video-wrap">
-        <iframe
-          src="https://www.youtube.com/embed/1HgdpfCanmg"
-          title="Vídeo del proyecto"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>
+    <div class="proj-video-wrap">
+      <iframe src="https://www.youtube.com/embed/1HgdpfCanmg"
+        title="AI Influencer — Ciudad Kernel" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     FICHA TÉCNICA
-     Cambia los valores según cada proyecto
-═══════════════════════════════════════════════════════════ -->
 <section class="proj-section proj-specs">
-  <div class="proj-col-label">Ficha</div>
+  <div class="proj-col-label" data-i18n-sec="secSpecs">Ficha</div>
   <div class="proj-col-content">
     <div class="proj-specs-grid">
-      <div class="proj-spec"><span class="spec-label">Rol</span><span class="spec-val">Generative AI · Postproducción · Web · XXSS</span></div>
-      <div class="proj-spec"><span class="spec-label">Cliente</span><span class="spec-val">Trabajo Final de Grado</span></div>
-      <div class="proj-spec"><span class="spec-label">Año</span><span class="spec-val">2023 — 2024</span></div>
+      <div class="proj-spec"><span class="spec-label">Rol</span><span class="spec-val" data-i18n-spec="role">Generative AI · Postproducción · Web · XXSS</span></div>
+      <div class="proj-spec"><span class="spec-label">Cliente</span><span class="spec-val" data-i18n-spec="client">Trabajo Final de Grado</span></div>
+      <div class="proj-spec"><span class="spec-label">Año</span><span class="spec-val" data-i18n-spec="year">2023 — 2024</span></div>
       <div class="proj-spec">
         <span class="spec-label">Herramientas</span>
-        <span class="spec-val">
-          <a href="https://www.comfy.org/download" target="_blank">Comfy UI</a> · 
-          <a href="" target="_blank">Google Colab</a> · 
-          <a href="" target="_blank">Photoshop</a> · 
-          <a href="" target="_blank">Hugging Face</a> · 
+        <span class="spec-val" data-i18n-spec="tools">
+          <a href="https://www.comfy.org/download" target="_blank">Comfy UI</a> ·
+          <a href="https://colab.research.google.com" target="_blank">Google Colab</a> ·
+          <a href="https://www.adobe.com/products/photoshop.html" target="_blank">Photoshop</a> ·
+          <a href="https://huggingface.co" target="_blank">Hugging Face</a> ·
           <a href="https://civitai.com/tag/comfyui" target="_blank">Civitai</a>
         </span>
       </div>
@@ -211,30 +161,19 @@
   </div>
 </section>
 
-<iframe
-    src="/projects/tour-virtual-duin/index.html"
-    width="100%"
-    height="700"
-    style="border:0;">
-</iframe>
-
-<a href="/projects/tour-virtual-duin/index.html" target="_blank">
-    Ver tour virtual
-</a>
-
 <div class="proj-nav-between">
   <a href="video.html" class="proj-nav-prev">
     <span class="pnb-label" data-i18n="navPrev">← Anterior</span>
     <span class="pnb-title">Vídeo Reel</span>
   </a>
   <a href="../#work-sec" class="proj-nav-all" data-i18n="navAll">Ver todos</a>
-  <a href="photo.html" class="proj-nav-next">
+  <a href="tour-virtual.html" class="proj-nav-next">
     <span class="pnb-label" data-i18n="navNext">Siguiente →</span>
-    <span class="pnb-title">Photo Portfolio</span>
+    <span class="pnb-title">Tour Virtual 360°</span>
   </a>
 </div>
 
-<div id="footer-placeholder"></div> 
+<div id="footer-placeholder"></div>
 
 <script src="../js/lang.js"></script>
 <script src="../js/ui.js"></script>
