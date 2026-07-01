@@ -46,6 +46,16 @@ h2.wh{color:#f0f0f0;}
 .pc-tag span{font-size:11px;border:.5px solid #2a2a2a;padding:3px 8px;border-radius:20px;color:#666;transition:all .3s;}
 .pc:hover .pc-tag span{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7);}
 
+/* Casillas próximamente */
+.pc.pc-soon{
+  cursor:default;
+  opacity:.45;
+  border:.5px dashed #2a2a2a;
+  background:transparent;
+}
+.pc.pc-soon:hover .pc-cover{transform:scaleY(0);}
+.pc.pc-soon .pc-tag span{border-color:#2a2a2a;color:#444;}
+
 /* ── CONTACTO ────────────────────────────────────────────────── */
 #contact-sec{padding:7rem 2.5rem;text-align:center;position:relative;overflow:hidden;background:var(--bg);transition:background .4s;}
 .contact-geo{position:absolute;inset:0;pointer-events:none;}
