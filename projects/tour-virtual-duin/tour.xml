@@ -1,0 +1,422 @@
+﻿<krpano version="1.23" title="DUIN SOHO BADALONA" title_cat="DUIN SOHO BADALONA" onstart="">
+
+	<include url="skin/vtourskin.xml" />
+
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="false"
+	               maps_type="openstreetmaps"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               maps_loadonfirstuse="true"
+	               gyro="false"
+	               gyro_keeplookingdirection="false"
+	               webvr="false"
+	               webvr_keeplookingdirection="true"
+	               webvr_prev_next_hotspots="true"
+	               autotour="false"
+	               littleplanetintro="false"
+	               followmousecontrol="false"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="true"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext=""
+	               layout_width="100%"
+	               layout_maxwidth="814"
+	               controlbar_width="-24"
+	               controlbar_height="40"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.no-fractionalscaling="10"
+	               controlbar_overlap.fractionalscaling="0"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0xFFFFFF"
+				   design_bgalpha="0.25"
+				   design_bgroundedge="5"
+				   design_bgborder="1 0xFFFFFF 0.3"
+				   design_bgshadow="0 0 0 0x000000 0.15"
+	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="5"
+	               design_text_css="color:#FFFFFF; font-family:Arial;"
+	               design_text_shadow="1"
+	               />
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+	
+
+	
+	<scene name="scene_scene_1" title="Recepción"  title_cat="Recepció" onstart="" thumburl="panos/scene_1.tiles/thumb.jpg" lat="41.45836111" lng="2.26263889" alt="66.30" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="14.923" vlookat="-4.612" fovtype="MFOV" fov="132.648" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033303033" style="skin_hotspotstyle" ath="33.168" atv="21.061" depth="1000.0" linkedscene="scene_scene_2" linkedscene_lookat="-0.0,-5.28,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_2" title="Entrada y vestuarios" title_cat="Entrada i vestuaris" onstart="" thumburl="panos/scene_2.tiles/thumb.jpg" lat="41.45836111" lng="2.26247222" alt="66.60" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033301285" style="skin_hotspotstyle" ath="0.48" atv="13.57" depth="1000.0" linkedscene="scene_scene_3" linkedscene_lookat="124.43,3.48,120.0" />
+		<hotspot name="spot2033302490" style="skin_hotspotstyle" ath="-143.396" atv="27.526" depth="1000.0" linkedscene="scene_scene_1" linkedscene_lookat="-138.83,-1.48,132.65" />
+
+	</scene>
+
+	<scene name="scene_scene_3" title="Zona Fitness y Cardio" title_cat="Zona Fitness i Cardio" onstart="" thumburl="panos/scene_3.tiles/thumb.jpg" lat="41.45841667" lng="2.26241667" alt="65.50" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="102.154" vlookat="3.508" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2028267520" style="skin_hotspotstyle" ath="178.851" atv="22.52" depth="1000.0" linkedscene="scene_scene_9" linkedscene_lookat="-57.13,18.04,120.0" />
+		<hotspot name="spot2028267960" style="skin_hotspotstyle" ath="-101.224" atv="18.631" depth="1000.0" linkedscene="scene_scene_2" linkedscene_lookat="204.34,12.3,120.0" />
+		<hotspot name="spot2033304071" style="skin_hotspotstyle" ath="105.507" atv="22.475" depth="1000.0" linkedscene="scene_scene_4" linkedscene_lookat="-94.38,-0.16,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_4" title="Pasillo" title_cat="Passadís" onstart="" thumburl="panos/scene_4.tiles/thumb.jpg" lat="41.45841667" lng="2.26233333" alt="64.20" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="-93.303" vlookat="4.148" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033304531" style="skin_hotspotstyle" ath="1.511" atv="34.119" depth="1000.0" linkedscene="scene_scene_9" linkedscene_lookat="-48.96,0.61,120.0" />
+		<hotspot name="spot2033304722" style="skin_hotspotstyle" ath="82.041" atv="26.94" depth="1000.0" linkedscene="scene_scene_3" linkedscene_lookat="-90.8,2.23,120.0" />
+		<hotspot name="spot2033304953" style="skin_hotspotstyle" ath="-98.96" atv="27.489" depth="1000.0" linkedscene="scene_scene_5" linkedscene_lookat="-125.82,-7.17,120.0" />
+		<hotspot name="spot2033305110" style="skin_hotspotstyle" ath="-174.625" atv="31.754" depth="1000.0" linkedscene="scene_scene_10" linkedscene_lookat="455.32,6.04,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_5" title="Pasillo 2" title_cat="Passadís 2" onstart="" thumburl="panos/scene_5.tiles/thumb.jpg" lat="41.45838889" lng="2.26230556" alt="63.50" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="-125.607" vlookat="6.414" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_5.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_5.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033307350" style="skin_hotspotstyle" ath="-137.438" atv="26.829" depth="1000.0" linkedscene="scene_scene_6" linkedscene_lookat="125.82,-7.79,120.0" />
+		<hotspot name="spot2033307624" style="skin_hotspotstyle" ath="-44.235" atv="33.44" depth="1000.0" linkedscene="scene_scene_8" linkedscene_lookat="107.83,-3.16,120.0" />
+		<hotspot name="spot2033307941" style="skin_hotspotstyle" ath="43.439" atv="29.955" depth="1000.0" linkedscene="scene_scene_4" linkedscene_lookat="77.79,-0.38,120.0" />
+		<hotspot name="spot2033308701" style="skin_hotspotstyle" ath="125.67" atv="31.325" depth="1000.0" linkedscene="scene_scene_11" linkedscene_lookat="53.01,-1.49,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_6" title="Pasillo 3" title_cat="Passadís 3" onstart="" thumburl="panos/scene_6.tiles/thumb.jpg" lat="41.45827778" lng="2.26216667" alt="64.70" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="136.163" vlookat="6.874" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_6.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_6.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033311135" style="skin_hotspotstyle" ath="-58.11" atv="25.688" depth="1000.0" linkedscene="scene_scene_5" linkedscene_lookat="47.28,5.2,120.0" />
+		<hotspot name="spot2033311402" style="skin_hotspotstyle" ath="-119.992" atv="26.782" depth="1000.0" linkedscene="scene_scene_7" linkedscene_lookat="167.99,4.66,120.0" />
+		<hotspot name="spot2033311718" style="skin_hotspotstyle" ath="129.621" atv="25.611" depth="1000.0" linkedscene="scene_scene_15" linkedscene_lookat="-179.21,2.4,120.0" />
+		<hotspot name="spot2033311920" style="skin_hotspotstyle" ath="95.286" atv="32.057" depth="1000.0" linkedscene="scene_scene_16" linkedscene_lookat="624.51,5.51,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_7" title="Zona Funcional" title_cat="Zona Funcional" onstart="" thumburl="panos/scene_7.tiles/thumb.jpg" lat="41.45836111" lng="2.26227778" alt="66.50" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="68.641" vlookat="7.722" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_7.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_7.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033312623" style="skin_hotspotstyle" ath="-141.268" atv="26.893" depth="1000.0" linkedscene="scene_scene_8" linkedscene_lookat="204.52,-3.57,120.0" />
+		<hotspot name="spot2033312796" style="skin_hotspotstyle" ath="-28.384" atv="29.775" depth="1000.0" linkedscene="scene_scene_6" linkedscene_lookat="102.46,2.91,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_8" title="Zona Funcional 2" title_cat="Zona Funcional 2" onstart="" thumburl="panos/scene_8.tiles/thumb.jpg" lat="41.45838889" lng="2.26230556" alt="63.60" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="54.101" vlookat="4.465" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_8.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_8.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033313097" style="skin_hotspotstyle" ath="-163.44" atv="27.069" depth="1000.0" linkedscene="scene_scene_9" linkedscene_lookat="-175.11,3.98,120.0" />
+		<hotspot name="spot2033313321" style="skin_hotspotstyle" ath="-69.76" atv="32.573" depth="1000.0" linkedscene="scene_scene_5" linkedscene_lookat="-231.85,2.89,120.0" />
+		<hotspot name="spot2033313633" style="skin_hotspotstyle" ath="19.236" atv="32.086" depth="1000.0" linkedscene="scene_scene_7" linkedscene_lookat="30.23,0.75,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_9" title="Zona Cardio" title_cat="Zona Cardio" onstart="" thumburl="panos/scene_9.tiles/thumb.jpg" lat="41.45833333" lng="2.26230556" alt="63.50" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="-54.782" vlookat="10.523" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_9.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_9.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033314011" style="skin_hotspotstyle" ath="-15.404" atv="24.351" depth="1000.0" linkedscene="scene_scene_8" linkedscene_lookat="20.79,-4.27,120.0" />
+		<hotspot name="spot2033314275" style="skin_hotspotstyle" ath="-117.977" atv="30.806" depth="1000.0" linkedscene="scene_scene_3" linkedscene_lookat="-1.24,-4.0,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_10" title="Zona Fitness" title_cat="Zona Fitness" onstart="" thumburl="panos/scene_10.tiles/thumb.jpg" lat="41.45827778" lng="2.26233333" alt="62.00" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="99.690" vlookat="10.485" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_10.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_10.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033335225" style="skin_hotspotstyle" ath="140.173" atv="26.849" depth="1000.0" linkedscene="scene_scene_11" linkedscene_lookat="148.08,6.91,120.0" />
+		<hotspot name="spot2033335402" style="skin_hotspotstyle" ath="-122.702" atv="27.258" depth="1000.0" linkedscene="scene_scene_4" linkedscene_lookat="8.15,15.71,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_11" title="Zona Fitness 2" title_cat="Zona Fitness 2" onstart="" thumburl="panos/scene_11.tiles/thumb.jpg" lat="41.45827778" lng="2.26213889" alt="61.40" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="135.638" vlookat="9.118" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_11.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_11.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033315167" style="skin_hotspotstyle" ath="-26.201" atv="22.091" depth="1000.0" linkedscene="scene_scene_10" linkedscene_lookat="-63.34,2.92,120.0" />
+		<hotspot name="spot2033315380" style="skin_hotspotstyle" ath="-103.842" atv="25.145" depth="1000.0" linkedscene="scene_scene_5" linkedscene_lookat="330.25,0.08,120.0" />
+		<hotspot name="spot2033315972" style="skin_hotspotstyle" ath="149.085" atv="21.018" depth="1000.0" linkedscene="scene_scene_12" linkedscene_lookat="-281.03,1.5,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_12" title="Zona Fitness 3" title_cat="Zona Fitness 3" onstart="" thumburl="panos/scene_12.tiles/thumb.jpg" lat="41.45822222" lng="2.26213889" alt="65.00" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="-309.442" vlookat="6.314" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_12.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_12.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033316240" style="skin_hotspotstyle" ath="74.331" atv="18.875" depth="1000.0" linkedscene="scene_scene_13" linkedscene_lookat="155.78,0.08,120.0" />
+		<hotspot name="spot2033316391" style="skin_hotspotstyle" ath="170.062" atv="26.146" depth="1000.0" linkedscene="scene_scene_16" linkedscene_lookat="-239.06,6.75,120.0" />
+		<hotspot name="spot2033316666" style="skin_hotspotstyle" ath="-104.109" atv="22.991" depth="1000.0" linkedscene="scene_scene_11" linkedscene_lookat="-25.34,-1.47,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_13" title="Zona Fitness 4" title_cat="Zona Fitness 4" onstart="" thumburl="panos/scene_13.tiles/thumb.jpg" lat="41.45813889" lng="2.26208333" alt="67.30" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="154.813" vlookat="12.588" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_13.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_13.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033317053" style="skin_hotspotstyle" ath="160.184" atv="31.956" depth="1000.0" linkedscene="scene_scene_14" linkedscene_lookat="185.44,0.88,120.0" />
+		<hotspot name="spot2033317251" style="skin_hotspotstyle" ath="-29.735" atv="32.42" depth="1000.0" linkedscene="scene_scene_12" linkedscene_lookat="-101.09,7.31,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_14" title="Zona Fitness 5" title_cat="Zona Fitness 5" onstart="" thumburl="panos/scene_14.tiles/thumb.jpg" lat="41.45811111" lng="2.26197222" alt="65.20" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="186.628" vlookat="8.100" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_14.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_14.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033317588" style="skin_hotspotstyle" ath="-28.261" atv="31.287" depth="1000.0" linkedscene="scene_scene_13" linkedscene_lookat="339.33,8.02,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_15" title="Sala actividades" title_cat="Sala Activitats" onstart="" thumburl="panos/scene_15.tiles/thumb.jpg" lat="41.45825000" lng="2.26219444" alt="64.10" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="-179.212" vlookat="2.400" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_15.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_15.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033340023" style="skin_hotspotstyle" ath="38.761" atv="21.779" depth="1000.0" linkedscene="scene_scene_16" linkedscene_lookat="554.2,14.34,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_16" title="Escaleras" title_cat="Escales" onstart="" thumburl="panos/scene_16.tiles/thumb.jpg" lat="41.45827778" lng="2.26216667" alt="63.90" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="true" />
+
+		<view hlookat="-161.281" vlookat="-5.319" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="68.58435" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
+
+		<preview url="panos/scene_16.tiles/preview.jpg" />
+
+		<image prealign="0|0|0">
+			<cube url="panos/scene_16.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033320654" style="skin_hotspotstyle" ath="-165.405" atv="16.45" depth="1000.0" linkedscene="scene_scene_17" linkedscene_lookat="14.46,5.3,120.0" />
+		<hotspot name="spot2033320803" style="skin_hotspotstyle" ath="-78.917" atv="28.845" depth="1000.0" linkedscene="scene_scene_12" linkedscene_lookat="-399.37,2.94,120.0" />
+		<hotspot name="spot2033320985" style="skin_hotspotstyle" ath="72.54" atv="28.914" depth="1000.0" linkedscene="scene_scene_15" linkedscene_lookat="-178.89,-2.01,120.0" />
+		<hotspot name="spot2033321145" style="skin_hotspotstyle" ath="151.45" atv="31.107" depth="1000.0" linkedscene="scene_scene_6" linkedscene_lookat="248.69,-0.42,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_17" title="Planta Superior" title_cat="Planta Superior" onstart="" thumburl="panos/scene_17.tiles/thumb.jpg" lat="41.45830556" lng="2.26222222" alt="63.80" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="16.985" vlookat="14.276" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_17.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_17.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033321558" style="skin_hotspotstyle" ath="103.676" atv="35.399" depth="1000.0" linkedscene="scene_scene_16" linkedscene_lookat="-166.02,3.06,120.0" />
+		<hotspot name="spot2033321988" style="skin_hotspotstyle" ath="14.948" atv="30.337" depth="1000.0" linkedscene="scene_scene_18" linkedscene_lookat="6.37,6.14,125.59" />
+
+	</scene>
+
+	<scene name="scene_scene_18" title="Pasillo PS" title_cat="Passadís PS" onstart="" thumburl="panos/scene_18.tiles/thumb.jpg" lat="41.45827778" lng="2.26230556" alt="63.90" heading="0.0" skipthumb="true">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.000" vlookat="0.000" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_18.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_18.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033322367" style="skin_hotspotstyle" ath="-0.603" atv="33.118" depth="1000.0" linkedscene="scene_scene_20" linkedscene_lookat="-241.0,4.7,120.0" />
+		<hotspot name="spot2033322648" style="skin_hotspotstyle" ath="159.613" atv="31.391" depth="1000.0" linkedscene="scene_scene_19" linkedscene_lookat="-48.92,3.26,120.0" />
+		<hotspot name="spot2033336946" style="skin_hotspotstyle" ath="-98.975" atv="33.921" depth="1000.0" linkedscene="scene_scene_17" linkedscene_lookat="196.85,6.78,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_19" title="Sala Cycling" title_cat="Sala Cycling" onstart="" thumburl="panos/scene_19.tiles/thumb.jpg" lat="41.45822222" lng="2.26225000" alt="61.60" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="-45.140" vlookat="18.226" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_19.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_19.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033337445" style="skin_hotspotstyle" ath="125.535" atv="32.288" depth="1000.0" linkedscene="scene_scene_18" linkedscene_lookat="-3.24,9.18,120.0" />
+
+	</scene>
+
+	<scene name="scene_scene_20" title="Sala Boxing" title_cat="Sala Boxing" onstart="" thumburl="panos/scene_20.tiles/thumb.jpg" lat="41.45825000" lng="2.26230556" alt="65.40" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="-238.792" vlookat="6.593" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/scene_20.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/scene_20.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2033337145" style="skin_hotspotstyle" ath="-109.768" atv="28.984" depth="1000.0" linkedscene="scene_scene_18" linkedscene_lookat="175.32,11.55,120.0" />
+
+	</scene>
+
+</krpano>

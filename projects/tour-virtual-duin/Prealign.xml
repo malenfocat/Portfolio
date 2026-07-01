@@ -1,0 +1,45 @@
+<krpano>
+<action name="prealignP"  autorun="onstart">
+    txtadd(scene[20].onstart,; set(image.prealign, 0|103.161|0));
+    <!-- txtadd(scene[12].onstart,; 
+        if(view.hlookat LT 60,
+            delayedcall(0.3,tween(view.hlookat,-100,2));
+        ,
+            delayedcall(0.3,tween(view.hlookat,169,2));
+        );  
+    ); -->
+    txtadd(scene[12].onstart,; 
+        delayedcall(0.5,
+            if(get(prev_scene) == "scene_11",
+                adjusthlookat(-100);
+                delayedcall(0.3,tween(view.hlookat,-100,2));
+            ,get(prev_scene) == "scene_25",
+                adjusthlookat(169);
+                delayedcall(0.3,tween(view.hlookat,169,2));
+            );
+        );
+    );
+
+
+</action>
+
+<events name="prevscene" keep="true" onnewpano="
+    if(notfirstscene,
+        prev_scene = cur_scene;
+        cur_scene = xml.scene;
+    ,
+        notfirstscene = true;
+        cur_scene = xml.scene;
+    );
+    trace(prev_scene);
+    trace(cur_scene);
+    "
+/>
+	
+<!--  autogarrows
+scene_1:187.97
+scene_2:137.49
+scene_3:53.93
+scene_4:4.09
+/autogarrows -->
+</krpano>
