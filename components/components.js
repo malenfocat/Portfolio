@@ -96,28 +96,7 @@
     });
 
     window.dispatchEvent(new Event('nav:ready'));
-
-    // Nav adaptativo
-    const nav = document.querySelector('nav');
-    const darkIds = ['manifesto-sec', 'work-sec'];
-    function updateNavColor() {
-      if (!nav) return;
-      const checkY = nav.offsetHeight + 2;
-      let isDark = false;
-      darkIds.forEach(id => {
-        const el = document.getElementById(id); if (!el) return;
-        const r = el.getBoundingClientRect();
-        if (r.top <= checkY && r.bottom >= checkY) isDark = true;
-      });
-      const hero = document.querySelector('.proj-hero');
-      if (hero) { const r = hero.getBoundingClientRect(); if (r.top <= checkY && r.bottom >= checkY) isDark = true; }
-      isDark ? nav.classList.add('nav-light') : nav.classList.remove('nav-light');
-    }
-    window.addEventListener('scroll', updateNavColor, { passive: true });
-    window.addEventListener('resize', updateNavColor, { passive: true });
-    updateNavColor();
-    // Segundo disparo tras render completo por si el layout no estaba listo
-    requestAnimationFrame(updateNavColor);
+    // Nav adaptativo gestionado por ui.js via evento nav:ready
   });
 
   /* ── FOOTER ── */

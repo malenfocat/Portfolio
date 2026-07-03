@@ -2,6 +2,9 @@ const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
 let W, H;
 
+// MX/MY se actualizan desde ui.js — valores por defecto hasta entonces
+let MX = 300, MY = 300;
+
 const TEAL = '#3a8f8c', BLACK = '#111111';
 const word = 'MALENFOCAT®';
 

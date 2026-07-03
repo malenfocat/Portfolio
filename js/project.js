@@ -1,33 +1,8 @@
-(() => {
-/* ── PROJECT PAGE JS ────────────────────────────────────────── */
-// Cursor custom (igual que en main.js)
-window.curEl = window.curEl || document.getElementById('cur');
-const curEl = window.curEl;
-let MX = 300, MY = 300, CX = 300, CY = 300;
+// ── PROJECT PAGE JS ──────────────────────────────────────────
+// El cursor, dark mode e idioma los gestiona ui.js + components.js.
+// Este archivo solo maneja lo específico de las páginas de proyecto.
 
-const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-if (isTouch) {
-  document.body.style.cursor = 'auto';
-  if (curEl) curEl.style.display = 'none';
-} else {
-  document.addEventListener('mousemove', e => { MX = e.clientX; MY = e.clientY; });
-  (function cl() { CX += (MX - CX) * .13; CY += (MY - CY) * .13; curEl.style.left = CX + 'px'; curEl.style.top = CY + 'px'; requestAnimationFrame(cl); })();
-}
-
-// Dark mode toggle
-const darkBtn = document.getElementById('dark-toggle');
-
-if (darkBtn) {
-  darkBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    darkBtn.textContent =
-      document.body.classList.contains('dark')
-        ? '☀ Light'
-        : '☽ Dark';
-  });
-}
-
-// Reveal de imágenes al hacer scroll
+// ── REVEAL DE IMÁGENES AL SCROLL ─────────────────────────────
 const imgWraps = document.querySelectorAll('.proj-img-wrap, .proj-cover, .proj-full-img');
 const imgObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -39,7 +14,7 @@ const imgObs = new IntersectionObserver(entries => {
 }, { threshold: .1 });
 imgWraps.forEach(el => imgObs.observe(el));
 
-// Reveal de secciones de texto
+// ── REVEAL DE SECCIONES DE TEXTO ─────────────────────────────
 const sections = document.querySelectorAll('.proj-section');
 const secObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -51,27 +26,19 @@ const secObs = new IntersectionObserver(entries => {
 }, { threshold: .15 });
 sections.forEach(el => secObs.observe(el));
 
-const psections = document.querySelectorAll(".proj-full-img");
-
-function parallax() {
-  const windowHeight = window.innerHeight;
-
-  psections.forEach(section => {
-    const img = section.querySelector("img");
-    const rect = section.getBoundingClientRect();
-
-    // 🔥 clave: progreso real dentro del viewport
-    const progress = rect.top / windowHeight;
-
-    // centrar alrededor de 0
-    const move = (progress - 0.5) * 130;
-
-    img.style.transform = `translateY(${move}px)`;
-  });
-
-  requestAnimationFrame(parallax);
+// ── PARALLAX EN IMÁGENES FULL-WIDTH ──────────────────────────
+const parallaxImgs = document.querySelectorAll('.proj-full-img');
+if (parallaxImgs.length > 0 && !window.matchMedia('(hover: none)').matches) {
+  function parallax() {
+    const wh = window.innerHeight;
+    parallaxImgs.forEach(section => {
+      const img = section.querySelector('img');
+      if (!img) return;
+      const rect = section.getBoundingClientRect();
+      const progress = rect.top / wh;
+      img.style.transform = `translateY(${(progress - 0.5) * 130}px)`;
+    });
+    requestAnimationFrame(parallax);
+  }
+  parallax();
 }
-
-parallax();
-
-})();

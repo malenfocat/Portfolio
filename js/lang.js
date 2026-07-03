@@ -293,7 +293,7 @@ function applyProjectLang() {
 
   // Bloques específicos de video.html
   if (path.includes('video') && p) {
-    for (let i = 1; i <= 6; i++) {
+    for (let i = 1; i <= 8; i++) {
       const lbl = document.querySelector(`[data-i18n-vid-label="b${i}"]`);
       const ttl = document.querySelector(`[data-i18n-vid-title="b${i}"]`);
       const dsc = document.querySelector(`[data-i18n-vid-desc="b${i}"]`);
