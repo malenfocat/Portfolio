@@ -17,10 +17,17 @@ if (isTouch) {
 }
 
 // Dark mode toggle
-document.getElementById('dark-toggle').addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-  document.getElementById('dark-toggle').textContent = document.body.classList.contains('dark') ? '☀ Light' : '☽ Dark';
-});
+const darkBtn = document.getElementById('dark-toggle');
+
+if (darkBtn) {
+  darkBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    darkBtn.textContent =
+      document.body.classList.contains('dark')
+        ? '☀ Light'
+        : '☽ Dark';
+  });
+}
 
 // Reveal de imágenes al hacer scroll
 const imgWraps = document.querySelectorAll('.proj-img-wrap, .proj-cover, .proj-full-img');
