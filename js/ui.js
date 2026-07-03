@@ -1,6 +1,6 @@
+(() => {
 // ── CURSOR ───────────────────────────────────────────────────
-window.curEl = window.curEl || document.getElementById('cur');
-const curEl = window.curEl;
+const curEl = document.getElementById('cur');
 let MX=300, MY=300, CX=300, CY=300;
 
 const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
@@ -119,4 +119,6 @@ if (skillsList) {
   window.addEventListener('scroll', updateNav, {passive:true});
   window.addEventListener('resize', updateNav, {passive:true});
   window.addEventListener('nav:ready', updateNav);
+})();
+
 })();

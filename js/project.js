@@ -1,3 +1,4 @@
+(() => {
 /* ── PROJECT PAGE JS ────────────────────────────────────────── */
 console.log("project.js cargado");
 alert("project.js cargado");
@@ -67,3 +68,5 @@ window.addEventListener("scroll", parallax, { passive: true });
 window.addEventListener("resize", parallax);
 
 parallax();
+
+})();
