@@ -1,0 +1,107 @@
+/* ══════════════════════════════════════════════════════
+   CLIENTS.CSS — slider de logos de clientes
+══════════════════════════════════════════════════════ */
+
+#clients-sec {
+  padding: 3.5rem 0 3rem;
+  background: var(--bg2);
+  transition: background .4s;
+  overflow: hidden;
+}
+
+.clients-label {
+  padding: 0 2.5rem;
+  margin-bottom: 1.8rem;
+}
+
+/* Wrapper con máscara de fade en los bordes */
+.clients-track-wrap {
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+/* Track: flex horizontal, se mueve con la animación */
+.clients-track {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  width: max-content;
+  padding: .5rem 2rem;
+  animation: clients-scroll 28s linear infinite;
+  will-change: transform;
+}
+.clients-track.paused,
+.clients-track-wrap:hover .clients-track {
+  animation-play-state: paused;
+}
+
+@keyframes clients-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Cada logo */
+.client-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 160px;
+  height: 70px;
+  opacity: .45;
+  transition: opacity .25s;
+  pointer-events: auto;
+  text-decoration: none;
+}
+.client-item:hover { opacity: 1; }
+
+.client-item img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: var(--client-logo-filter);
+  display: block;
+}
+
+/* En modo light: los logos blancos necesitan invertirse */
+:root       { --client-logo-filter: none; }
+body.dark   { --client-logo-filter: none; }
+
+/* Algunos logos son oscuros — en light se verán bien.
+   Los que son blancos (DUIN, Anas) necesitan invertirse en light */
+body:not(.dark) .client-item img {
+  filter: invert(1) grayscale(1);
+}
+body.dark .client-item img {
+  filter: brightness(0) invert(1) grayscale(.3);
+}
+
+/* Logos que necesitan más espacio para ser legibles */
+.client-item--lg { width: 200px; height: 85px; }
+.client-item--lg img { transform: scale(1.25); }
+.client-item--xl { width: 180px; height: 95px; }
+.client-item--xl img { transform: scale(1.4); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  #clients-sec { padding: 2.5rem 0 2rem; }
+  .clients-label { padding: 0 1.2rem; }
+  .client-item { width: 90px; height: 40px; }
+  .clients-track { gap: 2.5rem; animation-duration: 20s; }
+}

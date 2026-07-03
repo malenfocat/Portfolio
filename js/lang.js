@@ -52,7 +52,7 @@ const TEXTS = {
     },
     proj_video: {
       category: 'Vídeo',
-      title: 'Vídeo Reel',
+      title: 'Vídeo Portfolio',
       subtitle: 'Campañas de marca, eventos corporativos, motion graphics y momentos que merecen ser contados bien.',
       tags: ['Producción','Edición','Motion Graphics','Postproducción','Drone'],
       role: 'Producción · Dirección · Edición · Motion', client: 'DUIN · Coelbo · Parc Vallès · Solit', year: '2024 — 2025', tools: 'Sony A7III · Sony A6500 · DJI Mini · Premiere Pro · After Effects · DaVinci · Blender',
@@ -62,6 +62,8 @@ const TEXTS = {
       b4label: 'Panelmatic<br>Coelbo', b4title: 'Panelmatic — Coelbo Pump Drivers', b4desc: 'Producción audiovisual técnica con animaciones 3D, motion graphics y grabación en instalaciones reales. Guionización del concepto, dirección de arte y postproducción completa.',
       b5label: 'Parc Vallès<br>Eventos', b5title: 'Parc Vallès — Centro Comercial Terrassa', b5desc: 'Cobertura audiovisual de eventos institucionales y culturales. Grabación, dirección en set y edición final adaptada al tono de cada acto.',
       b6label: 'Drone<br>Solar', b6title: 'Placas solares — Energía renovable', b6desc: 'Sobrevuelos con drone sobre edificios con instalaciones de placas solares para documentar y comunicar su impacto energético.',
+      b7label: 'Ana\'s<br>Restaurant', b7title: 'Contenido para Ana\'s Restaurant', b7desc: 'Serie de 5 reels para el restaurante italiano Ana\'s en Barcelona. Dos cocineros protagonizan distintos formatos: conversaciones sobre su vida, recetas explicadas en cámara y un reel solo de recursos con música.',
+      b8label: 'The Iberian<br>Lisardo Castro', b8title: 'The Iberian × Jamones Lisardo Castro', b8desc: 'Extracts de un proyecto documental más amplio: el fundador de The Iberian visita las instalaciones de Jamones Lisardo Castro. Grabamos el proceso productivo del jamón, la sala histórica, el corte profesional y las conversaciones entre fundadores. Cuatro vídeos largos para YouTube en proceso de publicación.',
       soon: 'Próximamente',
     },
     proj_tour: {
