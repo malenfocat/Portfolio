@@ -158,19 +158,18 @@
 .proj-full-img {
   position: relative;
   overflow: hidden;
-  width: 100%;
   aspect-ratio: 16 / 9;
 }
 
 .proj-full-img img {
   position: absolute;
-  top: 0;
+  top: -10%;
   left: 0;
   width: 100%;
-  height: 120%;
+  height: 130%;
   object-fit: cover;
-  will-change: transform;
   transform: translateY(0);
+  will-change: transform;
 }
 
 .bottom-space{

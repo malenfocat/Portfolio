@@ -51,26 +51,26 @@ const secObs = new IntersectionObserver(entries => {
 }, { threshold: .15 });
 sections.forEach(el => secObs.observe(el));
 
-const parallaxSections = document.querySelectorAll(".proj-full-img");
+const psections = document.querySelectorAll(".proj-full-img");
 
 function parallax() {
-  parallaxSections.forEach(section => {
+  const windowHeight = window.innerHeight;
+
+  psections.forEach(section => {
     const img = section.querySelector("img");
     const rect = section.getBoundingClientRect();
 
-    const speed = 0.3;
+    // 🔥 clave: progreso real dentro del viewport
+    const progress = rect.top / windowHeight;
 
-    const progress =
-      (rect.top + rect.height) / (window.innerHeight + rect.height);
-
-    const move = (progress - 0.5) * 120;
+    // centrar alrededor de 0
+    const move = (progress - 0.5) * 130;
 
     img.style.transform = `translateY(${move}px)`;
   });
-}
 
-window.addEventListener("scroll", parallax, { passive: true });
-window.addEventListener("resize", parallax);
+  requestAnimationFrame(parallax);
+}
 
 parallax();
 
