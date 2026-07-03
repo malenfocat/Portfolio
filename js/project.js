@@ -2,7 +2,8 @@
 console.log("project.js cargado");
 alert("project.js cargado");
 // Cursor custom (igual que en main.js)
-const curEl = document.getElementById('cur');
+window.curEl = window.curEl || document.getElementById('cur');
+const curEl = window.curEl;
 let MX = 300, MY = 300, CX = 300, CY = 300;
 
 const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
@@ -44,10 +45,10 @@ const secObs = new IntersectionObserver(entries => {
 }, { threshold: .15 });
 sections.forEach(el => secObs.observe(el));
 
-const parallaxSections  = document.querySelectorAll(".proj-full-img");
+const parallaxSections = document.querySelectorAll(".proj-full-img");
 
 function parallax() {
-  sections.forEach(section => {
+  parallaxSections.forEach(section => {
     const img = section.querySelector("img");
     const rect = section.getBoundingClientRect();
 

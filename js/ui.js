@@ -1,5 +1,6 @@
 // ── CURSOR ───────────────────────────────────────────────────
-const curEl = document.getElementById('cur');
+window.curEl = window.curEl || document.getElementById('cur');
+const curEl = window.curEl;
 let MX=300, MY=300, CX=300, CY=300;
 
 const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
