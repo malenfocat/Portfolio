@@ -1,5 +1,6 @@
 /* ── PROJECT PAGE JS ────────────────────────────────────────── */
-
+console.log("project.js cargado");
+alert("project.js cargado");
 // Cursor custom (igual que en main.js)
 const curEl = document.getElementById('cur');
 let MX = 300, MY = 300, CX = 300, CY = 300;
@@ -42,3 +43,26 @@ const secObs = new IntersectionObserver(entries => {
   });
 }, { threshold: .15 });
 sections.forEach(el => secObs.observe(el));
+
+const parallaxSections  = document.querySelectorAll(".proj-full-img");
+
+function parallax() {
+  sections.forEach(section => {
+    const img = section.querySelector("img");
+    const rect = section.getBoundingClientRect();
+
+    const speed = 0.3;
+
+    const progress =
+      (rect.top + rect.height) / (window.innerHeight + rect.height);
+
+    const move = (progress - 0.5) * 120;
+
+    img.style.transform = `translateY(${move}px)`;
+  });
+}
+
+window.addEventListener("scroll", parallax, { passive: true });
+window.addEventListener("resize", parallax);
+
+parallax();
