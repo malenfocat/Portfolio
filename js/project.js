@@ -1,7 +1,5 @@
 (() => {
 /* ── PROJECT PAGE JS ────────────────────────────────────────── */
-console.log("project.js cargado");
-alert("project.js cargado");
 // Cursor custom (igual que en main.js)
 window.curEl = window.curEl || document.getElementById('cur');
 const curEl = window.curEl;
