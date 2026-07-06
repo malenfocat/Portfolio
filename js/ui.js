@@ -1,6 +1,9 @@
 // ── CURSOR ───────────────────────────────────────────────────
 const curEl = document.getElementById('cur');
 let CX = 300, CY = 300;
+// MX/MY: en el index los define game.js; en proyecto los definimos aquí
+if (typeof MX === 'undefined') { window.MX = window.innerWidth / 2; }
+if (typeof MY === 'undefined') { window.MY = window.innerHeight / 2; }
 
 const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 if (isTouch) {
