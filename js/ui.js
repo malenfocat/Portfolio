@@ -133,5 +133,10 @@ if (skillsList) {
   }
   window.addEventListener('scroll', updateNav, { passive: true });
   window.addEventListener('resize', updateNav, { passive: true });
-  window.addEventListener('nav:ready', updateNav);
+  window.addEventListener('nav:ready', () => {
+    const nav = document.querySelector('nav');
+    if (nav) nav.classList.add('nav-managed');
+    updateNav();
+    setTimeout(updateNav, 100);
+  });
 })();

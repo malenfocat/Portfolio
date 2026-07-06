@@ -1,5 +1,5 @@
-nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;position:fixed;top:0;width:100%;z-index:300;backdrop-filter:blur(12px);background:rgba(255,255,255,0.01);border-bottom:.5px solid transparent;transition:border-color .3s;}
-body.dark nav{background:rgba(14,14,14,0.01);}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;position:fixed;top:0;width:100%;z-index:300;background:rgba(255,255,255,0.97);border-bottom:.5px solid rgba(0,0,0,0.08);transition:background .3s,border-color .3s;}
+body.dark nav{background:rgba(14,14,14,0.97);border-bottom:.5px solid rgba(255,255,255,0.06);}
 nav ul{display:flex;gap:1.5rem;list-style:none;align-items:center;}
 nav a{font-size:12px;color:var(--txt);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
 nav a:hover{opacity:1;}
@@ -27,13 +27,17 @@ nav a:hover{opacity:1;}
 
 .nav-dropdown{
   position:absolute;top:calc(100% + .3rem);left:50%;
-  background:var(--bg);border:.5px solid var(--border);
+  background:#efefec;border:.5px solid #bbb;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
   list-style:none;display:flex;flex-direction:column;gap:0;
   min-width:160px;padding:.4rem 0;
   opacity:0;pointer-events:none;
   transform:translateX(-50%) translateY(-4px);
   transition:opacity .18s,transform .18s;
   z-index:400;
+  /* Evitar que herede el backdrop-filter del nav padre */
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
 }
 /* Puente invisible que rellena el gap entre el link y el dropdown */
 .nav-dropdown::before{
@@ -42,7 +46,7 @@ nav a:hover{opacity:1;}
   top:-.8rem;left:0;right:0;
   height:.8rem;
 }
-body.dark .nav-dropdown{background:var(--bg2);}
+body.dark .nav-dropdown{background:#1a1a1a;border-color:#2a2a2a;}
 .nav-has-dropdown:hover .nav-dropdown,
 .nav-has-dropdown:focus-within .nav-dropdown{
   opacity:1;pointer-events:auto;
@@ -51,11 +55,12 @@ body.dark .nav-dropdown{background:var(--bg2);}
 .nav-dropdown li a.nav-drop-link{
   display:block;padding:.55rem 1.2rem;
   font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--txt);opacity:.6;white-space:nowrap;
+  color:#111;opacity:.7;white-space:nowrap;
   transition:opacity .15s,background .15s;
 }
-.nav-dropdown li a.nav-drop-link:hover{opacity:1;background:var(--bg2);}
-body.dark .nav-dropdown li a.nav-drop-link:hover{background:var(--bg3);}
+.nav-dropdown li a.nav-drop-link:hover{opacity:1;background:#ddddd9;}
+body.dark .nav-dropdown li a.nav-drop-link{color:#f0f0f0;}
+body.dark .nav-dropdown li a.nav-drop-link:hover{background:#252525;}
 .nav-dropdown li+li{border-top:.5px solid var(--border);}
 
 /* nav-light */
@@ -64,6 +69,10 @@ nav.nav-light .nav-drop-link{color:#f0f0f0 !important;}
 nav.nav-light .nav-dropdown li+li{border-color:rgba(255,255,255,.08);}
 nav.nav-light .nav-dropdown li a.nav-drop-link:hover{background:rgba(255,255,255,.07);}
 
+nav.nav-light{
+  background:rgba(10,10,10,0.82);
+  border-bottom-color:rgba(255,255,255,0.06);
+}
 nav.nav-light a,
 nav.nav-light .nav-btn { color: #f0f0f0; }
 nav.nav-light svg rect,
@@ -74,3 +83,14 @@ nav.nav-light .nav-logo img { filter: invert(1); }
 nav.nav-light .nav-btn { border-color: rgba(240,240,240,.3); }
 nav.nav-light .nav-btn:hover { background: rgba(240,240,240,.1); }
 body.dark nav .nav-logo img { filter: invert(1); }
+
+/* Fallback para páginas de proyecto ANTES de que el JS tome el control.
+   Una vez el JS añade .nav-managed estos estilos dejan de aplicar. */
+body:has(.proj-hero) nav:not(.nav-managed) {
+  background: rgba(10,10,10,0.82);
+  border-bottom-color: rgba(255,255,255,0.06);
+}
+body:has(.proj-hero) nav:not(.nav-managed) a,
+body:has(.proj-hero) nav:not(.nav-managed) .nav-btn { color: #f0f0f0; }
+body:has(.proj-hero) nav:not(.nav-managed) .nav-logo img { filter: invert(1); }
+body:has(.proj-hero) nav:not(.nav-managed) .nav-btn { border-color: rgba(240,240,240,.3); }
