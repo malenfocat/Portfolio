@@ -1,5 +1,33 @@
 nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;position:fixed;top:0;width:100%;z-index:300;background:#ffffff;border-bottom:.5px solid rgba(0,0,0,0.08);transition:background .3s,border-color .3s;}
 body.dark nav{background:#0e0e0e;border-bottom:.5px solid rgba(255,255,255,0.06);}
+
+/* En páginas de proyecto el hero es siempre oscuro.
+   Fondo oscuro por defecto; cuando el JS toma control y hace scroll
+   a secciones claras, .nav-light se quita y el nav pasa a claro. */
+body:has(.proj-hero) nav{
+  background:rgba(10,10,10,0.82);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom-color:rgba(255,255,255,0.06);
+}
+body:has(.proj-hero) nav a,
+body:has(.proj-hero) nav .nav-btn { color: #f0f0f0; }
+body:has(.proj-hero) nav .nav-logo img { filter: invert(1); }
+body:has(.proj-hero) nav .nav-btn { border-color: rgba(240,240,240,.3); }
+
+/* Cuando el JS detecta sección clara, quita nav-light y pone fondo claro */
+body:has(.proj-hero) nav.nav-managed:not(.nav-light){
+  background:rgba(255,255,255,0.82);
+  border-bottom-color:rgba(0,0,0,0.08);
+}
+body.dark:has(.proj-hero) nav.nav-managed:not(.nav-light){
+  background:rgba(14,14,14,0.82);
+}
+body:has(.proj-hero) nav.nav-managed:not(.nav-light) a,
+body:has(.proj-hero) nav.nav-managed:not(.nav-light) .nav-btn { color: var(--txt); }
+body:has(.proj-hero) nav.nav-managed:not(.nav-light) .nav-logo img { filter: none; }
+body.dark:has(.proj-hero) nav.nav-managed:not(.nav-light) .nav-logo img { filter: invert(1); }
+body:has(.proj-hero) nav.nav-managed:not(.nav-light) .nav-btn { border-color: var(--border2); }
 nav ul{display:flex;gap:1.5rem;list-style:none;align-items:center;}
 nav a{font-size:12px;color:var(--txt);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;opacity:.5;transition:opacity .2s;}
 nav a:hover{opacity:1;}
