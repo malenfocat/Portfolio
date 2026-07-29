@@ -34,6 +34,9 @@
 body:not(.dark) .collab-item img { filter: invert(1) grayscale(1); }
 body.dark .collab-item img { filter: brightness(0) invert(1) grayscale(.3); }
 
+/* Logo con colores propios — sin filtro en ningún modo */
+.collab-item.no-filter img { filter: none !important; }
+
 /* ── SLIDER DE CLIENTES ──────────────────────────────────────── */
 
 #clients-sec {
