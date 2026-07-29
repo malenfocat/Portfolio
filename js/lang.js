@@ -56,11 +56,11 @@ const TEXTS = {
       subtitle: 'Campañas de marca, eventos corporativos, motion graphics y momentos que merecen ser contados bien.',
       tags: ['Producción','Edición','Motion Graphics','Postproducción','Drone'],
       role: 'Producción · Dirección · Edición · Motion', client: 'DUIN · Coelbo · Parc Vallès · Solit', year: '2024 — 2025', tools: 'Sony A7III · Sony A6500 · DJI Mini · Premiere Pro · After Effects · DaVinci · Blender',
-      b1label: 'DUIN<br>Campaña 01', b1title: '«La mejor inversión eres tú»', b1desc: 'Campaña completa para DUIN: desde la conceptualización y el guión con storyboards hasta la producción en set y la postproducción final. Dos piezas audiovisuales pensadas para comunicar valor de marca en redes sociales.',
-      b2label: 'DUIN<br>Campaña 02', b2title: '«Donde otros ven agua, nosotros vemos evolución»', b2desc: 'Serie de 4 piezas para fomentar el uso de la piscina como espacio de desarrollo y evolución personal. Producción completa en colaboración con el equipo de DUIN.',
-      b3label: 'DUIN<br>Verano', b3title: 'Campaña de Verano', b3desc: 'Piezas de contenido estival para DUIN, adaptadas para Instagram Reels y YouTube Shorts.',
+      b1label: 'DUIN<br>Campaña 01', b1title: '«La mejor inversión eres tú»', b1desc: 'Campaña completa para DUIN en colaboración con la agencia <a href="https://dfusio.com/" target="_blank" rel="noopener">Dfusio</a>: desde la conceptualización y el guión con storyboards hasta la producción en set y la postproducción final. Dos piezas audiovisuales pensadas para comunicar valor de marca en redes sociales.',
+      b2label: 'DUIN<br>Campaña 02', b2title: '«Donde otros ven agua, nosotros vemos evolución»', b2desc: 'Serie de 4 piezas para fomentar el uso de la piscina como espacio de desarrollo y evolución personal. Producción completa junto a <a href="https://dfusio.com/" target="_blank" rel="noopener">Dfusio</a> en colaboración con el equipo de DUIN.',
+      b3label: 'DUIN<br>Verano', b3title: 'Campaña de Verano', b3desc: 'Piezas de contenido estival para DUIN, adaptadas para Instagram Reels y YouTube Shorts. Proyecto desarrollado con <a href="https://dfusio.com/" target="_blank" rel="noopener">Dfusio</a>.',
       b4label: 'Panelmatic<br>Coelbo', b4title: 'Panelmatic — Coelbo Pump Drivers', b4desc: 'Producción audiovisual técnica con animaciones 3D, motion graphics y grabación en instalaciones reales. Guionización del concepto, dirección de arte y postproducción completa.',
-      b5label: 'Parc Vallès<br>Eventos', b5title: 'Parc Vallès — Centro Comercial Terrassa', b5desc: 'Cobertura audiovisual de eventos institucionales y culturales. Grabación, dirección en set y edición final adaptada al tono de cada acto.',
+      b5label: 'Parc Vallès<br>Eventos', b5title: 'Parc Vallès — Centro Comercial Terrassa', b5desc: 'Cobertura audiovisual de eventos institucionales y culturales en Parc Vallès, en colaboración con <a href="https://dfusio.com/" target="_blank" rel="noopener">Dfusio</a>. Grabación, dirección en set y edición final adaptada al tono de cada acto.',
       b6label: 'Drone<br>Solar', b6title: 'Placas solares — Energía renovable', b6desc: 'Sobrevuelos con drone sobre edificios con instalaciones de placas solares para documentar y comunicar su impacto energético.',
       b7label: 'Ana\'s<br>Restaurant', b7title: 'Contenido para Ana\'s Restaurant', b7desc: 'Serie de 5 reels para el restaurante italiano Ana\'s en Barcelona. Dos cocineros protagonizan distintos formatos: conversaciones sobre su vida, recetas explicadas en cámara y un reel solo de recursos con música.',
       b8label: 'The Iberian<br>Lisardo Castro', b8title: 'The Iberian × Jamones Lisardo Castro', b8desc: 'Extracts de un proyecto documental más amplio: el fundador de The Iberian visita las instalaciones de Jamones Lisardo Castro. Grabamos el proceso productivo del jamón, la sala histórica, el corte profesional y las conversaciones entre fundadores. Cuatro vídeos largos para YouTube en proceso de publicación.',
@@ -139,11 +139,11 @@ const TEXTS = {
       subtitle: 'Brand campaigns, corporate events, motion graphics and moments that deserve to be told well.',
       tags: ['Production','Editing','Motion Graphics','Post-production','Drone'],
       role: 'Production · Direction · Editing · Motion', client: 'DUIN · Coelbo · Parc Vallès · Solit', year: '2024 — 2025', tools: 'Sony A7III · Sony A6500 · DJI Mini · Premiere Pro · After Effects · DaVinci · Blender',
-      b1label: 'DUIN<br>Campaign 01', b1title: '‘The best investment is you’', b1desc: 'Full campaign for DUIN: from concept and storyboarded scripts through on-set production to final post-production. Two video pieces designed to communicate brand value on social media.',
-      b2label: 'DUIN<br>Campaign 02', b2title: '‘Where others see water, we see evolution’', b2desc: 'A series of 4 pieces encouraging the use of the pool as a space for personal growth. Full production in collaboration with the DUIN team.',
-      b3label: 'DUIN<br>Summer', b3title: 'Summer Campaign', b3desc: 'Summer content pieces for DUIN, adapted for Instagram Reels and YouTube Shorts.',
+      b1label: 'DUIN<br>Campaign 01', b1title: '‘The best investment is you’', b1desc: 'Full campaign for DUIN in collaboration with <a href="https://dfusio.com/" target="_blank" rel="noopener">Dfusio</a>: from concept and storyboarded scripts through on-set production to final post-production. Two video pieces designed to communicate brand value on social media.',
+      b2label: 'DUIN<br>Campaign 02', b2title: '‘Where others see water, we see evolution’', b2desc: 'A series of 4 pieces encouraging the use of the pool as a space for personal growth. Full production alongside <a href="https://dfusio.com/" target="_blank" rel="noopener">Dfusio</a> in collaboration with the DUIN team.',
+      b3label: 'DUIN<br>Summer', b3title: 'Summer Campaign', b3desc: 'Summer content pieces for DUIN, adapted for Instagram Reels and YouTube Shorts. Project developed with <a href="https://dfusio.com/" target="_blank" rel="noopener">Dfusio</a>.',
       b4label: 'Panelmatic<br>Coelbo', b4title: 'Panelmatic — Coelbo Pump Drivers', b4desc: 'Technical audiovisual production with 3D animations, motion graphics and real-location filming. Concept scripting, art direction and full post-production.',
-      b5label: 'Parc Vallès<br>Events', b5title: 'Parc Vallès — Terrassa Shopping Centre', b5desc: 'Audiovisual coverage of institutional and cultural events. Filming, on-set direction and final editing adapted to the tone of each occasion.',
+      b5label: 'Parc Vallès<br>Events', b5title: 'Parc Vallès — Terrassa Shopping Centre', b5desc: 'Audiovisual coverage of institutional and cultural events at Parc Vallès, in collaboration with <a href="https://dfusio.com/" target="_blank" rel="noopener">Dfusio</a>. Filming, on-set direction and final editing adapted to the tone of each occasion.',
       b6label: 'Drone<br>Solar', b6title: 'Solar panels — Renewable energy', b6desc: 'Drone flights over buildings with solar panel installations to document and communicate their energy impact.',
       soon: 'Coming soon',
     },
@@ -298,8 +298,8 @@ function applyProjectLang() {
       const ttl = document.querySelector(`[data-i18n-vid-title="b${i}"]`);
       const dsc = document.querySelector(`[data-i18n-vid-desc="b${i}"]`);
       if (lbl && p[`b${i}label`]) lbl.innerHTML = p[`b${i}label`];
-      if (ttl && p[`b${i}title`]) ttl.textContent = p[`b${i}title`];
-      if (dsc && p[`b${i}desc`])  dsc.textContent = p[`b${i}desc`];
+      if (ttl && p[`b${i}title`]) ttl.innerHTML = p[`b${i}title`];
+      if (dsc && p[`b${i}desc`])  dsc.innerHTML = p[`b${i}desc`];
     }
     document.querySelectorAll('.soon-label').forEach(el => {
       if (p.soon) el.textContent = p.soon;
