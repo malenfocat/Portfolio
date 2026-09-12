@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Costa Azul | Madrid</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container nav">
+            <div class="logo">HOTEL COSTA AZUL</div>
+
+            <nav>
+                <a href="#hotel">Hotel</a>
+                <a href="#rooms">Habitaciones</a>
+                <a href="#services">Servicios</a>
+                <a href="#location">Ubicación</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">HOTEL 4 ESTRELLAS · MADRID</p>
+
+                <h1>Tu estancia en el corazón de Madrid</h1>
+
+                <p>
+                    Descansa, disfruta y descubre Madrid desde una ubicación
+                    privilegiada.
+                </p>
+
+                <button id="openChat">¿Tienes alguna pregunta?</button>
+            </div>
+        </section>
+
+
+        <section id="hotel" class="section">
+            <div class="container">
+                <p class="eyebrow">HOTEL COSTA AZUL</p>
+
+                <h2>Todo lo que necesitas para tu estancia</h2>
+
+                <p class="intro">
+                    Un hotel de 4 estrellas en el centro de Madrid, con recepción
+                    24 horas, WiFi gratuito y servicios pensados para hacer tu
+                    estancia más cómoda.
+                </p>
+
+                <div class="features">
+
+                    <div class="feature">
+                        <h3>Recepción 24h</h3>
+                        <p>
+                            Nuestro equipo está disponible durante todo el día.
+                        </p>
+                    </div>
+
+                    <div class="feature">
+                        <h3>WiFi gratuito</h3>
+                        <p>
+                            Conexión WiFi gratuita en habitaciones y zonas comunes.
+                        </p>
+                    </div>
+
+                    <div class="feature">
+                        <h3>Parking</h3>
+                        <p>
+                            Parking privado para huéspedes, sujeto a disponibilidad.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section id="rooms" class="section light">
+            <div class="container">
+
+                <p class="eyebrow">HABITACIONES</p>
+
+                <h2>Elige tu habitación</h2>
+
+                <div class="rooms">
+
+                    <article class="room">
+                        <h3>Individual</h3>
+                        <p>Desde 95 € / noche</p>
+                    </article>
+
+                    <article class="room">
+                        <h3>Doble</h3>
+                        <p>Desde 125 € / noche</p>
+                    </article>
+
+                    <article class="room">
+                        <h3>Deluxe</h3>
+                        <p>Desde 165 € / noche</p>
+                    </article>
+
+                    <article class="room">
+                        <h3>Suite</h3>
+                        <p>Desde 220 € / noche</p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="services" class="section">
+            <div class="container">
+
+                <p class="eyebrow">SERVICIOS</p>
+
+                <h2>Todo preparado para tu estancia</h2>
+
+                <div class="services">
+
+                    <div>
+                        <h3>Desayuno</h3>
+                        <p>Todos los días de 07:00 a 10:30.</p>
+                    </div>
+
+                    <div>
+                        <h3>Mascotas</h3>
+                        <p>Admitimos perros y gatos de hasta 15 kg.</p>
+                    </div>
+
+                    <div>
+                        <h3>Servicio de habitaciones</h3>
+                        <p>Disponible de 07:00 a 23:00.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="location" class="section light">
+            <div class="container">
+
+                <p class="eyebrow">UBICACIÓN</p>
+
+                <h2>En el centro de Madrid</h2>
+
+                <p>
+                    Calle del Mar, 25 · 28013 Madrid
+                </p>
+
+                <p>
+                    La estación de metro más cercana está aproximadamente
+                    a 5 minutos andando.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- CHATBOT -->
+
+    <div id="chatbot" class="chatbot">
+
+        <div class="chat-header">
+            <div>
+                <strong>Hotel Costa Azul</strong>
+                <span>Asistente virtual</span>
+            </div>
+
+            <button id="closeChat">×</button>
+        </div>
+
+        <div id="chatMessages" class="chat-messages">
+
+            <div class="message bot">
+                Hola 👋 Soy el asistente virtual del Hotel Costa Azul.
+                ¿En qué puedo ayudarte?
+            </div>
+
+        </div>
+
+        <form id="chatForm" class="chat-input">
+
+            <input
+                id="messageInput"
+                type="text"
+                placeholder="Escribe tu pregunta..."
+                autocomplete="off"
+            >
+
+            <button type="submit">Enviar</button>
+
+        </form>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
