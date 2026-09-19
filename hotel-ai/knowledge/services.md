@@ -1,5 +1,5 @@
 
-# Hotel Alba Madrid — Servicios
+# Hotel Alba Madrid: Servicios
 
 ## Desayuno
 
