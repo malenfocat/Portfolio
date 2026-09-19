@@ -1,5 +1,5 @@
 
-# Hotel Alba Madrid — Información general
+# Hotel Alba Madrid: Información general
 
 ## Identidad
 
