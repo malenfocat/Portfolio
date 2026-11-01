@@ -1,3 +1,4 @@
+
 const openChat = document.getElementById("openChat");
 const closeChat = document.getElementById("closeChat");
 const chatbot = document.getElementById("chatbot");
@@ -5,6 +6,9 @@ const chatbot = document.getElementById("chatbot");
 const chatForm = document.getElementById("chatForm");
 const messageInput = document.getElementById("messageInput");
 const chatMessages = document.getElementById("chatMessages");
+
+const N8N_WEBHOOK_URL =
+    "https://n8n.malenfocat.com/webhook/hotel-ai-chat";
 
 
 openChat.addEventListener("click", () => {
@@ -18,7 +22,7 @@ closeChat.addEventListener("click", () => {
 });
 
 
-chatForm.addEventListener("submit", (event) => {
+chatForm.addEventListener("submit", async (event) => {
 
     event.preventDefault();
 
@@ -28,19 +32,57 @@ chatForm.addEventListener("submit", (event) => {
         return;
     }
 
+    // Mostrar el mensaje del usuario
     addMessage(message, "user");
 
+    // Vaciar el campo de texto
     messageInput.value = "";
 
-    // De momento simulamos una respuesta.
-    setTimeout(() => {
+    // Mostrar mensaje de espera
+    const loadingMessage = addMessage(
+        "Estoy consultando la información del hotel...",
+        "bot"
+    );
+
+    try {
+
+        const response = await fetch(N8N_WEBHOOK_URL, {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                message: message
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error("Error en la respuesta de n8n");
+        }
+
+        const data = await response.json();
+
+        // Eliminar el mensaje de espera
+        loadingMessage.remove();
+
+        // Mostrar respuesta real de OpenAI
+        addMessage(data.reply, "bot");
+
+    } catch (error) {
+
+        console.error("Error del chatbot:", error);
+
+        loadingMessage.remove();
 
         addMessage(
-            "Gracias por tu mensaje. Pronto podré responderte utilizando la información del hotel.",
+            "Lo siento, no puedo responder en este momento. Por favor, inténtalo de nuevo.",
             "bot"
         );
 
-    }, 500);
+    }
+
 });
 
 
@@ -55,4 +97,6 @@ function addMessage(text, type) {
     chatMessages.appendChild(messageElement);
 
     chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    return messageElement;
 }
