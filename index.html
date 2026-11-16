@@ -7,8 +7,11 @@
 <meta name="description" content="Portfolio creativo de Malenfocat Studio: foto, vídeo, diseño, web e IA.">
 <link rel="icon" href="assets/logos/favicon-light.ico" media="(prefers-color-scheme: light)">
 <link rel="icon" href="assets/logos/favicon-dark.ico" media="(prefers-color-scheme: dark)">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap">
 <style>
+@font-face{font-family:'DM Sans';src:url('assets/fonts/dm-sans-latin-300-normal.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('assets/fonts/dm-sans-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('assets/fonts/dm-sans-latin-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('assets/fonts/dm-sans-latin-700-normal.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
 @font-face{font-family:'Aloevera';src:url('assets/fonts/AloeveraDisplay-Bold.woff2') format('woff2'),url('assets/fonts/AloeveraDisplay-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap;}
 @font-face{font-family:'Aloevera';src:url('assets/fonts/AloeveraDisplay-Regular.woff2') format('woff2'),url('assets/fonts/AloeveraDisplay-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap;}
 
@@ -218,6 +221,9 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
   .mmenu .mm-foot{margin-top:2.2rem;padding-top:1.2rem;border-top:1px solid #1f1f1f;font-size:12px;letter-spacing:.08em;color:var(--mute);display:flex;flex-direction:column;gap:.4rem;}
   .mmenu .mm-foot a{color:var(--paper);}
 }
+.consent{display:flex;gap:.7rem;align-items:flex-start;font-size:12px;line-height:1.5;color:var(--mute);cursor:pointer;}
+.consent input{margin-top:.2rem;accent-color:var(--teal);flex:none;} .consent a{text-decoration:underline;color:var(--paper);} .consent.err{color:#e5604d;}
+.legal-links{display:flex;gap:1.2rem;} .legal-links a{text-decoration:underline;text-underline-offset:3px;}
 </style>
 </head>
 <body>
@@ -372,6 +378,7 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
       <label class="f"><span>Nombre</span><input name="name" required autocomplete="name"></label>
       <label class="f"><span>Email</span><input type="email" name="email" required autocomplete="email"></label>
       <label class="f"><span>Mensaje</span><textarea name="message" rows="4" required></textarea></label>
+      <label class="consent"><input type="checkbox" name="consent" required><span>He leído y acepto la <a href="legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
       <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button class="send" type="submit">Enviar mensaje →</button>
       <p class="fmsg" id="fmsg" role="status"></p>
@@ -381,7 +388,7 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
     <div><b>Navegar</b><a href="#services">Servicios</a><br><a href="#work">Trabajo</a><br><a href="#clients">Clientes</a></div>
     <div><b>Contacto</b><a href="mailto:info@malenfocat.com">info@malenfocat.com</a></div>
   </div>
-  <div class="copy"><span>Enfocar distinto no es enfocar mal.</span><span>© <span id="yr"></span> Malenfocat</span></div>
+  <div class="copy"><span>Enfocar distinto no es enfocar mal.</span><span>© <span id="yr"></span> Malenfocat</span><span class="legal-links"><a href="legal/aviso-legal.html">Aviso legal</a><a href="legal/privacidad.html">Privacidad</a><a href="legal/cookies.html">Cookies</a><a href="#" data-cookie-settings>Configurar cookies</a></span></div>
 </footer>
 
 <script>
@@ -529,10 +536,11 @@ const say=(t,c)=>{fmsg.textContent=t;fmsg.className='fmsg '+(c||'');};
 cf.addEventListener('submit',async e=>{
   e.preventDefault();
   const fd=new FormData(cf);
-  const d={name:fd.get('name').trim(),email:fd.get('email').trim(),message:fd.get('message').trim(),tipo:fd.getAll('tipo'),website:fd.get('website'),t:Date.now()-t0};
+  const d={name:fd.get('name').trim(),email:fd.get('email').trim(),message:fd.get('message').trim(),tipo:fd.getAll('tipo'),website:fd.get('website'),consent:fd.get('consent')==='on',t:Date.now()-t0};
   const bad={name:!d.name,email:!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email),message:d.message.length<5};
+  const noC=!d.consent; cf.querySelector('.consent').classList.toggle('err',noC);
   cf.querySelectorAll('.f').forEach(f=>{const i=f.querySelector('input,textarea'); f.classList.toggle('err',!!bad[i.name]);});
-  if(Object.values(bad).some(Boolean)){ say('Revisa los campos marcados.','bad'); return; }
+  if(noC||Object.values(bad).some(Boolean)){ say('Revisa los campos marcados.','bad'); return; }
   sendBtn.disabled=true; sendBtn.textContent='Enviando…'; say('');
   try{
     if(CONTACT_ENDPOINT){
@@ -574,5 +582,6 @@ $$('.rv').forEach(el=>io.observe(el));
   matchMedia('(min-width:861px)').addEventListener('change',e=>{if(e.matches)set(false);});
 })();
 </script>
+<script src="js/consent.js"></script>
 </body>
 </html>

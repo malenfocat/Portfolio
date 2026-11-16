@@ -28,6 +28,7 @@ module.exports = async (req, res) => {
   if (b.website) return res.status(200).json({ ok: true });
   if (Number(b.t) < 2500) return res.status(200).json({ ok: true });
 
+  if (b.consent !== true) return res.status(422).json({ ok: false, error: 'consent' });
   const data = {
     name: clean(b.name, 100),
     email: clean(b.email, 160),
