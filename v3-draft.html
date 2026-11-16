@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malenfocat — Borrador v3</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap">
+<style>
+/* Colócalo en la raíz del repo, junto a index.html */
+@font-face{font-family:'Aloevera';src:url('assets/fonts/AloeveraDisplay-Bold.woff2') format('woff2'),url('assets/fonts/AloeveraDisplay-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Aloevera';src:url('assets/fonts/AloeveraDisplay-Regular.woff2') format('woff2'),url('assets/fonts/AloeveraDisplay-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap;}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--ink:#0a0a0a;--ink2:#121212;--ink3:#1b1b1b;--paper:#f2f2ee;--teal:#3a8f8c;--mute:#8a8a85;--display:'Aloevera','DM Sans',sans-serif;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--paper);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+img{display:block;}
+@media (hover:hover) and (pointer:fine){body,a,button{cursor:none;}}
+
+/* cursor con etiqueta */
+#dot{position:fixed;top:0;left:0;width:14px;height:14px;border-radius:50%;background:#fff;mix-blend-mode:difference;pointer-events:none;z-index:999;display:grid;place-items:center;transition:width .25s,height .25s;}
+#dot span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#000;opacity:0;transition:opacity .2s;}
+#dot.big{width:64px;height:64px;}
+#dot.lbl{width:84px;height:84px;} #dot.lbl span{opacity:1;}
+
+/* barra de progreso */
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--teal);transform:scaleX(0);transform-origin:left;z-index:200;}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;z-index:100;mix-blend-mode:difference;color:#fff;}
+nav img{height:34px;width:auto;}
+nav ul{display:flex;gap:2rem;align-items:center;}
+nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
+.nav-cta{border:1px solid #fff;padding:.55rem 1.1rem;border-radius:30px;}
+
+/* marquesinas */
+.mq{overflow:hidden;white-space:nowrap;}
+.mq-track{display:inline-flex;animation:mq var(--d,40s) linear infinite;animation-direction:var(--dir,normal);will-change:transform;}
+.mq-set{display:inline-flex;align-items:center;flex-shrink:0;}
+.mq-set>span{padding-right:.35em;}
+.mq-set i{display:inline-block;width:.18em;height:.18em;border-radius:50%;background:currentColor;margin:0 .5em 0 .15em;opacity:.9;}
+@keyframes mq{to{transform:translateX(-50%);}}
+.alt{--st:var(--paper);}
+.alt .mq-set>span:nth-of-type(even){color:transparent;-webkit-text-stroke:1.5px var(--st);}
+
+/* hero: el vídeo crece con el scroll */
+#hero{position:relative;height:300vh;}
+.hero-stick{position:sticky;top:0;height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:center;}
+#hero-cv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.hero-row{position:relative;z-index:1;width:100%;font-family:var(--display);font-weight:700;font-size:clamp(5rem,17vw,16rem);line-height:.9;letter-spacing:-.03em;text-transform:uppercase;animation:focus 2s .15s cubic-bezier(.16,1,.3,1) both;}
+/* "mal enfocado" → enfocado: el wordmark entra desenfocado y se enfoca */
+@keyframes focus{from{filter:blur(34px);opacity:.25;}to{filter:blur(0);opacity:1;}}
+.hero-media{position:absolute;left:50%;top:50%;z-index:3;transform:translate(-50%,-50%);width:min(max(32vw,200px),46vh,440px);height:min(max(32vw,200px),46vh,440px);border-radius:22px;overflow:hidden;background:#0d1f1f;will-change:width,height;}
+.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.hm-cap{position:absolute;left:2.5rem;bottom:2.5rem;font-family:var(--display);font-weight:700;font-size:clamp(1.2rem,3vw,2.4rem);text-transform:uppercase;letter-spacing:-.02em;opacity:0;text-shadow:0 2px 20px rgba(0,0,0,.5);}
+.hero-foot{position:absolute;z-index:4;left:2.5rem;right:2.5rem;bottom:2rem;display:flex;justify-content:space-between;align-items:flex-end;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);pointer-events:none;}
+.hero-foot b{color:var(--paper);font-weight:500;}
+.scroll-cue{display:flex;align-items:center;gap:.8rem;}
+.scroll-cue::after{content:'↓';display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--teal);border-radius:50%;color:var(--teal);}
+
+/* manifiesto */
+.mf{height:220vh;position:relative;}
+.mf-in{position:sticky;top:0;height:100vh;display:flex;align-items:center;padding:0 2.5rem;}
+.mf p{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,8vw,7.5rem);line-height:1;letter-spacing:-.03em;max-width:13em;}
+.mf .w{opacity:.15;}
+.mf .w.m{color:var(--teal);}
+
+/* comunes */
+.eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:1.2rem;display:block;}
+.big-h{font-family:var(--display);font-weight:700;font-size:clamp(2.5rem,8vw,7rem);line-height:.95;letter-spacing:-.03em;text-transform:uppercase;}
+.big-h .o{color:transparent;-webkit-text-stroke:1.5px var(--st,var(--paper));}
+.sec-head{text-align:center;margin-bottom:4rem;}
+.num{display:inline-grid;place-items:center;width:28px;height:28px;border:1px solid var(--teal);border-radius:50%;font-size:11px;color:var(--teal);font-weight:500;}
+.pill{display:inline-block;font-size:12px;border:1px solid var(--teal);color:var(--teal);padding:.55rem 1.2rem;border-radius:30px;transition:background .2s,color .2s;}
+.pill:hover{background:var(--teal);color:var(--ink);}
+
+/* cifras + sobre mí */
+#about{padding:7rem 2.5rem 7rem;}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1rem 0;}
+.stat b{display:block;font-family:var(--display);font-size:clamp(2.6rem,6vw,5.5rem);line-height:1;letter-spacing:-.03em;}
+.stat b em{font-style:normal;color:var(--teal);}
+.stat span{display:block;margin-top:.6rem;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-grid p{font-size:1.05rem;line-height:1.8;color:#b8b8b2;margin-bottom:1.2rem;max-width:34em;}
+.about-grid strong{color:var(--paper);font-weight:500;}
+.about-grid .big-h{--st:var(--paper);font-size:clamp(2rem,4.4vw,4.4rem);}
+
+/* servicios */
+#services{background:var(--paper);color:var(--ink);padding:7rem 2.5rem 6rem;--st:var(--ink);}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:1200px;margin:0 auto;}
+.card{background:var(--ink);color:var(--paper);border-radius:20px;padding:2rem;min-height:400px;display:flex;flex-direction:column;gap:1.2rem;transition:transform .5s cubic-bezier(.16,1,.3,1);}
+.card:hover{transform:translateY(-8px);}
+.card h3{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,2.2vw,1.9rem);line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;}
+.card p{font-size:.92rem;line-height:1.7;color:#b8b8b2;}
+.card ul{margin-top:auto;display:flex;flex-wrap:wrap;gap:.4rem;}
+.card li{font-size:10px;letter-spacing:.1em;text-transform:uppercase;border:1px solid #333;color:var(--mute);padding:4px 10px;border-radius:20px;}
+
+/* tira de fotos */
+#photos{padding:6rem 0;overflow:hidden;}
+.ph-row{margin-bottom:1rem;}
+.ph-row .mq-set{gap:1rem;padding-right:1rem;}
+.ph-row img{height:min(46vh,380px);aspect-ratio:2/3;object-fit:cover;border-radius:16px;background:var(--ink3);}
+
+/* proyectos apilados */
+#work{padding:6rem 2.5rem 4rem;}
+.stack{max-width:1280px;margin:0 auto;}
+.pcard{position:sticky;top:calc(9vh + var(--i)*26px);display:grid;grid-template-columns:1.25fr 1fr;gap:3rem;align-items:center;background:var(--ink2);border:1px solid #1f1f1f;border-radius:28px;padding:1.4rem;min-height:min(74vh,620px);margin-bottom:12vh;box-shadow:0 -20px 60px rgba(0,0,0,.5);}
+.pcard-img{position:relative;height:100%;min-height:340px;border-radius:20px;overflow:hidden;background:var(--ink3);}
+.pcard-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1);}
+.pcard:hover .pcard-img img{transform:scale(1.06);}
+.pcard-body{padding:1rem 1.6rem 1rem 0;}
+.pcard h3{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,3.8vw,3.4rem);line-height:1;letter-spacing:-.03em;text-transform:uppercase;margin:1rem 0 1.2rem;}
+.pcard p{font-size:.95rem;line-height:1.75;color:#a0a09b;max-width:30em;}
+.tags{display:grid;grid-template-columns:repeat(2,max-content);gap:.6rem 2.2rem;margin:1.6rem 0;}
+.tags li{font-size:13px;display:flex;align-items:center;gap:.55rem;}
+.tags li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);}
+.soon{display:flex;justify-content:space-between;align-items:center;padding:1.6rem 0;border-top:1px solid #222;font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,3vw,2.4rem);text-transform:uppercase;letter-spacing:-.02em;color:#555;max-width:1280px;margin:0 auto;}
+.soon:last-child{border-bottom:1px solid #222;}
+.soon small{font-family:'DM Sans',sans-serif;font-weight:400;font-size:10px;letter-spacing:.2em;color:var(--mute);}
+
+/* franja de herramientas */
+.strip{background:var(--teal);color:var(--ink);padding:1.2rem 0;font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,5vw,4.2rem);text-transform:uppercase;letter-spacing:-.02em;line-height:1;--st:var(--ink);}
+
+/* clientes */
+#clients{padding:7rem 0;background:var(--ink2);}
+#clients .sec-head{padding:0 2.5rem;}
+.link-arrow{display:inline-block;margin-top:1.5rem;font-size:13px;}
+.ctrack{margin-bottom:1.2rem;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.ctrack .mq-set>a{display:grid;place-items:center;width:220px;height:160px;margin-right:1.2rem;background:var(--ink3);border:1px solid #262626;border-radius:18px;transition:background .3s;}
+.ctrack img{height:56px;width:auto;max-width:76%;object-fit:contain;filter:brightness(0) invert(1);transition:filter .3s;}
+.ctrack a:hover{background:var(--paper);}
+.ctrack a:hover img{filter:brightness(0);}
+.ctrack a.lg img{height:100px;max-width:70%;}
+
+/* contacto */
+#contact{background:var(--teal);color:var(--ink);padding:7rem 2.5rem 2.5rem;--st:var(--ink);}
+#contact .big-h{font-size:clamp(2.4rem,5vw,5rem);}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.ct-p{font-size:1rem;line-height:1.7;max-width:27em;margin-top:1.8rem;}
+.cta{display:inline-block;margin-top:2.2rem;padding:.85rem 1.9rem;background:var(--ink);color:var(--paper);font-size:13px;border-radius:30px;transition:transform .2s;}
+.ct-grid{align-items:start;}
+.ct-rows{margin-top:2.2rem;}
+.cform{background:var(--ink);color:var(--paper);border-radius:24px;padding:2.2rem;display:flex;flex-direction:column;gap:1.3rem;}
+.cform h3{font-family:var(--display);font-weight:700;font-size:1.6rem;text-transform:uppercase;letter-spacing:-.02em;}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;}
+.chips label{position:relative;}
+.chips input{position:absolute;opacity:0;pointer-events:none;}
+.chips span{display:inline-block;font-size:12px;border:1px solid #333;color:var(--mute);padding:.45rem 1rem;border-radius:30px;transition:all .2s;}
+.chips label:hover span{border-color:var(--teal);color:var(--paper);}
+.chips input:checked+span{background:var(--teal);border-color:var(--teal);color:var(--ink);}
+.chips input:focus-visible+span{outline:2px solid var(--teal);outline-offset:2px;}
+.f{display:flex;flex-direction:column;gap:.3rem;}
+.f>span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);}
+.f input,.f textarea{background:transparent;border:0;border-bottom:1px solid #333;color:var(--paper);font:inherit;font-size:1rem;padding:.5rem 0;outline:none;resize:vertical;transition:border-color .2s;border-radius:0;}
+.f input:focus,.f textarea:focus{border-color:var(--teal);}
+.f.err input,.f.err textarea{border-color:#e5604d;}
+.hp{position:absolute;left:-9999px;width:0;height:0;opacity:0;}
+.send{align-self:flex-start;background:var(--teal);color:var(--ink);border:0;font:inherit;font-size:13px;padding:.85rem 1.9rem;border-radius:30px;transition:transform .2s,opacity .2s;}
+.send:hover{transform:scale(1.04);}
+.send[disabled]{opacity:.5;pointer-events:none;}
+.fmsg{font-size:13px;line-height:1.5;min-height:1.3em;color:var(--mute);}
+.fmsg.ok{color:#6fd0cb;}
+.fmsg.bad{color:#e5604d;}
+.ct-rows a{display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:1rem;padding:1.5rem 0;border-top:1px solid rgba(10,10,10,.25);transition:padding .35s cubic-bezier(.16,1,.3,1);}
+.ct-rows a:last-child{border-bottom:1px solid rgba(10,10,10,.25);}
+.ct-rows a:hover{padding-left:1rem;padding-right:1rem;background:var(--ink);color:var(--paper);}
+.ct-rows span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.7;}
+.ct-rows b{font-family:var(--display);font-weight:700;font-size:clamp(1.1rem,2.2vw,1.9rem);letter-spacing:-.02em;word-break:break-all;}
+.ct-rows i{font-style:normal;font-size:1.3rem;}
+.foot{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:6rem;padding-top:2rem;border-top:1px solid rgba(10,10,10,.25);font-size:13px;line-height:1.9;}
+.foot b{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4rem;}
+.copy{margin-top:3rem;font-size:11px;letter-spacing:.1em;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1);}
+.rv.in{opacity:1;transform:none;}
+
+@media (max-width:860px){
+  nav{padding:1rem 1.2rem;} nav ul li:not(:last-child){display:none;}
+  .hero-foot{left:1.2rem;right:1.2rem;} .hm-cap{left:1.2rem;bottom:5rem;}
+  .mf-in,#about,#services,#work,#contact{padding-left:1.2rem;padding-right:1.2rem;}
+  #clients .sec-head{padding:0 1.2rem;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:2rem 1rem;}
+  .about-grid,.ct-grid,.cards,.foot{grid-template-columns:1fr;gap:1.5rem;}
+  .card{min-height:0;}
+  .pcard{grid-template-columns:1fr;gap:1rem;min-height:0;top:calc(7vh + var(--i)*16px);}
+  .pcard-img{min-height:240px;height:240px;} .pcard-body{padding:.4rem .6rem 1rem;}
+}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none;}.rv{opacity:1;transform:none;}.hero-row{animation:none;}}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<div id="dot"><span></span></div>
+
+<nav>
+  <a href="#hero" aria-label="Malenfocat"><img src="assets/logos/malenfocat_logotipo blanc.png" alt="Malenfocat"></a>
+  <ul>
+    <li><a href="#services">Qué hago</a></li>
+    <li><a href="#work">Trabajo</a></li>
+    <li><a href="#clients">Clientes</a></li>
+    <li><a href="#contact" class="nav-cta">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header id="hero">
+  <div class="hero-stick">
+    <canvas id="hero-cv"></canvas>
+    <div class="mq hero-row alt" data-text="Malenfocat|Malenfocat" data-rep="2" data-dir="normal" data-speed="50"></div>
+    <div class="hero-media" id="hm">
+      <video autoplay muted loop playsinline preload="metadata" poster="assets/videos/showreel_poster.jpg"><source src="assets/videos/showreel_hero_light.mp4" type="video/mp4"></video>
+      <span class="hm-cap">Showreel</span>
+    </div>
+    <div class="hero-foot">
+      <span><b>Foto · Vídeo · Diseño · Web · IA</b><br>Madrid · España y proyectos internacionales</span>
+      <span class="scroll-cue">Scroll y descubre más</span>
+    </div>
+  </div>
+</header>
+
+<!-- MANIFIESTO -->
+<section class="mf" id="mf">
+  <div class="mf-in"><p id="mf-text">Enfocar distinto no es enfocar mal.</p></div>
+</section>
+
+<!-- CIFRAS + SOBRE MÍ -->
+<section id="about">
+  <div class="stats">
+    <div class="stat rv"><b><em>+</em><span data-to="30" style="display:inline;font-size:inherit;letter-spacing:inherit;text-transform:none;color:inherit;margin:0">0</span></b><span>Eventos cubiertos</span></div>
+    <div class="stat rv"><b data-to="9">0</b><span>Marcas y clientes</span></div>
+    <div class="stat rv"><b data-to="6">0</b><span>Disciplinas</span></div>
+    <div class="stat rv"><b>360<em>°</em></b><span>Soluciones integrales</span></div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="services">
+  <div class="sec-head"><span class="eyebrow rv">01 — Qué hago</span><h2 class="big-h rv">Qué puedo<br>hacer <span class="o">por ti</span></h2></div>
+  <div class="cards">
+    <article class="card rv"><span class="num">01</span><h3>Foto &amp; Vídeo</h3><p>Retrato, producto, evento y dirección de arte visual. Grabación, montaje, color grading y postproducción, también con drone.</p><ul><li>Fotografía</li><li>Vídeo</li><li>Motion</li><li>Drone</li></ul></article>
+    <article class="card rv"><span class="num">02</span><h3>IA generativa</h3><p>Midjourney, Stable Diffusion y flujos generativos con ComfyUI. Personajes consistentes y contenido reproducible, no solo resultados sueltos.</p><ul><li>ComfyUI</li><li>LoRAs</li><li>Midjourney</li></ul></article>
+    <article class="card rv"><span class="num">03</span><h3>Diseño &amp; Web</h3><p>Identidad visual, cartelería, composición y tipografía. HTML, CSS, JS y WordPress, con UX/UI prototipado en Figma.</p><ul><li>Identidad</li><li>UX/UI</li><li>Web</li><li>360°</li></ul></article>
+  </div>
+</section>
+
+<!-- TIRA DE FOTOS -->
+<section id="photos">
+  <div class="mq ph-row" data-photos="0" data-dir="normal" data-speed="70"></div>
+  <div class="mq ph-row" data-photos="1" data-dir="reverse" data-speed="80"></div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="work">
+  <div class="sec-head"><span class="eyebrow rv">02 — Proyectos</span><h2 class="big-h rv">Trabajo <span class="o">selecto</span></h2></div>
+  <div class="stack">
+
+    <article class="pcard" style="--i:0">
+      <a class="pcard-img" href="projects/photo.html" data-lbl="Ver"><img src="assets/projects/photo/Otto_002.jpg" alt="Photo Portfolio" loading="lazy" style="object-position:50% 30%"></a>
+      <div class="pcard-body">
+        <span class="num">001</span>
+        <h3>Photo Portfolio</h3>
+        <p>Eventos corporativos, cultura, belleza y momentos únicos; una mirada que busca lo que otros pasan por alto.</p>
+        <ul class="tags"><li>Fotografía</li><li>Dirección de arte</li><li>Postproducción</li></ul>
+        <a class="pill" href="projects/photo.html">Ver proyecto →</a>
+      </div>
+    </article>
+
+    <article class="pcard" style="--i:1">
+      <a class="pcard-img" href="projects/video.html" data-lbl="Ver"><img src="assets/videos/showreel_poster.jpg" alt="Vídeo Portfolio" loading="lazy"></a>
+      <div class="pcard-body">
+        <span class="num">002</span>
+        <h3>Vídeo Portfolio</h3>
+        <p>Campañas de marca, eventos corporativos, motion graphics y momentos que merecen ser contados bien. DUIN, Coelbo, The Iberian, Parc Vallès…</p>
+        <ul class="tags"><li>Producción</li><li>Edición</li><li>Motion Graphics</li><li>Drone</li></ul>
+        <a class="pill" href="projects/video.html">Ver proyecto →</a>
+      </div>
+    </article>
+
+    <article class="pcard" style="--i:2">
+      <a class="pcard-img" href="projects/tfg.html" data-lbl="Ver"><img src="assets/projects/ia/ComfyUI_00546_.png" alt="AI Influencer" loading="lazy"></a>
+      <div class="pcard-body">
+        <span class="num">003</span>
+        <h3>AI Influencer</h3>
+        <p>Creación de identidad digital, narrativa visual y mundo ficticio; explorando los límites de la imagen generada.</p>
+        <ul class="tags"><li>IA</li><li>Web</li><li>Vídeo</li></ul>
+        <a class="pill" href="projects/tfg.html">Ver proyecto →</a>
+      </div>
+    </article>
+
+    <article class="pcard" style="--i:3">
+      <a class="pcard-img" href="projects/tour-virtual.html" data-lbl="Ver"><img src="assets/images/tour-entrada-post.jpg" alt="Tour Virtual 360°" loading="lazy"></a>
+      <div class="pcard-body">
+        <span class="num">004</span>
+        <h3>Tour Virtual 360°</h3>
+        <p>Captura, postproducción y publicación de espacios en 360°. Fotografía inmersiva que permite explorar cualquier lugar desde cualquier pantalla.</p>
+        <ul class="tags"><li>360°</li><li>Postproducción</li><li>Tour virtual</li><li>IA</li></ul>
+        <a class="pill" href="projects/tour-virtual.html">Ver proyecto →</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="soon rv"><span>005 — Diseño</span><small>Próximamente</small></div>
+  <div class="soon rv"><span>006 — Inteligencia Artificial</span><small>Próximamente</small></div>
+</section>
+
+<div class="strip mq alt" data-text="Sony A7III|Premiere Pro|After Effects|DaVinci|Blender|ComfyUI|Photoshop|Krpano" data-rep="2" data-dir="reverse" data-speed="60"></div>
+
+<!-- CLIENTES -->
+<section id="clients">
+  <div class="sec-head"><span class="eyebrow rv">03 — Clientes</span><h2 class="big-h rv">Orgulloso de<br>con quién <span class="o">trabajo</span></h2><a class="link-arrow rv" href="#contact">Trabajemos juntos →</a></div>
+  <div class="mq ctrack" data-clients="0" data-dir="normal" data-speed="70"></div>
+</section>
+
+<!-- CONTACTO -->
+<footer id="contact">
+  <div class="ct-grid">
+    <div>
+      <span class="eyebrow rv" style="color:var(--ink)">04 — Contacto</span>
+      <h2 class="big-h rv">Pongamos<br>tu idea <span class="o">en foco</span></h2>
+      <p class="ct-p rv">Cuéntame qué tienes en mente: una marca, un evento, un vídeo o algo que aún no sabes cómo llamar. Trabajo en toda España e internacionalmente.</p>
+      <div class="ct-rows rv">
+        <a href="mailto:info@malenfocat.com"><span>Email</span><b>info@malenfocat.com</b><i>↗</i></a>
+        <a href="https://instagram.com/mafsfam" target="_blank" rel="noopener"><span>Instagram</span><b>@mafsfam</b><i>↗</i></a>
+        <a href="https://es.linkedin.com/in/martifontanet/" target="_blank" rel="noopener"><span>LinkedIn</span><b>Martí Fontanet</b><i>↗</i></a>
+      </div>
+    </div>
+    <form id="cf" class="cform rv" novalidate>
+      <h3>Cuéntame tu idea</h3>
+      <div class="chips" role="group" aria-label="Tipo de proyecto">
+        <label><input type="checkbox" name="tipo" value="Foto"><span>Foto</span></label>
+        <label><input type="checkbox" name="tipo" value="Vídeo"><span>Vídeo</span></label>
+        <label><input type="checkbox" name="tipo" value="IA"><span>IA</span></label>
+        <label><input type="checkbox" name="tipo" value="Diseño & Web"><span>Diseño &amp; Web</span></label>
+        <label><input type="checkbox" name="tipo" value="Otro"><span>Otro</span></label>
+      </div>
+      <label class="f"><span>Nombre</span><input name="name" required autocomplete="name"></label>
+      <label class="f"><span>Email</span><input type="email" name="email" required autocomplete="email"></label>
+      <label class="f"><span>Mensaje</span><textarea name="message" rows="4" required></textarea></label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="send" type="submit">Enviar mensaje →</button>
+      <p class="fmsg" id="fmsg" role="status"></p>
+    </form>
+  </div>
+  <div class="foot">
+    <div><b>Navegar</b><a href="#services">Qué hago</a><br><a href="#work">Trabajo</a><br><a href="#clients">Clientes</a></div>
+    <div><b>Base</b>Madrid · España e internacional</div>
+  </div>
+  <div class="copy"><span>Enfocar distinto no es enfocar mal.</span><span>© <span id="yr"></span> Malenfocat · Desde Madrid para todo el mundo</span></div>
+</footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+$('#yr').textContent=new Date().getFullYear();
+
+/* datos */
+const PH='assets/projects/photo/';
+const photoRows=[
+ ['Otto_002','BateigAnder 200','LidiaKenneth_112','DSC_2501','Insta_0037','_DSC8224','Otto_036','BateigAnder 12','CasamentAdria_ (2)','DSC_2494'],
+ ['LidiaKenneth_195','Otto_052','BateigAnder 368','_DSC8153','DSC_5063','Otto_010','BateigAnder 291-2','Insta_0023','_DSC8260','DSC_2867']
+];
+const L='assets/logos/clients/';
+const C={
+ duin:['https://www.duinclub.com/','logo-duin-white.png','DUIN'],
+ parc:['https://www.parcvalles.com/es','LOGO PARC VALLES.png','Parc Vallès'],
+ coelbo:['https://www.coelbo.es/','coelbo_logo.png','Coelbo'],
+ circutor:['https://circutor.com/','CIRCUTOR_LOGO.png','Circutor'],
+ circontrol:['https://circontrol.com/es/','Circontrol_Logo.webp','Circontrol'],
+ iberian:['https://theiberian.nl/en','logo-the-iberian.png','The Iberian','lg'],
+ anas:['https://www.instagram.com/anasrestaurantbcn/','Anas_logo-white.png',"Ana's Restaurant"],
+ gispert:['https://www.casagispert.com/es/','logo-casa-gispert.png','Casa Gispert','lg'],
+ aat:['https://espaientitats.terrassa.cat/entitats/associacio-d-artesans-de-terrassa/','logo-aat.png','AAT','lg'],
+ dfusio:['https://dfusio.com/','logo-dfusio.png','Dfusio'],
+ betto:['https://www.instagram.com/bettofood/','bettologo.png','Betto Food']
+};
+const clientRows=[
+ ['duin','parc','coelbo','dfusio','circutor','iberian','circontrol','betto','gispert','anas','aat']
+];
+const tile=k=>{const[h,f,n,c]=C[k];return `<a href="${h}" target="_blank" rel="noopener" class="${c||''}"><img src="${L+encodeURI(f)}" alt="${n}" loading="lazy"></a>`;};
+const photo=n=>`<img src="${PH+encodeURI(n)}.jpg" alt="" loading="lazy">`;
+
+/* marquesinas */
+function build(el,setHtml){
+  el.innerHTML=`<div class="mq-track" style="--d:${el.dataset.speed||40}s;--dir:${el.dataset.dir||'normal'}"><div class="mq-set">${setHtml}</div><div class="mq-set" aria-hidden="true">${setHtml}</div></div>`;
+}
+$$('.mq[data-text]').forEach(el=>{
+  const items=el.dataset.text.split('|'), rep=+el.dataset.rep||4; let set='';
+  for(let r=0;r<rep;r++) items.forEach(t=>{ set+=`<span>${t}</span><i></i>`; });
+  build(el,set);
+});
+$$('[data-photos]').forEach(el=>build(el,photoRows[+el.dataset.photos].concat(photoRows[+el.dataset.photos]).map(photo).join('')));
+$$('[data-clients]').forEach(el=>build(el,clientRows[+el.dataset.clients].map(tile).join('')));
+
+/* las marquesinas aceleran con el scroll */
+const tracks=$$('.mq-track'); let lastY=scrollY, vel=0;
+(function tick(){
+  const dy=Math.abs(scrollY-lastY); lastY=scrollY;
+  vel+=(clamp(dy/6,0,8)-vel)*.08;
+  tracks.forEach(t=>{ const a=t.getAnimations()[0]; if(a) a.playbackRate=1+vel; });
+  requestAnimationFrame(tick);
+})();
+
+/* cursor con etiqueta */
+const dot=$('#dot');
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+  let mx=innerWidth/2,my=innerHeight/2,x=mx,y=my;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function loop(){ x+=(mx-x)*.15; y+=(my-y)*.15; dot.style.transform=`translate(${x}px,${y}px) translate(-50%,-50%)`; requestAnimationFrame(loop); })();
+  $$('a,button').forEach(el=>{
+    const lbl=el.dataset.lbl;
+    el.addEventListener('mouseenter',()=>{ if(lbl){dot.firstChild.textContent=lbl;dot.classList.add('lbl');} else dot.classList.add('big'); });
+    el.addEventListener('mouseleave',()=>dot.classList.remove('big','lbl'));
+  });
+}else dot.remove();
+
+/* botón magnético */
+$$('.cta,.nav-cta,.pill').forEach(b=>{
+  b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.2}px,${(e.clientY-r.top-r.height/2)*.3}px)`;});
+  b.addEventListener('mouseleave',()=>{b.style.transform='';});
+});
+
+/* formas flotantes del hero */
+const cv=$('#hero-cv'), cx=cv.getContext('2d'); let W=0,H=0,MX=-999,MY=-999,heroOn=true;
+const shapes=[];
+const types=['circle','rect','tri','diamond','line'], COLS=6, ROWS=4;
+function size(){
+  W=cv.width=cv.offsetWidth; H=cv.height=cv.offsetHeight;
+  shapes.forEach(o=>{ o.x=(o.cx+.15+.7*o.jx)*W/COLS; o.y=(o.cy+.15+.7*o.jy)*H/ROWS; });
+}
+for(let k=0;k<COLS*ROWS;k++){
+  const cx_=k%COLS, cy_=Math.floor(k/COLS);
+  shapes.push({
+    t:types[(k*3+cy_)%5], cx:cx_, cy:cy_, jx:Math.random(), jy:Math.random(), x:0, y:0, s:14+Math.random()*30,
+    vx:(Math.random()-.5)*.35, vy:(Math.random()-.5)*.35, r:Math.random()*6, vr:(Math.random()-.5)*.006,
+    c:k%4===0?'58,143,140':'242,242,238', a:k%4===0?.55:.22
+  });
+}
+size(); addEventListener('resize',size);
+$('#hero').addEventListener('mousemove',e=>{ const r=cv.getBoundingClientRect(); MX=e.clientX-r.left; MY=e.clientY-r.top; });
+$('#hero').addEventListener('mouseleave',()=>{MX=-999;MY=-999;});
+new IntersectionObserver(e=>{heroOn=e[0].isIntersecting;}).observe($('#hero'));
+(function draw(){
+  if(heroOn){
+    cx.clearRect(0,0,W,H);
+    shapes.forEach(o=>{
+      const dx=o.x-MX, dy=o.y-MY, d=Math.hypot(dx,dy)||1;
+      if(d<140){ o.vx+=dx/d*.12; o.vy+=dy/d*.12; }
+      o.vx*=.985; o.vy*=.985; o.vx+=(Math.random()-.5)*.01; o.vy+=(Math.random()-.5)*.01;
+      o.x+=o.vx; o.y+=o.vy; o.r+=o.vr;
+      if(o.x<0||o.x>W) o.vx*=-1; if(o.y<0||o.y>H) o.vy*=-1;
+      cx.save(); cx.translate(o.x,o.y); cx.rotate(o.r);
+      cx.strokeStyle=`rgba(${o.c},${o.a})`; cx.lineWidth=1.5; cx.beginPath(); const s=o.s;
+      if(o.t==='circle') cx.arc(0,0,s,0,Math.PI*2);
+      else if(o.t==='rect') cx.rect(-s/2,-s/2,s,s);
+      else if(o.t==='tri'){ cx.moveTo(0,-s); cx.lineTo(s*.87,s*.5); cx.lineTo(-s*.87,s*.5); cx.closePath(); }
+      else if(o.t==='diamond'){ cx.moveTo(0,-s); cx.lineTo(s*.6,0); cx.lineTo(0,s); cx.lineTo(-s*.6,0); cx.closePath(); }
+      else { cx.moveTo(-s,0); cx.lineTo(s,0); }
+      cx.stroke(); cx.restore();
+    });
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* hero: el vídeo se expande; se pausa al salir */
+const hero=$('#hero'), hm=$('#hm'), hfoot=$('.hero-foot'), hcap=$('.hm-cap'), hv=hm.querySelector('video');
+const ease=t=>1-Math.pow(1-t,3);
+function heroUpdate(){
+  const r=hero.getBoundingClientRect(), p=clamp(-r.top/(r.height-innerHeight),0,1), e=ease(clamp(p/.65,0,1));
+  const vw=document.documentElement.clientWidth, s0=Math.min(Math.max(vw*.32,200),innerHeight*.46,440);
+  hm.style.width=(s0+(vw-s0)*e)+'px'; hm.style.height=(s0+(innerHeight-s0)*e)+'px'; hm.style.borderRadius=(22*(1-e))+'px';
+  hfoot.style.opacity=1-clamp(p*6,0,1); hcap.style.opacity=clamp((p-.55)/.25,0,1);
+}
+new IntersectionObserver(es=>{ es[0].isIntersecting ? hv.play().catch(()=>{}) : hv.pause(); }).observe(hero);
+
+/* manifiesto + progreso */
+const mf=$('#mf'), mfp=$('#mf-text');
+mfp.innerHTML=mfp.textContent.split(' ').map(w=>`<span class="w${/^(mal|enfoca)/i.test(w)?' m':''}">${w}</span>`).join(' ');
+const words=$$('#mf-text .w'), prog=$('#prog');
+function onScroll(){
+  heroUpdate();
+  const r=mf.getBoundingClientRect(), p=clamp(-r.top/(r.height-innerHeight),0,1), lit=p*words.length*1.15;
+  words.forEach((w,i)=>{ w.style.opacity=.15+.85*clamp(lit-i,0,1); });
+  prog.style.transform=`scaleX(${scrollY/(document.documentElement.scrollHeight-innerHeight||1)})`;
+}
+addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll); onScroll();
+
+/* formulario de contacto: pega aquí la URL de tu Worker (ver contact-api/README.md).
+   Vacío = modo demo: muestra el flujo pero no envía nada. */
+const CONTACT_ENDPOINT='';
+const t0=Date.now(), cf=$('#cf'), fmsg=$('#fmsg'), sendBtn=cf.querySelector('.send');
+const say=(t,c)=>{fmsg.textContent=t;fmsg.className='fmsg '+(c||'');};
+cf.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const fd=new FormData(cf);
+  const d={name:fd.get('name').trim(),email:fd.get('email').trim(),message:fd.get('message').trim(),tipo:fd.getAll('tipo'),website:fd.get('website'),t:Date.now()-t0};
+  const bad={name:!d.name,email:!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email),message:d.message.length<5};
+  cf.querySelectorAll('.f').forEach(f=>{const i=f.querySelector('input,textarea'); f.classList.toggle('err',!!bad[i.name]);});
+  if(Object.values(bad).some(Boolean)){ say('Revisa los campos marcados.','bad'); return; }
+  sendBtn.disabled=true; sendBtn.textContent='Enviando…'; say('');
+  try{
+    if(CONTACT_ENDPOINT){
+      const r=await fetch(CONTACT_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+      if(!r.ok) throw 0;
+    }else await new Promise(r=>setTimeout(r,900));
+    cf.reset();
+    say(CONTACT_ENDPOINT?'¡Enviado! Te he mandado un correo de confirmación.':'Modo demo: así se vería el envío. Aún no se ha mandado ningún correo.','ok');
+    sendBtn.textContent='Enviado ✓';
+  }catch(_){
+    say('No se ha podido enviar. Escríbeme a info@malenfocat.com.','bad'); sendBtn.disabled=false; sendBtn.textContent='Enviar mensaje →';
+  }
+});
+
+/* reveal + contadores */
+function count(el){
+  const to=+el.dataset.to, t0=performance.now();
+  (function s(t){ const k=clamp((t-t0)/1400,0,1); el.textContent=Math.round(to*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(s); })(t0);
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){ e.target.classList.add('in'); e.target.querySelectorAll('[data-to]').forEach(count); if(e.target.dataset.to) count(e.target); io.unobserve(e.target); }
+}),{threshold:.15});
+$$('.rv').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

@@ -1,63 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AI Influencer — Malenfocat Studio">
-  <link rel="icon" href="../assets/logos/favicon-light.ico" media="(prefers-color-scheme: light)">
-  <link rel="icon" href="../assets/logos/favicon-dark.ico" media="(prefers-color-scheme: dark)">
-  <title>AI INFLUENCER — Malenfocat</title>
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/project.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <script src="../components/components.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Creación de identidad digital, narrativa visual y mundo ficticio; explorando los límites de la imagen generada.">
+<link rel="icon" href="../assets/logos/favicon-light.ico" media="(prefers-color-scheme: light)">
+<link rel="icon" href="../assets/logos/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+<title>AI Influencer — Malenfocat</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="../css/site.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-
-<div id="cur"><div id="cur-inner"></div></div>
-<div id="nav-placeholder"></div>
+<div id="prog"></div>
+<div id="dot"></div>
+<nav>
+  <a href="../" aria-label="Malenfocat"><img src="../assets/logos/malenfocat_logotipo blanc.png" alt="Malenfocat"></a>
+  <ul>
+    <li><a href="../#services">Qué hago</a></li>
+    <li><a href="../#work">Trabajo</a></li>
+    <li><a href="../#clients">Clientes</a></li>
+    <li><a href="../#contact" class="nav-cta">Contacto</a></li>
+  </ul>
+</nav>
 
 <header class="proj-hero">
-  <div class="proj-hero-meta">
-    <span class="proj-num">003</span>
-    <span class="proj-category">TFG</span>
-    <span class="proj-year">2023</span>
-  </div>
-  <h1 class="proj-title">AI Influencer</h1>
+  <div class="proj-hero-meta"><span class="proj-num">003</span><span class="proj-category">TFG</span><span class="proj-year">2023</span></div>
+  <h1 class="proj-title">AI <span class="o">Influencer</span></h1>
   <p class="proj-subtitle">Creación de identidad digital, narrativa visual y mundo ficticio; explorando los límites de la imagen generada.</p>
-  <div class="proj-tags">
-    <span>IA</span>
-    <span>Web</span>
-    <span>Vídeo</span>
-  </div>
+  <div class="proj-tags"><span>IA</span><span>Web</span><span>Vídeo</span></div>
 </header>
 
 <div class="proj-nav-between">
-  <a href="video.html" class="proj-nav-prev">
-    <span class="pnb-label" data-i18n="navPrev">← Anterior</span>
-    <span class="pnb-title">Vídeo Portfolio</span>
-  </a>
-  <a href="../#work-sec" class="proj-nav-all" data-i18n="navAll">Ver todos</a>
-  <a href="tour-virtual.html" class="proj-nav-next">
-    <span class="pnb-label" data-i18n="navNext">Siguiente →</span>
-    <span class="pnb-title">Tour Virtual 360°</span>
-  </a>
+  <a href="video.html" class="proj-nav-prev"><span class="pnb-label">← Anterior</span><span class="pnb-title">Vídeo Portfolio</span></a>
+  <a href="../#work-sec" class="proj-nav-all">Ver todos</a>
+  <a href="tour-virtual.html" class="proj-nav-next"><span class="pnb-label">Siguiente →</span><span class="pnb-title">Tour Virtual 360°</span></a>
 </div>
+
 
 <div class="proj-cover">
   <img src="../assets/projects/ia/ComfyUI_00424_.png" alt="AI Influencer — Malenfocat">
 </div>
 
 <section class="proj-section proj-intro">
-  <div class="proj-col-label" data-i18n-sec="secContext">Contexto</div>
+  <div class="proj-col-label">Contexto</div>
   <div class="proj-col-content">
-    <p data-i18n-ctx="0">Trabajo Final de Grado centrado en la creación de una influencer virtual, Tania Costa, y su entorno: la ciudad ficticia de Kernel, dentro de una estética solarpunk.</p>
-    <p data-i18n-ctx="1">El reto principal era conseguir consistencia visual en un momento en el que la generación de imagen y vídeo con IA todavía era inestable y poco predecible.</p>
+    <p>Trabajo Final de Grado centrado en la creación de una influencer virtual, Tania Costa, y su entorno: la ciudad ficticia de Kernel, dentro de una estética solarpunk.</p>
+    <p>El reto principal era conseguir consistencia visual en un momento en el que la generación de imagen y vídeo con IA todavía era inestable y poco predecible.</p>
   </div>
 </section>
 
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-sec="secImages">Imágenes</div>
+  <div class="proj-col-label">Imágenes</div>
   <div class="proj-col-content">
     <div class="proj-grid-2">
       <div class="proj-img-wrap"><img src="../assets/projects/ia/ComfyUI_00393_.png" alt=""></div>
@@ -73,19 +67,19 @@
 </div>
 
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-sec="secProcess">Proceso</div>
+  <div class="proj-col-label">Proceso</div>
   <div class="proj-col-content">
-    <p data-i18n-proc="0">El proyecto se construyó utilizando herramientas open source como ComfyUI y modelos basados en Stable Diffusion, trabajando con distintas variantes, checkpoints y LoRAs para definir tanto el personaje como su entorno.</p>
-    <p data-i18n-proc="1">Uno de los puntos clave fue desarrollar un sistema de trabajo que permitiera mantener coherencia entre imágenes: controlando prompts, semillas, referencias visuales y entrenando estilos específicos para Tania Costa.</p>
-    <p data-i18n-proc="2">En lugar de buscar resultados aislados, el enfoque fue crear un flujo reproducible. Esto implicó pruebas constantes, iteración y ajuste fino de parámetros hasta conseguir que el personaje mantuviera identidad entre distintas escenas, poses y contextos.</p>
-    <p data-i18n-proc="3">La ciudad de Kernel se planteó como un espacio coherente dentro del universo visual, explorando una estética solarpunk que combinara tecnología y sostenibilidad, alejándose de los imaginarios más distópicos habituales.</p>
-    <p data-i18n-proc="4">Uno de los principales problemas fue la inconsistencia facial y corporal típica de estos modelos en ese momento. Se resolvió combinando LoRAs específicos, control de composición y postproducción en Photoshop para corregir pequeños errores sin perder naturalidad.</p>
-    <p data-i18n-proc="5">El proyecto no solo busca un resultado visual, sino entender hasta qué punto estas herramientas pueden utilizarse para construir identidades digitales creíbles.</p>
+    <p>El proyecto se construyó utilizando herramientas open source como ComfyUI y modelos basados en Stable Diffusion, trabajando con distintas variantes, checkpoints y LoRAs para definir tanto el personaje como su entorno.</p>
+    <p>Uno de los puntos clave fue desarrollar un sistema de trabajo que permitiera mantener coherencia entre imágenes: controlando prompts, semillas, referencias visuales y entrenando estilos específicos para Tania Costa.</p>
+    <p>En lugar de buscar resultados aislados, el enfoque fue crear un flujo reproducible. Esto implicó pruebas constantes, iteración y ajuste fino de parámetros hasta conseguir que el personaje mantuviera identidad entre distintas escenas, poses y contextos.</p>
+    <p>La ciudad de Kernel se planteó como un espacio coherente dentro del universo visual, explorando una estética solarpunk que combinara tecnología y sostenibilidad, alejándose de los imaginarios más distópicos habituales.</p>
+    <p>Uno de los principales problemas fue la inconsistencia facial y corporal típica de estos modelos en ese momento. Se resolvió combinando LoRAs específicos, control de composición y postproducción en Photoshop para corregir pequeños errores sin perder naturalidad.</p>
+    <p>El proyecto no solo busca un resultado visual, sino entender hasta qué punto estas herramientas pueden utilizarse para construir identidades digitales creíbles.</p>
   </div>
 </section>
 
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-sec="secVideo">Vídeo</div>
+  <div class="proj-col-label">Vídeo</div>
   <div class="proj-col-content">
     <div class="proj-video-wrap">
       <iframe src="https://www.youtube.com/embed/H1HswBwkoEM"
@@ -97,7 +91,7 @@
 </section>
 
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-sec="secMore">Más imágenes</div>
+  <div class="proj-col-label">Más imágenes</div>
   <div class="proj-col-content">
     <div class="proj-grid-3">
       <div class="proj-img-wrap"><img src="../assets/projects/ia/ComfyUI_00359_.png" alt=""></div>
@@ -123,7 +117,7 @@
 </section>
 
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-sec="secVideo">Vídeo</div>
+  <div class="proj-col-label">Vídeo</div>
   <div class="proj-col-content">
     <div class="proj-video-wrap" style="margin-bottom:1.5rem;">
       <iframe src="https://www.youtube.com/embed/QMxykXYDlDU"
@@ -141,15 +135,15 @@
 </section>
 
 <section class="proj-section proj-specs">
-  <div class="proj-col-label" data-i18n-sec="secSpecs">Ficha</div>
+  <div class="proj-col-label">Ficha</div>
   <div class="proj-col-content">
     <div class="proj-specs-grid">
-      <div class="proj-spec"><span class="spec-label">Rol</span><span class="spec-val" data-i18n-spec="role">Generative AI · Postproducción · Web · XXSS</span></div>
-      <div class="proj-spec"><span class="spec-label">Cliente</span><span class="spec-val" data-i18n-spec="client">Trabajo Final de Grado</span></div>
-      <div class="proj-spec"><span class="spec-label">Año</span><span class="spec-val" data-i18n-spec="year">2023 — 2024</span></div>
+      <div class="proj-spec"><span class="spec-label">Rol</span><span class="spec-val">Generative AI · Postproducción · Web · XXSS</span></div>
+      <div class="proj-spec"><span class="spec-label">Cliente</span><span class="spec-val">Trabajo Final de Grado</span></div>
+      <div class="proj-spec"><span class="spec-label">Año</span><span class="spec-val">2023 — 2024</span></div>
       <div class="proj-spec">
         <span class="spec-label">Herramientas</span>
-        <span class="spec-val" data-i18n-spec="tools">
+        <span class="spec-val">
           <a href="https://www.comfy.org/download" target="_blank">Comfy UI</a> ·
           <a href="https://colab.research.google.com" target="_blank">Google Colab</a> ·
           <a href="https://www.adobe.com/products/photoshop.html" target="_blank">Photoshop</a> ·
@@ -161,22 +155,27 @@
   </div>
 </section>
 
+
 <div class="proj-nav-between">
-  <a href="video.html" class="proj-nav-prev">
-    <span class="pnb-label" data-i18n="navPrev">← Anterior</span>
-    <span class="pnb-title">Vídeo Portfolio</span>
-  </a>
-  <a href="../#work-sec" class="proj-nav-all" data-i18n="navAll">Ver todos</a>
-  <a href="tour-virtual.html" class="proj-nav-next">
-    <span class="pnb-label" data-i18n="navNext">Siguiente →</span>
-    <span class="pnb-title">Tour Virtual 360°</span>
-  </a>
+  <a href="video.html" class="proj-nav-prev"><span class="pnb-label">← Anterior</span><span class="pnb-title">Vídeo Portfolio</span></a>
+  <a href="../#work-sec" class="proj-nav-all">Ver todos</a>
+  <a href="tour-virtual.html" class="proj-nav-next"><span class="pnb-label">Siguiente →</span><span class="pnb-title">Tour Virtual 360°</span></a>
 </div>
 
-<div id="footer-placeholder"></div>
+<footer class="site-foot">
+  <div class="site-foot-in">
+    <span class="eyebrow">¿Hablamos?</span>
+    <h2 class="big-h">Pongamos<br>tu idea <span class="o">en foco</span></h2>
+    <a class="cta" href="../#contact">Escríbeme →</a>
+    <div class="foot">
+      <div><b>Navegar</b><a href="../">Inicio</a><br><a href="../#work">Trabajo</a><br><a href="../#clients">Clientes</a></div>
+      <div><b>Contacto</b><a href="mailto:info@malenfocat.com">info@malenfocat.com</a><br>Madrid · España e internacional</div>
+      <div><b>Redes</b><a href="https://instagram.com/mafsfam" target="_blank" rel="noopener">Instagram</a><br><a href="https://es.linkedin.com/in/martifontanet/" target="_blank" rel="noopener">LinkedIn</a></div>
+    </div>
+    <div class="copy"><span>Enfocar distinto no es enfocar mal.</span><span>© <span id="yr"></span> Malenfocat · Desde Madrid para todo el mundo</span></div>
+  </div>
+</footer>
 
-<script src="../js/lang.js"></script>
-<script src="../js/ui.js"></script>
-<script src="../js/project.js"></script>
+<script src="../js/site.js"></script>
 </body>
 </html>

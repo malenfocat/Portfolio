@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio creativo de Malenfocat Studio">
+  <link rel="icon" href="assets/logos/favicon-light.ico" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="assets/logos/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+  <title>Malenfocat by Martí</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/clients.css">
+  <script src="./components/components.js" defer></script>
+</head>
+
+<body>
+<div id="cur"><div id="cur-inner"></div></div>
+<div id="nav-placeholder"></div>
+
+<div id="sticky-wrap">
+  <div id="sticky-scene">
+    <canvas id="c"></canvas>
+    <div class="hero-divider" id="teal-bar" style="transform:scaleX(0);transform-origin:left;transition:transform .1s linear;"></div>
+    <div class="hero-divider-line"></div>
+    <div id="ui">
+  <div id="skill-flash">
+    <div class="sf-title" id="sf-title"></div>
+    <div class="sf-sub" id="sf-sub"></div>
+  </div>
+
+  <!-- Marcador de niveles — siempre visible -->
+  <div id="challenge-box">
+    <div id="challenge-text"></div>
+    <div id="progress-row"></div>
+  </div>
+
+  <!-- Botón de instrucciones -->
+  <button id="info-btn" aria-label="Instrucciones">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M8 7v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="8" cy="4.5" r=".9" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <!-- Popup de instrucciones -->
+  <div id="info-popup" role="dialog" aria-modal="true">
+    <button id="info-close">×</button>
+    <p class="info-label" data-i18n="infoTitle">Cómo jugar</p>
+    <ul class="info-list">
+      <li><span data-i18n="infoL1a">Mueve el cursor</span><span data-i18n="infoL1b"> para empujar las formas</span></li>
+      <li><span data-i18n="infoL2a">Click sostenido</span><span data-i18n="infoL2b"> para atraerlas hacia ti</span></li>
+      <li><span data-i18n="infoL3a">3 retos</span><span data-i18n="infoL3b"> para desbloquear la recompensa</span></li>
+      <li><span data-i18n="infoL4a">Scroll</span><span data-i18n="infoL4b"> para revelar el portfolio</span></li>
+    </ul>
+  </div>
+
+  <div id="hint-box">Empuja · Click para atraer · Scroll para revelar</div>
+</div>
+    <div id="reward-overlay">
+      <div id="reward-card">
+        <p class="rew-pre" id="rew-pre">🎉 Has completado el juego</p>
+        <h3 class="rew-title" id="rew-title">Primera consulta<br>gratis para ti</h3>
+        <p class="rew-desc" id="rew-desc">Como recompensa por descubrir Malenfocat Studio, te regalo una sesión de briefing sin coste — foto, vídeo, web o diseño. Tú eliges el proyecto, yo pongo las primeras horas.</p>
+        <div class="rew-code-wrap" id="code-wrap">
+          <div class="rew-code">MALENFOCAT-FREE</div>
+          <div class="rew-hint-copy" id="copy-hint">Toca para copiar el código</div>
+          <div class="rew-copied" id="copy-confirm">¡Copiado al portapapeles!</div>
+        </div>
+        <div class="rew-btns">
+          <button class="rew-btn" data-target="contact-sec" id="rew-contact" >Usar ahora →</button>
+          <button class="rew-btn-alt" id="rew-close">Seguir explorando</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="manifesto-sec">
+  <canvas id="mcanvas"></canvas>
+  <div id="manifesto-inner">
+    <span class="m-label" id="m-label">Malenfocat Studio</span>
+    <p class="m-line" id="m-line1">"Enfocar distinto</p>
+    <p class="m-line" id="m-line2">no es enfocar mal."</p>
+  </div>
+</div>
+
+<div id="after">
+  <div id="about-skills">
+    <div class="about-intro">
+      <p class="sec-label" id="label-about">01 — Sobre mí</p>
+      <h2 id="h2-about">Multidisciplinar<br>por necesidad</h2>
+      <p id="about-p1" style="margin-top:1.2rem;">Trabajo desde <strong>Madrid</strong>, para proyectos de toda España e internacional. Fotografía, vídeo, diseño y desarrollo web, distintos lenguajes para un mismo objetivo: contar algo bien, ya sea una marca, un evento o cualquier reto que tengas en mente.</p>
+      <p id="about-p2" style="margin-top:.8rem;">Cuido cada detalle del proceso, del planteamiento a la entrega final, y me implico a fondo en lo que haga falta para sacarlo adelante.</p>
+    </div>
+    <p class="sec-label" id="label-skills">Habilidades</p>
+    <div class="skills-grid" id="skills-list">
+      <div class="skill-card"><span class="sc-num">01</span><div class="sc-name" id="sk1n">Fotografía</div><div class="sc-disc" id="sk1d">Retrato, producto, evento y dirección de arte visual.</div><div class="sc-track"><div class="sc-fill" style="width:90%"></div></div><div class="sc-pct">90%</div></div>
+      <div class="skill-card"><span class="sc-num">02</span><div class="sc-name" id="sk2n">Video & Edición</div><div class="sc-disc" id="sk2d">Grabación, montaje, color grading y postproducción.</div><div class="sc-track"><div class="sc-fill" style="width:82%"></div></div><div class="sc-pct">82%</div></div>
+      <div class="skill-card"><span class="sc-num">03</span><div class="sc-name" id="sk3n">Generación con IA</div><div class="sc-disc" id="sk3d">Midjourney, Stable Diffusion y flujos generativos (ComfyUI).</div><div class="sc-track"><div class="sc-fill" style="width:78%"></div></div><div class="sc-pct">78%</div></div>
+      <div class="skill-card"><span class="sc-num">04</span><div class="sc-name" id="sk4n">Diseño Gráfico</div><div class="sc-disc" id="sk4d">Identidad visual, cartelería, composición y tipografía.</div><div class="sc-track"><div class="sc-fill" style="width:72%"></div></div><div class="sc-pct">72%</div></div>
+      <div class="skill-card"><span class="sc-num">05</span><div class="sc-name" id="sk5n">Desarrollo Web</div><div class="sc-disc" id="sk5d">HTML, CSS, JS, WordPress y sitios estáticos modernos.</div><div class="sc-track"><div class="sc-fill" style="width:65%"></div></div><div class="sc-pct">65%</div></div>
+      <div class="skill-card"><span class="sc-num">06</span><div class="sc-name" id="sk6n">Diseño UX/UI</div><div class="sc-disc" id="sk6d">Wireframes, prototipos y sistemas de diseño en Figma.</div><div class="sc-track"><div class="sc-fill" style="width:58%"></div></div><div class="sc-pct">58%</div></div>
+    </div>
+  </div>
+
+  <!-- COLABORADORES -->
+  <div id="collab-sec">
+    <p class="sec-label clients-label" data-i18n="collabLabel">Colaboradores</p>
+    <div class="collab-list">
+      <a href="https://dfusio.com/" target="_blank" rel="noopener" class="collab-item">
+        <img src="assets/logos/clients/logo-dfusio.png" alt="Dfusio">
+      </a>
+      <a href="https://www.instagram.com/bettofood/" target="_blank" rel="noopener" class="collab-item">
+        <img src="assets/logos/clients/bettologo.png" alt="Betto Food">
+      </a>
+    </div>
+  </div>
+
+  <!-- SLIDER DE CLIENTES -->
+  <div id="clients-sec">
+    <p class="sec-label clients-label">Clientes</p>
+    <div class="clients-track-wrap">
+      <div class="clients-track" id="clients-track">
+        <a href="https://www.duinclub.com/" target="_blank" rel="noopener" class="client-item"><img src="assets/logos/clients/logo-duin-white.png" alt="DUIN"></a>
+        <a href="https://www.parcvalles.com/es" target="_blank" rel="noopener" class="client-item"><img src="assets/logos/clients/LOGO PARC VALLES.png" alt="Parc Vallès"></a>
+        <a href="https://www.coelbo.es/" target="_blank" rel="noopener" class="client-item"><img src="assets/logos/clients/coelbo_logo.png" alt="Coelbo"></a>
+        <a href="https://circutor.com/" target="_blank" rel="noopener" class="client-item"><img src="assets/logos/clients/CIRCUTOR_LOGO.png" alt="Circutor"></a>
+        <a href="https://circontrol.com/es/" target="_blank" rel="noopener" class="client-item"><img src="assets/logos/clients/Circontrol_Logo.webp" alt="Circontrol"></a>
+        <a href="https://theiberian.nl/en" target="_blank" rel="noopener" class="client-item client-item--lg"><img src="assets/logos/clients/logo-the-iberian.png" alt="The Iberian"></a>
+        <a href="https://www.instagram.com/anasrestaurantbcn/" target="_blank" rel="noopener" class="client-item"><img src="assets/logos/clients/Anas_logo-white.png" alt="Ana's Restaurant"></a>
+        <a href="https://www.casagispert.com/es/" target="_blank" rel="noopener" class="client-item client-item--lg"><img src="assets/logos/clients/logo-casa-gispert.png" alt="Casa Gispert"></a>
+        <a href="https://espaientitats.terrassa.cat/entitats/associacio-d-artesans-de-terrassa/" target="_blank" rel="noopener" class="client-item client-item--xl"><img src="assets/logos/clients/logo-aat.png" alt="AAT"></a>
+        <!-- Duplicado para loop continuo -->
+        <a href="https://www.duinclub.com/" target="_blank" rel="noopener" class="client-item"><img src="assets/logos/clients/logo-duin-white.png" alt="DUIN"></a>
+        <a href="https://www.parcvalles.com/es" target="_blank" rel="noopener" class="client-item"><img src="assets/logos/clients/LOGO PARC VALLES.png" alt="Parc Vallès"></a>
+        <a href="https://www.coelbo.es/" target="_blank" rel="noopener" class="client-item"><img src="assets/logos/clients/coelbo_logo.png" alt="Coelbo"></a>
+        <a href="https://circutor.com/" target="_blank" rel="noopener" class="client-item"><img src="assets/logos/clients/CIRCUTOR_LOGO.png" alt="Circutor"></a>
+        <a href="https://circontrol.com/es/" target="_blank" rel="noopener" class="client-item"><img src="assets/logos/clients/Circontrol_Logo.webp" alt="Circontrol"></a>
+        <a href="https://theiberian.nl/en" target="_blank" rel="noopener" class="client-item client-item--lg"><img src="assets/logos/clients/logo-the-iberian.png" alt="The Iberian"></a>
+        <a href="https://www.instagram.com/anasrestaurantbcn/" target="_blank" rel="noopener" class="client-item"><img src="assets/logos/clients/Anas_logo-white.png" alt="Ana's Restaurant"></a>
+        <a href="https://www.casagispert.com/es/" target="_blank" rel="noopener" class="client-item client-item--lg"><img src="assets/logos/clients/logo-casa-gispert.png" alt="Casa Gispert"></a>
+        <a href="https://espaientitats.terrassa.cat/entitats/associacio-d-artesans-de-terrassa/" target="_blank" rel="noopener" class="client-item client-item--xl"><img src="assets/logos/clients/logo-aat.png" alt="AAT"></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="work-sec">
+    <p class="wlabel" id="label-work">02 — Proyectos</p>
+    <h2 class="wh" id="h2-work">Trabajo selecto</h2>
+    <div class="pgrid">
+      <a href="./projects/photo.html"><div class="pc"><div class="pc-cover"></div><span class="pc-num">001</span><div><h3 class="pc-title">Photo Portfolio</h3><div class="pc-tag"><span>Foto</span><span>Arte</span></div></div></div></a>
+      <a href="./projects/video.html"><div class="pc"><div class="pc-cover"></div><span class="pc-num">002</span><div><h3 class="pc-title">Video Reel</h3><div class="pc-tag"><span>Video</span><span>Edición</span></div></div></div></a>
+      <a href="./projects/tfg.html"><div class="pc"><div class="pc-cover"></div><span class="pc-num">003</span><div><h3 class="pc-title">Influencer IA</h3><div class="pc-tag"><span>IA</span><span>Vídeo</span><span>Webs</span></div></div></div></a>
+      <a href="./projects/tour-virtual.html"><div class="pc"><div class="pc-cover"></div><span class="pc-num">004</span><div><h3 class="pc-title">Tour Virtual 360°</h3><div class="pc-tag"><span>360°</span><span>Postproducción</span></div></div></div></a>
+      <div class="pc pc-soon"><span class="pc-num">005</span><div><h3 class="pc-title">Diseño</h3><div class="pc-tag"><span>Próximamente</span></div></div></div>
+      <div class="pc pc-soon"><span class="pc-num">006</span><div><h3 class="pc-title">Inteligencia Artificial</h3><div class="pc-tag"><span>Próximamente</span></div></div></div>
+    </div>
+  </div>
+
+  <div id="contact-sec">
+    <svg class="contact-geo" viewBox="0 0 700 500" preserveAspectRatio="xMidYMid slice">
+      <circle cx="350" cy="250" r="210" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".06"/>
+      <circle cx="350" cy="250" r="130" stroke="#3a8f8c" stroke-width="1.5" fill="none" opacity=".1"/>
+      <circle cx="350" cy="250" r="60" stroke="currentColor" stroke-width="1" fill="none" opacity=".05"/>
+      <line x1="118" y1="0" x2="118" y2="500" stroke="currentColor" stroke-width="2" opacity=".07"/>
+      <line x1="142" y1="0" x2="142" y2="500" stroke="currentColor" stroke-width="1" opacity=".04"/>
+      <line x1="558" y1="0" x2="558" y2="500" stroke="currentColor" stroke-width="2" opacity=".07"/>
+      <line x1="582" y1="0" x2="582" y2="500" stroke="currentColor" stroke-width="1" opacity=".04"/>
+      <line x1="0" y1="165" x2="700" y2="165" stroke="currentColor" stroke-width="1" opacity=".04"/>
+      <line x1="0" y1="335" x2="700" y2="335" stroke="currentColor" stroke-width="1" opacity=".04"/>  
+    </svg>
+    <!-- FIX 4: "04 — Contacto" corregido a "03 — Contacto" -->
+    <p class="cpre" id="cpre">03 — Contacto</p>
+    <h2 class="ch" id="ch">¿Trabajamos<br><strong>juntos?</strong></h2>
+    <p class="cdesc" id="cdesc">Si tienes una idea, un proyecto, un reto o simplemente quieres hacer algo diferente, escríbeme. <br>Trabajo en toda España e internacionalmente.</p>
+    <a href="mailto:malenfocat@gmail.com" class="cta" id="cta-link">malenfocat@gmail.com →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div> 
+
+<script src="js/lang.js"></script>
+<script src="js/game.js"></script>
+<script src="js/manifesto.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script> 
+
+</body>
+</html>

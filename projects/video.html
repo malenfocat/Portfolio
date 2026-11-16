@@ -1,65 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Vídeo Portfolio — Malenfocat Studio">
-  <link rel="icon" href="../assets/logos/favicon-light.ico" media="(prefers-color-scheme: light)">
-  <link rel="icon" href="../assets/logos/favicon-dark.ico" media="(prefers-color-scheme: dark)">
-  <title>VÍDEO — Malenfocat</title>
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/project.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/video.css">
-  <script src="../components/components.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Campañas de marca, eventos corporativos, motion graphics y momentos que merecen ser contados bien.">
+<link rel="icon" href="../assets/logos/favicon-light.ico" media="(prefers-color-scheme: light)">
+<link rel="icon" href="../assets/logos/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+<title>Vídeo Portfolio — Malenfocat</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="../css/site.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-
-<div id="cur"><div id="cur-inner"></div></div>
-<div id="nav-placeholder"></div>
+<div id="prog"></div>
+<div id="dot"></div>
+<nav>
+  <a href="../" aria-label="Malenfocat"><img src="../assets/logos/malenfocat_logotipo blanc.png" alt="Malenfocat"></a>
+  <ul>
+    <li><a href="../#services">Qué hago</a></li>
+    <li><a href="../#work">Trabajo</a></li>
+    <li><a href="../#clients">Clientes</a></li>
+    <li><a href="../#contact" class="nav-cta">Contacto</a></li>
+  </ul>
+</nav>
 
 <header class="proj-hero">
-  <div class="proj-hero-meta">
-    <span class="proj-num">002</span>
-    <span class="proj-category">Vídeo</span>
-    <span class="proj-year">2024 — 2025</span>
-  </div>
-  <h1 class="proj-title">Vídeo Portfolio</h1>
+  <div class="proj-hero-meta"><span class="proj-num">002</span><span class="proj-category">Vídeo</span><span class="proj-year">2024 — 2025</span></div>
+  <h1 class="proj-title">Vídeo <span class="o">Portfolio</span></h1>
   <p class="proj-subtitle">Campañas de marca, eventos corporativos, motion graphics y momentos que merecen ser contados bien.</p>
-  <div class="proj-tags">
-    <span>Producción</span>
-    <span>Edición</span>
-    <span>Motion Graphics</span>
-    <span>Postproducción</span>
-    <span>Drone</span>
-  </div>
+  <div class="proj-tags"><span>Producción</span><span>Edición</span><span>Motion Graphics</span><span>Postproducción</span><span>Drone</span></div>
 </header>
 
 <div class="proj-nav-between">
-  <a href="photo.html" class="proj-nav-prev">
-    <span class="pnb-label" data-i18n="navPrev">← Anterior</span>
-    <span class="pnb-title">Photo Portfolio</span>
-  </a>
-  <a href="../#work-sec" class="proj-nav-all" data-i18n="navAll">Ver todos</a>
-  <a href="tfg.html" class="proj-nav-next">
-    <span class="pnb-label" data-i18n="navNext">Siguiente →</span>
-    <span class="pnb-title">AI Influencer</span>
-  </a>
+  <a href="photo.html" class="proj-nav-prev"><span class="pnb-label">← Anterior</span><span class="pnb-title">Photo Portfolio</span></a>
+  <a href="../#work-sec" class="proj-nav-all">Ver todos</a>
+  <a href="tfg.html" class="proj-nav-next"><span class="pnb-label">Siguiente →</span><span class="pnb-title">AI Influencer</span></a>
 </div>
 
-<!-- BLOQUE 1 — DUIN · Campaña 01 -->
+<!-- DUIN · Nuevas instalaciones -->
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-vid-label="b1">DUIN<br>Campaña 01</div>
+  <div class="proj-col-label">DUIN<br>Nuevas instalaciones</div>
   <div class="proj-col-content">
-    <p class="video-campaign-title" data-i18n-vid-title="b1">«La mejor inversión eres tú»</p>
-    <p data-i18n-vid-desc="b1">Campaña completa para DUIN: desde la conceptualización y el guion con storyboards hasta la producción en set y la postproducción final. Dos piezas audiovisuales pensadas para comunicar valor de marca en redes sociales.</p>
+    <p class="video-campaign-title">Gimnasio reformado</p>
+    <p>Pieza audiovisual para presentar el gimnasio de DUIN tras su reforma, en dos formatos: vertical para redes sociales y horizontal para YouTube.</p>
+  </div>
+</section>
+
+<div class="video-reel-grid cols-2 grid-pad" style="grid-template-columns:minmax(0,340px) 1fr;align-items:start;">
+  <div class="video-reel-item reel-vertical">
+    <div class="video-card">
+      <span class="video-badge badge-yt">YouTube</span>
+      <div class="proj-video-wrap reel-wrap"><iframe src="https://www.youtube.com/embed/CVQPfmfF958" frameborder="0" allow="autoplay; picture-in-picture" allowfullscreen loading="lazy" title="DUIN — Gimnasio reformado (vertical)"></iframe></div>
+    </div>
+    <p class="video-caption">Versión vertical</p>
+  </div>
+  <div class="video-reel-item ">
+    <div class="video-card">
+      <span class="video-badge badge-yt">YouTube</span>
+      <div class="proj-video-wrap"><iframe src="https://www.youtube.com/embed/resHMAS28YU" frameborder="0" allow="autoplay; picture-in-picture" allowfullscreen loading="lazy" title="DUIN — Gimnasio reformado (horizontal)"></iframe></div>
+    </div>
+    <p class="video-caption">Versión horizontal</p>
+  </div>
+</div>
+
+
+<section class="proj-section">
+  <div class="proj-col-label">DUIN<br>Campaña 01</div>
+  <div class="proj-col-content">
+    <p class="video-campaign-title">«La mejor inversión eres tú»</p>
+    <p>Campaña completa para DUIN: desde la conceptualización y el guion con storyboards hasta la producción en set y la postproducción final. Dos piezas audiovisuales pensadas para comunicar valor de marca en redes sociales.</p>
   </div>
 </section>
 
 <div class="video-reel-grid cols-4 grid-pad">
-  <div class="video-reel-item reel-vertical">
-    
-  </div>
   <div class="video-reel-item reel-vertical">
     <div class="video-card">
       <span class="video-badge badge-ig">Instagram</span>
@@ -84,12 +97,11 @@
   </div>
 </div>
 
-<!-- BLOQUE 2 — DUIN · Campaña 02 -->
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-vid-label="b2">DUIN<br>Campaña 02</div>
+  <div class="proj-col-label">DUIN<br>Campaña 02</div>
   <div class="proj-col-content">
-    <p class="video-campaign-title" data-i18n-vid-title="b2">«Donde otros ven agua, nosotros vemos evolución»</p>
-    <p data-i18n-vid-desc="b2">Serie de 4 piezas para fomentar el uso de la piscina como espacio de desarrollo y evolución personal. Producción completa en colaboración con el equipo de DUIN, en la cual nos encargamos des del brief hasta la entrega final.</p>
+    <p class="video-campaign-title">«Donde otros ven agua, nosotros vemos evolución»</p>
+    <p>Serie de 4 piezas para fomentar el uso de la piscina como espacio de desarrollo y evolución personal. Producción completa en colaboración con el equipo de DUIN, en la cual nos encargamos des del brief hasta la entrega final.</p>
   </div>
 </section>
 
@@ -140,19 +152,15 @@
   </div>
 </div>
 
-<!-- BLOQUE 3 — DUIN · Campaña Verano -->
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-vid-label="b3">DUIN<br>Verano</div>
+  <div class="proj-col-label">DUIN<br>Verano</div>
   <div class="proj-col-content">
-    <p class="video-campaign-title" data-i18n-vid-title="b3">Campaña de Verano</p>
-    <p data-i18n-vid-desc="b3">Piezas de contenido estival para DUIN, adaptadas para Instagram Reels y YouTube Shorts. Todo el proceso, des del briefing hasta la postproducción.</p>
+    <p class="video-campaign-title">Campaña de Verano</p>
+    <p>Piezas de contenido estival para DUIN, adaptadas para Instagram Reels y YouTube Shorts. Todo el proceso, des del briefing hasta la postproducción.</p>
   </div>
 </section>
 
 <div class="video-reel-grid cols-4 grid-pad">
-  <div class="video-reel-item reel-vertical">
-    
-  </div>
   <div class="video-reel-item reel-vertical">
     <div class="video-card">
       <span class="video-badge badge-ig">Instagram</span>
@@ -177,12 +185,11 @@
   </div>
 </div>
 
-<!-- BLOQUE 4 — ANA'S RESTAURANT -->
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-vid-label="b7">ANA'S<br>RESTAURANT</div>
+  <div class="proj-col-label">ANA'S<br>RESTAURANT</div>
   <div class="proj-col-content">
-    <p class="video-campaign-title" data-i18n-vid-title="b7">Creación de contenido</p>
-    <p data-i18n-vid-desc="b7">Edición de vídeo. Presentación de personal, recetas y recursos.</p>
+    <p class="video-campaign-title">Creación de contenido</p>
+    <p>Edición de vídeo. Presentación de personal, recetas y recursos.</p>
   </div>
 </section>
 
@@ -233,12 +240,12 @@
   </div>
 </div>
 
-<!-- BLOQUE 5 — THE IBERIAN -->
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-vid-label="b8">THE IBERIAN<br>GUIJUELO</div>
+  <div class="proj-col-label">THE IBERIAN<br>GUIJUELO</div>
   <div class="proj-col-content">
-    <p class="video-campaign-title" data-i18n-vid-title="b8">Lisardo Castro</p>
-    <p data-i18n-vid-desc="b8">Cubrimos todo el proceso productivo del jamón, junto a la familia de Lisardo Castro, fundadores de la empresa. Planificación, dirección, ejecución y edición. Un total de 4 vídeos largos para YouTube y extractos para reels.</p>
+    <p class="video-campaign-title">Lisardo Castro</p>
+    <p>Cubrimos todo el proceso productivo del jamón, junto a la familia de Lisardo Castro, fundadores de la empresa. Planificación, dirección, ejecución y edición. Un total de 4 vídeos largos para YouTube y extractos para reels.</p>
+    <p class="video-note">Los reels que se muestran son extractos del montaje de los vídeos largos: en ellos me encargué únicamente de la producción.</p>
   </div>
 </section>
 
@@ -289,12 +296,12 @@
   </div>
 </div>
 
-<!-- BLOQUE 6 — PANELMATIC · Coelbo -->
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-vid-label="b4">Panelmatic<br>Coelbo</div>
+  <div class="proj-col-label">Coelbo<br>Producto</div>
   <div class="proj-col-content">
-    <p class="video-campaign-title" data-i18n-vid-title="b4">Panelmatic — Coelbo Pump Drivers</p>
-    <p data-i18n-vid-desc="b4">Producción audiovisual técnica con animaciones 3D, motion graphics y grabación en instalaciones reales. Guionización del concepto, dirección de arte y postproducción completa.</p>
+    <p class="video-campaign-title">Speedmatic y Panelmatic — Coelbo</p>
+    <p>Producción audiovisual técnica con animaciones 3D, motion graphics y grabación en instalaciones reales. Guionización del concepto, dirección de arte y postproducción completa.</p>
+    <p class="video-note">Los vídeos de Coelbo también están traducidos al español, francés e italiano en su canal de YouTube.</p>
   </div>
 </section>
 
@@ -323,14 +330,27 @@
     </div>
     <p class="video-caption">Coelbo Promo Panels</p>
   </div>
+  <div class="video-reel-item ">
+    <div class="video-card">
+      <span class="video-badge badge-yt">YouTube</span>
+      <div class="proj-video-wrap"><iframe src="https://www.youtube.com/embed/jfYKuVKYOak" frameborder="0" allow="autoplay; picture-in-picture" allowfullscreen loading="lazy" sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox" title="Coelbo — Speedmatic"></iframe></div>
+    </div>
+    <p class="video-caption">Speedmatic</p>
+  </div>
+  <div class="video-reel-item ">
+    <div class="video-card">
+      <span class="video-badge badge-yt">YouTube</span>
+      <div class="proj-video-wrap"><iframe src="https://www.youtube.com/embed/7Gqh78HvlGQ?start=1" frameborder="0" allow="autoplay; picture-in-picture" allowfullscreen loading="lazy" sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox" title="Coelbo — MF2 Panelmatic"></iframe></div>
+    </div>
+    <p class="video-caption">MF2 Panelmatic</p>
+  </div>
 </div>
 
-<!-- BLOQUE 7 — PARC VALLÈS · Eventos -->
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-vid-label="b5">Parc Vallès<br>Eventos</div>
+  <div class="proj-col-label">Parc Vallès<br>Eventos</div>
   <div class="proj-col-content">
-    <p class="video-campaign-title" data-i18n-vid-title="b5">Parc Vallès — Centro Comercial Terrassa</p>
-    <p data-i18n-vid-desc="b5">Cobertura audiovisual de eventos institucionales y culturales. Grabación, dirección en set y edición final adaptada al tono de cada acto.</p>
+    <p class="video-campaign-title">Parc Vallès — Centro Comercial Terrassa</p>
+    <p>Cobertura audiovisual de eventos institucionales y culturales. Grabación, dirección en set y edición final adaptada al tono de cada acto.</p>
   </div>
 </section>
 
@@ -361,7 +381,6 @@
   </div>
 </div>
 
-<!-- Navidad: TikTok IA + 3 imágenes -->
 <div class="video-reel-grid cols-4 grid-pad">
   <div class="video-reel-item reel-vertical">
     <div class="video-card">
@@ -394,12 +413,11 @@
   </div>
 </div>
 
-<!-- BLOQUE 8 — DRONE · Placas solares -->
 <section class="proj-section">
-  <div class="proj-col-label" data-i18n-vid-label="b6">Drone<br>Solar</div>
+  <div class="proj-col-label">Drone<br>Solar</div>
   <div class="proj-col-content">
-    <p class="video-campaign-title" data-i18n-vid-title="b6">Placas solares — Energía renovable</p>
-    <p data-i18n-vid-desc="b6">Sobrevuelos con drone sobre edificios con instalaciones de placas solares para documentar y comunicar su impacto energético.</p>
+    <p class="video-campaign-title">Placas solares — Energía renovable</p>
+    <p>Sobrevuelos con drone sobre edificios con instalaciones de placas solares para documentar y comunicar su impacto energético.</p>
   </div>
 </section>
 
@@ -435,36 +453,39 @@
   </div>
 </div>
 
-<!-- FICHA TÉCNICA -->
 <section class="proj-section proj-specs">
-  <div class="proj-col-label" data-i18n-sec="secSpecs">Ficha</div>
+  <div class="proj-col-label">Ficha</div>
   <div class="proj-col-content">
     <div class="proj-specs-grid">
-      <div class="proj-spec"><span class="spec-label">Rol</span><span class="spec-val" data-i18n-spec="role">Producción · Dirección · Edición · Motion</span></div>
-      <div class="proj-spec"><span class="spec-label">Clientes</span><span class="spec-val" data-i18n-spec="client">DUIN · Coelbo · Parc Vallès · Solit</span></div>
-      <div class="proj-spec"><span class="spec-label">Período</span><span class="spec-val" data-i18n-spec="year">2024 — 2025</span></div>
-      <div class="proj-spec"><span class="spec-label">Herramientas</span><span class="spec-val" data-i18n-spec="tools">Sony A7III · Sony A6500 · DJI Mini · Premiere Pro · After Effects · DaVinci · Blender</span></div>
+      <div class="proj-spec"><span class="spec-label">Rol</span><span class="spec-val">Producción · Dirección · Edición · Motion</span></div>
+      <div class="proj-spec"><span class="spec-label">Clientes</span><span class="spec-val">DUIN · Coelbo · Parc Vallès · Solit</span></div>
+      <div class="proj-spec"><span class="spec-label">Período</span><span class="spec-val">2024 — 2025</span></div>
+      <div class="proj-spec"><span class="spec-label">Herramientas</span><span class="spec-val">Sony A7III · Sony A6500 · DJI Mini · Premiere Pro · After Effects · DaVinci · Blender</span></div>
     </div>
   </div>
 </section>
 
+
 <div class="proj-nav-between">
-  <a href="photo.html" class="proj-nav-prev">
-    <span class="pnb-label" data-i18n="navPrev">← Anterior</span>
-    <span class="pnb-title">Photo Portfolio</span>
-  </a>
-  <a href="../#work-sec" class="proj-nav-all" data-i18n="navAll">Ver todos</a>
-  <a href="tfg.html" class="proj-nav-next">
-    <span class="pnb-label" data-i18n="navNext">Siguiente →</span>
-    <span class="pnb-title">AI Influencer</span>
-  </a>
+  <a href="photo.html" class="proj-nav-prev"><span class="pnb-label">← Anterior</span><span class="pnb-title">Photo Portfolio</span></a>
+  <a href="../#work-sec" class="proj-nav-all">Ver todos</a>
+  <a href="tfg.html" class="proj-nav-next"><span class="pnb-label">Siguiente →</span><span class="pnb-title">AI Influencer</span></a>
 </div>
 
-<div id="footer-placeholder"></div>
+<footer class="site-foot">
+  <div class="site-foot-in">
+    <span class="eyebrow">¿Hablamos?</span>
+    <h2 class="big-h">Pongamos<br>tu idea <span class="o">en foco</span></h2>
+    <a class="cta" href="../#contact">Escríbeme →</a>
+    <div class="foot">
+      <div><b>Navegar</b><a href="../">Inicio</a><br><a href="../#work">Trabajo</a><br><a href="../#clients">Clientes</a></div>
+      <div><b>Contacto</b><a href="mailto:info@malenfocat.com">info@malenfocat.com</a><br>Madrid · España e internacional</div>
+      <div><b>Redes</b><a href="https://instagram.com/mafsfam" target="_blank" rel="noopener">Instagram</a><br><a href="https://es.linkedin.com/in/martifontanet/" target="_blank" rel="noopener">LinkedIn</a></div>
+    </div>
+    <div class="copy"><span>Enfocar distinto no es enfocar mal.</span><span>© <span id="yr"></span> Malenfocat · Desde Madrid para todo el mundo</span></div>
+  </div>
+</footer>
 
-<script src="../js/lang.js"></script>
-<script src="../js/ui.js"></script>
-<script src="../js/project.js"></script>
-
+<script src="../js/site.js"></script>
 </body>
 </html>
