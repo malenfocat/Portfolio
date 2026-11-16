@@ -48,7 +48,7 @@ $$('.proj-section,.video-reel-item,.tour-compare-item,.proj-grid-2,.proj-grid-3'
   const b=document.createElement('button'); b.className='burger'; b.type='button'; b.setAttribute('aria-label','Menú'); b.setAttribute('aria-expanded','false'); b.innerHTML='<span></span><span></span>';
   nav.appendChild(b);
   const m=document.createElement('div'); m.className='mmenu'; m.setAttribute('aria-hidden','true');
-  m.innerHTML=links.map((a,i)=>'<a class="ml" href="'+a.getAttribute('href')+'"><small>0'+(i+1)+'</small>'+a.textContent+'</a>').join('')+'<div class="mm-foot"><a href="mailto:info@malenfocat.com">info@malenfocat.com</a><span>Madrid · Malenfocat</span></div>';
+  m.innerHTML=links.map((a,i)=>'<a class="ml" href="'+a.getAttribute('href')+'"><small>0'+(i+1)+'</small>'+a.textContent+'</a>').join('')+'<div class="mm-foot"><a href="mailto:info@malenfocat.com">info@malenfocat.com</a></div>';
   document.body.appendChild(m);
   const set=o=>{document.body.classList.toggle('menu-open',o);b.setAttribute('aria-expanded',o);m.setAttribute('aria-hidden',!o);};
   b.addEventListener('click',()=>set(!document.body.classList.contains('menu-open')));

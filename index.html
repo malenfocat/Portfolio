@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Malenfocat by Martí</title>
-<meta name="description" content="Portfolio creativo de Malenfocat Studio: foto, vídeo, diseño, web e IA. Madrid.">
+<meta name="description" content="Portfolio creativo de Malenfocat Studio: foto, vídeo, diseño, web e IA.">
 <link rel="icon" href="assets/logos/favicon-light.ico" media="(prefers-color-scheme: light)">
 <link rel="icon" href="assets/logos/favicon-dark.ico" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap">
@@ -245,7 +245,7 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
       <span class="hm-cap">Showreel</span>
     </div>
     <div class="hero-foot">
-      <span><b>Foto · Vídeo · Diseño · Web · IA</b><br>Madrid · España y proyectos internacionales</span>
+      <span><b>Foto · Vídeo · Diseño · Web · IA</b></span>
       <span class="scroll-cue">Scroll y descubre más</span>
     </div>
   </div>
@@ -353,7 +353,7 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
     <div>
       <span class="eyebrow rv" style="color:var(--ink)">04 — Contacto</span>
       <h2 class="big-h rv">Pongamos<br>tu idea <span class="o">en foco</span></h2>
-      <p class="ct-p rv">Cuéntame qué tienes en mente: una marca, un evento, un vídeo o algo que aún no sabes cómo llamar. Trabajo en toda España e internacionalmente.</p>
+      <p class="ct-p rv">Cuéntame qué tienes en mente: una marca, un evento, un vídeo o algo que aún no sabes cómo llamar.</p>
       <div class="ct-rows rv">
         <a href="mailto:info@malenfocat.com"><span>Email</span><b>info@malenfocat.com</b><i>↗</i></a>
         <a href="https://instagram.com/mafsfam" target="_blank" rel="noopener"><span>Instagram</span><b>@mafsfam</b><i>↗</i></a>
@@ -379,9 +379,9 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
   </div>
   <div class="foot">
     <div><b>Navegar</b><a href="#services">Servicios</a><br><a href="#work">Trabajo</a><br><a href="#clients">Clientes</a></div>
-    <div><b>Base</b>Madrid · España e internacional</div>
+    <div><b>Contacto</b><a href="mailto:info@malenfocat.com">info@malenfocat.com</a></div>
   </div>
-  <div class="copy"><span>Enfocar distinto no es enfocar mal.</span><span>© <span id="yr"></span> Malenfocat · Desde Madrid para todo el mundo</span></div>
+  <div class="copy"><span>Enfocar distinto no es enfocar mal.</span><span>© <span id="yr"></span> Malenfocat</span></div>
 </footer>
 
 <script>
@@ -565,7 +565,7 @@ $$('.rv').forEach(el=>io.observe(el));
   const b=document.createElement('button'); b.className='burger'; b.type='button'; b.setAttribute('aria-label','Menú'); b.setAttribute('aria-expanded','false'); b.innerHTML='<span></span><span></span>';
   nav.appendChild(b);
   const m=document.createElement('div'); m.className='mmenu'; m.setAttribute('aria-hidden','true');
-  m.innerHTML=links.map((a,i)=>'<a class="ml" href="'+a.getAttribute('href')+'"><small>0'+(i+1)+'</small>'+a.textContent+'</a>').join('')+'<div class="mm-foot"><a href="mailto:info@malenfocat.com">info@malenfocat.com</a><span>Madrid · Malenfocat</span></div>';
+  m.innerHTML=links.map((a,i)=>'<a class="ml" href="'+a.getAttribute('href')+'"><small>0'+(i+1)+'</small>'+a.textContent+'</a>').join('')+'<div class="mm-foot"><a href="mailto:info@malenfocat.com">info@malenfocat.com</a></div>';
   document.body.appendChild(m);
   const set=o=>{document.body.classList.toggle('menu-open',o);b.setAttribute('aria-expanded',o);m.setAttribute('aria-hidden',!o);};
   b.addEventListener('click',()=>set(!document.body.classList.contains('menu-open')));
