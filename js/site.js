@@ -40,3 +40,19 @@ addEventListener('scroll',onScroll,{passive:true}); onScroll();
 const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.08});
 $$('.proj-section,.video-reel-item,.tour-compare-item,.proj-grid-2,.proj-grid-3').forEach(el=>io.observe(el));
 })();
+
+/* menú móvil (hamburguesa) */
+(function(){
+  const nav=document.querySelector('nav'), ul=nav&&nav.querySelector('ul'); if(!ul) return;
+  const links=[...ul.querySelectorAll('a')];
+  const b=document.createElement('button'); b.className='burger'; b.type='button'; b.setAttribute('aria-label','Menú'); b.setAttribute('aria-expanded','false'); b.innerHTML='<span></span><span></span>';
+  nav.appendChild(b);
+  const m=document.createElement('div'); m.className='mmenu'; m.setAttribute('aria-hidden','true');
+  m.innerHTML=links.map((a,i)=>'<a class="ml" href="'+a.getAttribute('href')+'"><small>0'+(i+1)+'</small>'+a.textContent+'</a>').join('')+'<div class="mm-foot"><a href="mailto:info@malenfocat.com">info@malenfocat.com</a><span>Madrid · Malenfocat</span></div>';
+  document.body.appendChild(m);
+  const set=o=>{document.body.classList.toggle('menu-open',o);b.setAttribute('aria-expanded',o);m.setAttribute('aria-hidden',!o);};
+  b.addEventListener('click',()=>set(!document.body.classList.contains('menu-open')));
+  m.addEventListener('click',e=>{if(e.target.closest('a'))set(false);});
+  addEventListener('keydown',e=>{if(e.key==='Escape')set(false);});
+  matchMedia('(min-width:861px)').addEventListener('change',e=>{if(e.matches)set(false);});
+})();
