@@ -224,6 +224,77 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
 .consent{display:flex;gap:.7rem;align-items:flex-start;font-size:12px;line-height:1.5;color:var(--mute);cursor:pointer;}
 .consent input{margin-top:.2rem;accent-color:var(--teal);flex:none;} .consent a{text-decoration:underline;color:var(--paper);} .consent.err{color:#e5604d;}
 .legal-links{display:flex;gap:1.2rem;} .legal-links a{text-decoration:underline;text-underline-offset:3px;}
+/* ===== versión creativa: menos "plantilla", más enfoque ===== */
+.eyebrow{display:none;}
+.hero-foot{text-transform:none;letter-spacing:0;font-size:15px;}
+.scroll-cue::after{content:none;}
+#tc{font-variant-numeric:tabular-nums;letter-spacing:.06em;color:var(--teal);}
+.facts{max-width:1100px;margin:0 auto;padding:6rem 2.5rem;font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,3.8vw,3.4rem);line-height:1.18;letter-spacing:-.02em;}
+.facts b{color:var(--teal);font-weight:700;}
+.fp{display:inline-block;position:relative;padding:.3em .5em;}
+.fp.rv{opacity:.3;transform:none;filter:blur(18px);transition:filter 1.3s cubic-bezier(.16,1,.3,1),opacity 1s;}
+.fp.rv.in{opacity:1;filter:none;}
+.fp::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transform:scale(1.2);
+ background:
+ linear-gradient(currentColor,currentColor) 0 0/26px 2px no-repeat,linear-gradient(currentColor,currentColor) 0 0/2px 26px no-repeat,
+ linear-gradient(currentColor,currentColor) 100% 0/26px 2px no-repeat,linear-gradient(currentColor,currentColor) 100% 0/2px 26px no-repeat,
+ linear-gradient(currentColor,currentColor) 0 100%/26px 2px no-repeat,linear-gradient(currentColor,currentColor) 0 100%/2px 26px no-repeat,
+ linear-gradient(currentColor,currentColor) 100% 100%/26px 2px no-repeat,linear-gradient(currentColor,currentColor) 100% 100%/2px 26px no-repeat;
+ transition:opacity .4s .8s,transform 1s .7s cubic-bezier(.16,1,.3,1);}
+.fp.in::before{opacity:.85;transform:none;}
+.lnk{display:inline-block;font-size:16px;color:var(--teal);padding-bottom:3px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:background-size .5s cubic-bezier(.16,1,.3,1);}
+.lnk:hover{background-size:0 1px;background-position:100% 100%;}
+.pcard:hover .pcard-img img{transform:none;}
+.pcard .lnk{margin-top:1.6rem;}
+.soon small{text-transform:none;letter-spacing:0;font-size:14px;}
+.ct-rows a{grid-template-columns:110px 1fr;}
+.ct-rows span{text-transform:none;letter-spacing:0;font-size:14px;}
+.foot b{text-transform:none;letter-spacing:0;font-size:14px;}
+.sec-head .lnk{display:table;margin:1.6rem auto 0;}
+.foot{grid-template-columns:1fr 1fr;align-items:start;}
+.foot-logo{order:-1;}
+.foot-logo img{height:56px;width:auto;display:block;}
+nav .nav-logo{filter:brightness(0) invert(1);}
+#services .cards{display:grid;gap:1.6rem;max-width:1280px;margin:0 auto;}
+.svc h3{font-family:var(--display);font-weight:700;line-height:1;text-transform:uppercase;letter-spacing:-.02em;}
+.svc p{font-size:1.05rem;line-height:1.65;}
+@media (max-width:860px){.foot{grid-template-columns:1fr;}}
+/* servicios: bloques de color, tamaños y giros exagerados */
+#services .cards{display:grid;grid-template-columns:1.25fr .8fr 1.1fr;gap:2rem;align-items:start;max-width:1280px;margin:0 auto;padding:2rem 0 3rem;}
+#services .svc{display:flex;flex-direction:column;justify-content:flex-end;gap:1.2rem;padding:2.2rem 2rem 2.6rem;transition:opacity .9s,transform .9s cubic-bezier(.16,1,.3,1),rotate .6s cubic-bezier(.16,1,.3,1);}
+#services .svc h3{font-size:clamp(2rem,3.8vw,3.6rem);}
+#services .svc:hover{rotate:0deg;}
+#services .svc:nth-child(1){background:var(--ink);color:var(--paper);min-height:34rem;rotate:-2.5deg;} #services .svc:nth-child(1) p{color:#b8b8b2;}
+#services .svc:nth-child(2){background:var(--teal);color:var(--ink);min-height:17rem;margin-top:9rem;rotate:2.2deg;}
+#services .svc:nth-child(3){border:2px solid var(--ink);min-height:27rem;margin-top:1rem;rotate:-1.2deg;}
+@media (max-width:860px){
+  #services .cards{display:flex;flex-direction:column;gap:2rem;padding:1rem .4rem 2rem;}
+  #services .svc{width:92%;margin-top:0 !important;padding:1.8rem 1.5rem 2rem;}
+  #services .svc:nth-child(1){align-self:flex-start;min-height:22rem;rotate:-2deg;}
+  #services .svc:nth-child(2){align-self:flex-end;min-height:13rem;rotate:2deg;}
+  #services .svc:nth-child(3){align-self:flex-start;min-height:18rem;rotate:-1.2deg;}
+}
+
+nav{transition:padding .45s cubic-bezier(.16,1,.3,1);}
+nav .nav-logo{height:58px;transition:height .45s cubic-bezier(.16,1,.3,1);}
+nav.sc .nav-logo{height:34px;}
+@media (max-width:860px){nav .nav-logo{height:42px;} nav.sc .nav-logo{height:28px;}}
+.foot-logo img{height:96px;}
+#contact{padding-bottom:0;}
+.foot-band{background:var(--ink);color:var(--paper);margin:6rem -2.5rem 0;padding:3.5rem 2.5rem 2.2rem;}
+.foot-band .foot{margin-top:0;padding-top:0;border-top:0;}
+.foot-band .foot b{color:var(--teal);}
+.foot-band .foot-logo img{filter:brightness(0) invert(1);}
+.foot-band .copy{margin-top:3rem;color:#a9a9a4;}
+@media (max-width:860px){.foot-band{margin:5rem -1.2rem 0;padding:3rem 1.2rem 2rem;} .foot-logo img{height:68px;}}
+
+#services .svc{position:relative;overflow:hidden;}
+#services .svc>*{position:relative;z-index:1;}
+#services .svc::before{content:'';position:absolute;z-index:0;width:280%;aspect-ratio:297/275;background:currentColor;opacity:.1;pointer-events:none;-webkit-mask:url(assets/logos/malenfocat-isotipo.svg) center/contain no-repeat;mask:url(assets/logos/malenfocat-isotipo.svg) center/contain no-repeat;}
+#services .svc:nth-child(1)::before{top:-30%;left:-60%;}
+#services .svc:nth-child(2)::before{bottom:-95%;right:-80%;opacity:.16;}
+#services .svc:nth-child(3)::before{top:-70%;right:-120%;opacity:.08;}
+
 </style>
 </head>
 <body>
@@ -232,7 +303,7 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
 <div id="dot"><span></span></div>
 
 <nav>
-  <a href="#hero" aria-label="Malenfocat"><img src="assets/logos/malenfocat_logotipo blanc.png" alt="Malenfocat"></a>
+  <a href="#hero" aria-label="Malenfocat"><img src="assets/logos/malenfocat-logo.svg" alt="Malenfocat" class="nav-logo"></a>
   <ul>
     <li><a href="#services">Servicios</a></li>
     <li><a href="#work">Trabajo</a></li>
@@ -248,11 +319,10 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
     <div class="mq hero-row alt" data-text="Malenfocat|Malenfocat" data-rep="2" data-dir="normal" data-speed="50"></div>
     <div class="hero-media" id="hm">
       <video autoplay muted loop playsinline preload="metadata" poster="assets/videos/showreel_poster.jpg"><source src="assets/videos/showreel_web_v3_light.mp4" type="video/mp4"></video>
-      <span class="hm-cap">Showreel</span>
     </div>
     <div class="hero-foot">
-      <span><b>Foto · Vídeo · Diseño · Web · IA</b></span>
-      <span class="scroll-cue">Scroll y descubre más</span>
+      <span><b>Foto, vídeo, diseño, web e IA</b></span>
+      <span class="scroll-cue"><span id="tc">00:00:00:00</span></span>
     </div>
   </div>
 </header>
@@ -264,22 +334,17 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
 
 <!-- CIFRAS + SOBRE MÍ -->
 <section id="about">
-  <div class="stats">
-    <div class="stat rv"><b><em>+</em><span data-to="30" style="display:inline;font-size:inherit;letter-spacing:inherit;text-transform:none;color:inherit;margin:0">0</span></b><span>Eventos cubiertos</span></div>
-    <div class="stat rv"><b data-to="9">0</b><span>Marcas y clientes</span></div>
-    <div class="stat rv"><b data-to="6">0</b><span>Disciplinas</span></div>
-    <div class="stat rv"><b>360<em>°</em></b><span>Soluciones integrales</span></div>
-  </div>
+  <p class="facts rv">Más de <b data-to="30">0</b> eventos, <b data-to="9">0</b> marcas y <b data-to="6">0</b> disciplinas. Y cada proyecto, una oportunidad de enfocar mejor.</p>
 </section>
 
 <!-- SERVICIOS -->
 <span id="about-skills"></span>
 <section id="services">
-  <div class="sec-head"><span class="eyebrow rv">01 — Servicios</span><h2 class="big-h rv">Qué puedo<br>hacer <span class="o">por ti</span></h2></div>
+  <div class="sec-head"><h2 class="big-h rv fp">Qué puedo<br>hacer por <span class="o">ti</span></h2></div>
   <div class="cards">
-    <article class="card rv"><span class="num">01</span><h3>Foto &amp; Vídeo</h3><p>Retrato, producto, evento y dirección de arte visual. Grabación, montaje, color grading y postproducción, también con drone.</p><ul><li>Fotografía</li><li>Vídeo</li><li>Motion</li><li>Drone</li></ul></article>
-    <article class="card rv"><span class="num">02</span><h3>IA generativa</h3><p>Midjourney, Stable Diffusion y flujos generativos con ComfyUI. Personajes consistentes y contenido reproducible, no solo resultados sueltos.</p><ul><li>ComfyUI</li><li>LoRAs</li><li>Midjourney</li></ul></article>
-    <article class="card rv"><span class="num">03</span><h3>Diseño &amp; Web</h3><p>Identidad visual, cartelería, composición y tipografía. HTML, CSS, JS y WordPress, con UX/UI prototipado en Figma.</p><ul><li>Identidad</li><li>UX/UI</li><li>Web</li><li>360°</li></ul></article>
+    <article class="svc rv"><h3>Foto y vídeo</h3><p>Eventos, retrato, producto y marcas. Grabo, monto y coloreo; y cuando hace falta, subo el dron.</p></article>
+    <article class="svc rv"><h3>IA</h3><p>Personajes, mundos y piezas que se mantienen coherentes de una a otra. Y automatizaciones para que dejes de hacer a mano lo repetitivo.</p></article>
+    <article class="svc rv"><h3>Diseño y web</h3><p>Identidad visual, redes y webs que se sienten tuyas. También tours 360° para recorrer un espacio desde la pantalla.</p></article>
   </div>
 </section>
 
@@ -292,63 +357,55 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
 <!-- PROYECTOS -->
 <span id="work-sec"></span>
 <section id="work">
-  <div class="sec-head"><span class="eyebrow rv">02 — Proyectos</span><h2 class="big-h rv">Trabajo <span class="o">selecto</span></h2></div>
+  <div class="sec-head"><h2 class="big-h rv fp">Algunos de<br>mis <span class="o">trabajos</span></h2></div>
   <div class="stack">
 
     <article class="pcard" style="--i:0">
       <a class="pcard-img" href="projects/photo.html" data-lbl="Ver"><img src="assets/projects/photo/Otto_002.jpg" alt="Photo Portfolio" loading="lazy" style="object-position:50% 30%"></a>
       <div class="pcard-body">
-        <span class="num">001</span>
         <h3>Photo Portfolio</h3>
         <p>Eventos corporativos, cultura, belleza y momentos únicos; una mirada que busca lo que otros pasan por alto.</p>
-        <ul class="tags"><li>Fotografía</li><li>Dirección de arte</li><li>Postproducción</li></ul>
-        <a class="pill" href="projects/photo.html">Ver proyecto →</a>
+        <a class="lnk" href="projects/photo.html">Ver el proyecto</a>
       </div>
     </article>
 
     <article class="pcard" style="--i:1">
       <a class="pcard-img" href="projects/video.html" data-lbl="Ver"><img src="assets/videos/showreel_poster.jpg" alt="Vídeo Portfolio" loading="lazy"></a>
       <div class="pcard-body">
-        <span class="num">002</span>
         <h3>Vídeo Portfolio</h3>
         <p>Campañas de marca, eventos corporativos, motion graphics y momentos que merecen ser contados bien. DUIN, Coelbo, The Iberian, Parc Vallès…</p>
-        <ul class="tags"><li>Producción</li><li>Edición</li><li>Motion Graphics</li><li>Drone</li></ul>
-        <a class="pill" href="projects/video.html">Ver proyecto →</a>
+        <a class="lnk" href="projects/video.html">Ver el proyecto</a>
       </div>
     </article>
 
     <article class="pcard" style="--i:2">
       <a class="pcard-img" href="projects/tfg.html" data-lbl="Ver"><img src="assets/projects/ia/ComfyUI_00546_.png" alt="AI Influencer" loading="lazy"></a>
       <div class="pcard-body">
-        <span class="num">003</span>
         <h3>AI Influencer</h3>
         <p>Creación de identidad digital, narrativa visual y mundo ficticio; explorando los límites de la imagen generada.</p>
-        <ul class="tags"><li>IA</li><li>Web</li><li>Vídeo</li></ul>
-        <a class="pill" href="projects/tfg.html">Ver proyecto →</a>
+        <a class="lnk" href="projects/tfg.html">Ver el proyecto</a>
       </div>
     </article>
 
     <article class="pcard" style="--i:3">
       <a class="pcard-img" href="projects/tour-virtual.html" data-lbl="Ver"><img src="assets/images/tour-entrada-post.jpg" alt="Tour Virtual 360°" loading="lazy"></a>
       <div class="pcard-body">
-        <span class="num">004</span>
         <h3>Tour Virtual 360°</h3>
         <p>Captura, postproducción y publicación de espacios en 360°. Fotografía inmersiva que permite explorar cualquier lugar desde cualquier pantalla.</p>
-        <ul class="tags"><li>360°</li><li>Postproducción</li><li>Tour virtual</li><li>IA</li></ul>
-        <a class="pill" href="projects/tour-virtual.html">Ver proyecto →</a>
+        <a class="lnk" href="projects/tour-virtual.html">Ver el proyecto</a>
       </div>
     </article>
   </div>
 
-  <div class="soon rv"><span>005 — Diseño</span><small>Próximamente</small></div>
-  <div class="soon rv"><span>006 — Inteligencia Artificial</span><small>Próximamente</small></div>
+  <div class="soon rv"><span>Diseño</span><small>pronto</small></div>
+  <div class="soon rv"><span>Inteligencia artificial</span><small>pronto</small></div>
 </section>
 
 <div class="strip mq alt" data-text="Tours 360|Tomas aéreas|Vídeo|Fotografía|Identidad visual|Redes sociales|Sitios web|Soluciones IA|Automatizaciones" data-rep="2" data-dir="reverse" data-speed="60"></div>
 
 <!-- CLIENTES -->
 <section id="clients">
-  <div class="sec-head"><span class="eyebrow rv">03 — Clientes</span><h2 class="big-h rv">Orgulloso de<br>con quién <span class="o">trabajo</span></h2><a class="link-arrow rv" href="#contact">Trabajemos juntos →</a></div>
+  <div class="sec-head"><h2 class="big-h rv fp">Han confiado<br><span class="o">en mí</span></h2><a class="lnk rv" href="#contact">Trabajemos juntos</a></div>
   <div class="mq ctrack" data-clients="0" data-dir="normal" data-speed="70"></div>
 </section>
 
@@ -357,13 +414,12 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
 <footer id="contact">
   <div class="ct-grid">
     <div>
-      <span class="eyebrow rv" style="color:var(--ink)">04 — Contacto</span>
-      <h2 class="big-h rv">Pongamos<br>tu idea <span class="o">en foco</span></h2>
+      <h2 class="big-h rv fp">Pongamos<br>tu idea <span class="o">en foco</span></h2>
       <p class="ct-p rv">Cuéntame qué tienes en mente: una marca, un evento, un vídeo o algo que aún no sabes cómo llamar.</p>
       <div class="ct-rows rv">
-        <a href="mailto:info@malenfocat.com"><span>Email</span><b>info@malenfocat.com</b><i>↗</i></a>
-        <a href="https://instagram.com/mafsfam" target="_blank" rel="noopener"><span>Instagram</span><b>@mafsfam</b><i>↗</i></a>
-        <a href="https://es.linkedin.com/in/martifontanet/" target="_blank" rel="noopener"><span>LinkedIn</span><b>Martí Fontanet</b><i>↗</i></a>
+        <a href="mailto:info@malenfocat.com"><span>Email</span><b>info@malenfocat.com</b></a>
+        <a href="https://instagram.com/mafsfam" target="_blank" rel="noopener"><span>Instagram</span><b>@mafsfam</b></a>
+        <a href="https://es.linkedin.com/in/martifontanet/" target="_blank" rel="noopener"><span>LinkedIn</span><b>Martí Fontanet</b></a>
       </div>
     </div>
     <form id="cf" class="cform rv" novalidate>
@@ -380,15 +436,17 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
       <label class="f"><span>Mensaje</span><textarea name="message" rows="4" required></textarea></label>
       <label class="consent"><input type="checkbox" name="consent" required><span>He leído y acepto la <a href="legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
       <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="send" type="submit">Enviar mensaje →</button>
+      <button class="send" type="submit">Enviar</button>
       <p class="fmsg" id="fmsg" role="status"></p>
     </form>
   </div>
+  <div class="foot-band">
   <div class="foot">
     <div><b>Navegar</b><a href="#services">Servicios</a><br><a href="#work">Trabajo</a><br><a href="#clients">Clientes</a></div>
-    <div><b>Contacto</b><a href="mailto:info@malenfocat.com">info@malenfocat.com</a></div>
+    <div class="foot-logo"><img src="assets/logos/malenfocat-logo.svg" alt="Malenfocat Studio"></div>
   </div>
   <div class="copy"><span>Enfocar distinto no es enfocar mal.</span><span>© <span id="yr"></span> Malenfocat</span><span class="legal-links"><a href="legal/aviso-legal.html">Aviso legal</a><a href="legal/privacidad.html">Privacidad</a><a href="legal/cookies.html">Cookies</a><a href="#" data-cookie-settings>Configurar cookies</a></span></div>
+  </div>
 </footer>
 
 <script>
@@ -506,13 +564,15 @@ new IntersectionObserver(e=>{heroOn=e[0].isIntersecting;}).observe($('#hero'));
 })();
 
 /* hero: el vídeo se expande; se pausa al salir */
-const hero=$('#hero'), hm=$('#hm'), hfoot=$('.hero-foot'), hcap=$('.hm-cap'), hv=hm.querySelector('video');
+const nav0=$('nav'); const hero=$('#hero'), hm=$('#hm'), hfoot=$('.hero-foot'), hv=hm.querySelector('video');
 const ease=t=>1-Math.pow(1-t,3);
+/* el vídeo nace con la forma del isotipo y se rellena hasta ser un recuadro */
 function heroUpdate(){
   const r=hero.getBoundingClientRect(), p=clamp(-r.top/(r.height-innerHeight),0,1), e=ease(clamp(p/.65,0,1));
   const vw=document.documentElement.clientWidth, s0=Math.min(Math.max(vw*.32,200),innerHeight*.46,440);
   hm.style.width=(s0+(vw-s0)*e)+'px'; hm.style.height=(s0+(innerHeight-s0)*e)+'px'; hm.style.borderRadius=(22*(1-e))+'px';
-  hfoot.style.opacity=1-clamp(p*6,0,1); hcap.style.opacity=clamp((p-.55)/.25,0,1);
+  nav0.classList.toggle('sc',scrollY>40);
+  hfoot.style.opacity=1-clamp(p*6,0,1);
 }
 new IntersectionObserver(es=>{ es[0].isIntersecting ? hv.play().catch(()=>{}) : hv.pause(); }).observe(hero);
 
@@ -551,7 +611,7 @@ cf.addEventListener('submit',async e=>{
     say(CONTACT_ENDPOINT?'¡Enviado! Te he mandado un correo de confirmación.':'Modo demo: así se vería el envío. Aún no se ha mandado ningún correo.','ok');
     sendBtn.textContent='Enviado ✓';
   }catch(_){
-    say('No se ha podido enviar. Escríbeme a info@malenfocat.com.','bad'); sendBtn.disabled=false; sendBtn.textContent='Enviar mensaje →';
+    say('No se ha podido enviar. Escríbeme a info@malenfocat.com.','bad'); sendBtn.disabled=false; sendBtn.textContent='Enviar';
   }
 });
 
@@ -581,6 +641,13 @@ $$('.rv').forEach(el=>io.observe(el));
   addEventListener('keydown',e=>{if(e.key==='Escape')set(false);});
   matchMedia('(min-width:861px)').addEventListener('change',e=>{if(e.matches)set(false);});
 })();
+
+/* código de tiempo en el hero */
+(()=>{const tc=document.getElementById('tc');if(!tc)return;const p=n=>String(n).padStart(2,'0');
+const u=()=>{const f=Math.floor(scrollY/6);tc.textContent='00:'+p(Math.floor(f/1500)%60)+':'+p(Math.floor(f/25)%60)+':'+p(f%25);};
+addEventListener('scroll',u,{passive:true});u();})();
+
+
 </script>
 <script src="js/consent.js"></script>
 </body>

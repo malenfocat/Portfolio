@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Malenfocat — Borrador v3</title>
-<meta name="robots" content="noindex">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap">
+<title>Malenfocat by Martí</title>
+<meta name="description" content="Portfolio creativo de Malenfocat Studio: foto, vídeo, diseño, web e IA.">
+<link rel="icon" href="assets/logos/favicon-light.ico" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/logos/favicon-dark.ico" media="(prefers-color-scheme: dark)">
 <style>
-/* Colócalo en la raíz del repo, junto a index.html */
+@font-face{font-family:'DM Sans';src:url('assets/fonts/dm-sans-latin-300-normal.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('assets/fonts/dm-sans-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('assets/fonts/dm-sans-latin-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('assets/fonts/dm-sans-latin-700-normal.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
 @font-face{font-family:'Aloevera';src:url('assets/fonts/AloeveraDisplay-Bold.woff2') format('woff2'),url('assets/fonts/AloeveraDisplay-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap;}
 @font-face{font-family:'Aloevera';src:url('assets/fonts/AloeveraDisplay-Regular.woff2') format('woff2'),url('assets/fonts/AloeveraDisplay-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap;}
 
@@ -178,6 +182,14 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
 .rv.in{opacity:1;transform:none;}
 
 @media (max-width:860px){
+  /* barra superior legible sobre cualquier contenido */
+  nav{mix-blend-mode:normal;background:rgba(10,10,10,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:.7rem 1.2rem;border-bottom:1px solid rgba(255,255,255,.06);}
+  nav img{height:28px;}
+  .hero-foot{flex-direction:column;align-items:flex-start;gap:.9rem;bottom:1.4rem;font-size:10px;letter-spacing:.1em;}
+  .scroll-cue{font-size:0;gap:0;} .scroll-cue::after{font-size:14px;}
+  .mf p{font-size:clamp(2.4rem,12vw,5rem);}
+  .cta{width:100%;text-align:center;}
+
   nav{padding:1rem 1.2rem;} nav ul li:not(:last-child){display:none;}
   .hero-foot{left:1.2rem;right:1.2rem;} .hm-cap{left:1.2rem;bottom:5rem;}
   .mf-in,#about,#services,#work,#contact{padding-left:1.2rem;padding-right:1.2rem;}
@@ -189,6 +201,29 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
   .pcard-img{min-height:240px;height:240px;} .pcard-body{padding:.4rem .6rem 1rem;}
 }
 @media (prefers-reduced-motion:reduce){.mq-track{animation:none;}.rv{opacity:1;transform:none;}.hero-row{animation:none;}}
+
+/* menú móvil */
+.burger,.mmenu{display:none;}
+@media (max-width:860px){
+  nav ul{display:none;}
+  .burger{display:flex;flex-direction:column;justify-content:center;gap:6px;width:40px;height:40px;padding:0 9px;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+  .burger span{display:block;height:1.5px;background:#fff;transition:transform .35s cubic-bezier(.16,1,.3,1);}
+  body.menu-open .burger span:nth-child(1){transform:translateY(3.75px) rotate(45deg);}
+  body.menu-open .burger span:nth-child(2){transform:translateY(-3.75px) rotate(-45deg);}
+  .mmenu{display:flex;position:fixed;inset:0;z-index:99;background:var(--ink);flex-direction:column;justify-content:center;padding:5rem 1.6rem 2rem;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;}
+  body.menu-open .mmenu{opacity:1;visibility:visible;}
+  body.menu-open{overflow:hidden;}
+  .mmenu a.ml{display:flex;align-items:baseline;gap:1rem;font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,13vw,4rem);line-height:1.15;padding:.35rem 0;letter-spacing:-.01em;transform:translateY(24px);opacity:0;transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .4s,color .2s;}
+  .mmenu a.ml small{font-family:'DM Sans',sans-serif;font-weight:400;font-size:11px;letter-spacing:.14em;color:var(--teal);}
+  .mmenu a.ml:active{color:var(--teal);}
+  body.menu-open .mmenu a.ml{transform:none;opacity:1;}
+  .mmenu a.ml:nth-child(2){transition-delay:.05s,.05s,0s;} .mmenu a.ml:nth-child(3){transition-delay:.1s,.1s,0s;} .mmenu a.ml:nth-child(4){transition-delay:.15s,.15s,0s;}
+  .mmenu .mm-foot{margin-top:2.2rem;padding-top:1.2rem;border-top:1px solid #1f1f1f;font-size:12px;letter-spacing:.08em;color:var(--mute);display:flex;flex-direction:column;gap:.4rem;}
+  .mmenu .mm-foot a{color:var(--paper);}
+}
+.consent{display:flex;gap:.7rem;align-items:flex-start;font-size:12px;line-height:1.5;color:var(--mute);cursor:pointer;}
+.consent input{margin-top:.2rem;accent-color:var(--teal);flex:none;} .consent a{text-decoration:underline;color:var(--paper);} .consent.err{color:#e5604d;}
+.legal-links{display:flex;gap:1.2rem;} .legal-links a{text-decoration:underline;text-underline-offset:3px;}
 </style>
 </head>
 <body>
@@ -197,9 +232,9 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
 <div id="dot"><span></span></div>
 
 <nav>
-  <a href="#hero" aria-label="Malenfocat"><img src="assets/logos/malenfocat_logotipo blanc.png" alt="Malenfocat"></a>
+  <a href="#hero" aria-label="Malenfocat"><img src="assets/logos/malenfocat-wordmark-white.png" alt="Malenfocat"></a>
   <ul>
-    <li><a href="#services">Qué hago</a></li>
+    <li><a href="#services">Servicios</a></li>
     <li><a href="#work">Trabajo</a></li>
     <li><a href="#clients">Clientes</a></li>
     <li><a href="#contact" class="nav-cta">Contacto</a></li>
@@ -212,11 +247,11 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
     <canvas id="hero-cv"></canvas>
     <div class="mq hero-row alt" data-text="Malenfocat|Malenfocat" data-rep="2" data-dir="normal" data-speed="50"></div>
     <div class="hero-media" id="hm">
-      <video autoplay muted loop playsinline preload="metadata" poster="assets/videos/showreel_poster.jpg"><source src="assets/videos/showreel_hero_light.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline preload="metadata" poster="assets/videos/showreel_poster.jpg"><source src="assets/videos/showreel_web_v3_light.mp4" type="video/mp4"></video>
       <span class="hm-cap">Showreel</span>
     </div>
     <div class="hero-foot">
-      <span><b>Foto · Vídeo · Diseño · Web · IA</b><br>Madrid · España y proyectos internacionales</span>
+      <span><b>Foto · Vídeo · Diseño · Web · IA</b></span>
       <span class="scroll-cue">Scroll y descubre más</span>
     </div>
   </div>
@@ -238,8 +273,9 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
 </section>
 
 <!-- SERVICIOS -->
+<span id="about-skills"></span>
 <section id="services">
-  <div class="sec-head"><span class="eyebrow rv">01 — Qué hago</span><h2 class="big-h rv">Qué puedo<br>hacer <span class="o">por ti</span></h2></div>
+  <div class="sec-head"><span class="eyebrow rv">01 — Servicios</span><h2 class="big-h rv">Qué puedo<br>hacer <span class="o">por ti</span></h2></div>
   <div class="cards">
     <article class="card rv"><span class="num">01</span><h3>Foto &amp; Vídeo</h3><p>Retrato, producto, evento y dirección de arte visual. Grabación, montaje, color grading y postproducción, también con drone.</p><ul><li>Fotografía</li><li>Vídeo</li><li>Motion</li><li>Drone</li></ul></article>
     <article class="card rv"><span class="num">02</span><h3>IA generativa</h3><p>Midjourney, Stable Diffusion y flujos generativos con ComfyUI. Personajes consistentes y contenido reproducible, no solo resultados sueltos.</p><ul><li>ComfyUI</li><li>LoRAs</li><li>Midjourney</li></ul></article>
@@ -254,6 +290,7 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
 </section>
 
 <!-- PROYECTOS -->
+<span id="work-sec"></span>
 <section id="work">
   <div class="sec-head"><span class="eyebrow rv">02 — Proyectos</span><h2 class="big-h rv">Trabajo <span class="o">selecto</span></h2></div>
   <div class="stack">
@@ -307,7 +344,7 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
   <div class="soon rv"><span>006 — Inteligencia Artificial</span><small>Próximamente</small></div>
 </section>
 
-<div class="strip mq alt" data-text="Sony A7III|Premiere Pro|After Effects|DaVinci|Blender|ComfyUI|Photoshop|Krpano" data-rep="2" data-dir="reverse" data-speed="60"></div>
+<div class="strip mq alt" data-text="Tours 360|Tomas aéreas|Vídeo|Fotografía|Identidad visual|Redes sociales|Sitios web|Soluciones IA|Automatizaciones" data-rep="2" data-dir="reverse" data-speed="60"></div>
 
 <!-- CLIENTES -->
 <section id="clients">
@@ -316,12 +353,13 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
 </section>
 
 <!-- CONTACTO -->
+<span id="contact-sec"></span>
 <footer id="contact">
   <div class="ct-grid">
     <div>
       <span class="eyebrow rv" style="color:var(--ink)">04 — Contacto</span>
       <h2 class="big-h rv">Pongamos<br>tu idea <span class="o">en foco</span></h2>
-      <p class="ct-p rv">Cuéntame qué tienes en mente: una marca, un evento, un vídeo o algo que aún no sabes cómo llamar. Trabajo en toda España e internacionalmente.</p>
+      <p class="ct-p rv">Cuéntame qué tienes en mente: una marca, un evento, un vídeo o algo que aún no sabes cómo llamar.</p>
       <div class="ct-rows rv">
         <a href="mailto:info@malenfocat.com"><span>Email</span><b>info@malenfocat.com</b><i>↗</i></a>
         <a href="https://instagram.com/mafsfam" target="_blank" rel="noopener"><span>Instagram</span><b>@mafsfam</b><i>↗</i></a>
@@ -340,16 +378,17 @@ nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;}
       <label class="f"><span>Nombre</span><input name="name" required autocomplete="name"></label>
       <label class="f"><span>Email</span><input type="email" name="email" required autocomplete="email"></label>
       <label class="f"><span>Mensaje</span><textarea name="message" rows="4" required></textarea></label>
+      <label class="consent"><input type="checkbox" name="consent" required><span>He leído y acepto la <a href="legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
       <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button class="send" type="submit">Enviar mensaje →</button>
       <p class="fmsg" id="fmsg" role="status"></p>
     </form>
   </div>
   <div class="foot">
-    <div><b>Navegar</b><a href="#services">Qué hago</a><br><a href="#work">Trabajo</a><br><a href="#clients">Clientes</a></div>
-    <div><b>Base</b>Madrid · España e internacional</div>
+    <div><b>Navegar</b><a href="#services">Servicios</a><br><a href="#work">Trabajo</a><br><a href="#clients">Clientes</a></div>
+    <div><b>Contacto</b><a href="mailto:info@malenfocat.com">info@malenfocat.com</a></div>
   </div>
-  <div class="copy"><span>Enfocar distinto no es enfocar mal.</span><span>© <span id="yr"></span> Malenfocat · Desde Madrid para todo el mundo</span></div>
+  <div class="copy"><span>Enfocar distinto no es enfocar mal.</span><span>© <span id="yr"></span> Malenfocat</span><span class="legal-links"><a href="legal/aviso-legal.html">Aviso legal</a><a href="legal/privacidad.html">Privacidad</a><a href="legal/cookies.html">Cookies</a><a href="#" data-cookie-settings>Configurar cookies</a></span></div>
 </footer>
 
 <script>
@@ -362,7 +401,7 @@ $('#yr').textContent=new Date().getFullYear();
 const PH='assets/projects/photo/';
 const photoRows=[
  ['Otto_002','BateigAnder 200','LidiaKenneth_112','DSC_2501','Insta_0037','_DSC8224','Otto_036','BateigAnder 12','CasamentAdria_ (2)','DSC_2494'],
- ['LidiaKenneth_195','Otto_052','BateigAnder 368','_DSC8153','DSC_5063','Otto_010','BateigAnder 291-2','Insta_0023','_DSC8260','DSC_2867']
+ ['LidiaKenneth_195','Otto_052','_DSC8153','DSC_5063','Otto_010','BateigAnder 291-2','Insta_0023','_DSC8260','DSC_2867']
 ];
 const L='assets/logos/clients/';
 const C={
@@ -489,18 +528,19 @@ function onScroll(){
 }
 addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll); onScroll();
 
-/* formulario de contacto: pega aquí la URL de tu Worker (ver contact-api/README.md).
-   Vacío = modo demo: muestra el flujo pero no envía nada. */
-const CONTACT_ENDPOINT='';
+/* formulario de contacto: en tu web desplegada usa la función /api/contact de Vercel;
+   en local (Live Server) queda en modo demo y no envía nada. */
+const CONTACT_ENDPOINT=['localhost','127.0.0.1'].includes(location.hostname)?'':'/api/contact';
 const t0=Date.now(), cf=$('#cf'), fmsg=$('#fmsg'), sendBtn=cf.querySelector('.send');
 const say=(t,c)=>{fmsg.textContent=t;fmsg.className='fmsg '+(c||'');};
 cf.addEventListener('submit',async e=>{
   e.preventDefault();
   const fd=new FormData(cf);
-  const d={name:fd.get('name').trim(),email:fd.get('email').trim(),message:fd.get('message').trim(),tipo:fd.getAll('tipo'),website:fd.get('website'),t:Date.now()-t0};
+  const d={name:fd.get('name').trim(),email:fd.get('email').trim(),message:fd.get('message').trim(),tipo:fd.getAll('tipo'),website:fd.get('website'),consent:fd.get('consent')==='on',t:Date.now()-t0};
   const bad={name:!d.name,email:!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email),message:d.message.length<5};
+  const noC=!d.consent; cf.querySelector('.consent').classList.toggle('err',noC);
   cf.querySelectorAll('.f').forEach(f=>{const i=f.querySelector('input,textarea'); f.classList.toggle('err',!!bad[i.name]);});
-  if(Object.values(bad).some(Boolean)){ say('Revisa los campos marcados.','bad'); return; }
+  if(noC||Object.values(bad).some(Boolean)){ say('Revisa los campos marcados.','bad'); return; }
   sendBtn.disabled=true; sendBtn.textContent='Enviando…'; say('');
   try{
     if(CONTACT_ENDPOINT){
@@ -525,6 +565,23 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.15});
 $$('.rv').forEach(el=>io.observe(el));
 })();
+
+/* menú móvil (hamburguesa) */
+(function(){
+  const nav=document.querySelector('nav'), ul=nav&&nav.querySelector('ul'); if(!ul) return;
+  const links=[...ul.querySelectorAll('a')];
+  const b=document.createElement('button'); b.className='burger'; b.type='button'; b.setAttribute('aria-label','Menú'); b.setAttribute('aria-expanded','false'); b.innerHTML='<span></span><span></span>';
+  nav.appendChild(b);
+  const m=document.createElement('div'); m.className='mmenu'; m.setAttribute('aria-hidden','true');
+  m.innerHTML=links.map((a,i)=>'<a class="ml" href="'+a.getAttribute('href')+'"><small>0'+(i+1)+'</small>'+a.textContent+'</a>').join('')+'<div class="mm-foot"><a href="mailto:info@malenfocat.com">info@malenfocat.com</a></div>';
+  document.body.appendChild(m);
+  const set=o=>{document.body.classList.toggle('menu-open',o);b.setAttribute('aria-expanded',o);m.setAttribute('aria-hidden',!o);};
+  b.addEventListener('click',()=>set(!document.body.classList.contains('menu-open')));
+  m.addEventListener('click',e=>{if(e.target.closest('a'))set(false);});
+  addEventListener('keydown',e=>{if(e.key==='Escape')set(false);});
+  matchMedia('(min-width:861px)').addEventListener('change',e=>{if(e.matches)set(false);});
+})();
 </script>
+<script src="js/consent.js"></script>
 </body>
 </html>
