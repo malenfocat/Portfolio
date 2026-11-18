@@ -3,11 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Malenfocat by Martí</title>
-<meta name="description" content="Portfolio creativo de Malenfocat Studio: foto, vídeo, diseño, web e IA.">
+<title>Malenfocat · Foto, vídeo, diseño, web e IA</title>
+<meta name="description" content="Portfolio de Martí Fontanet (Malenfocat): fotografía y vídeo de eventos y marcas, diseño, webs, tours 360° e inteligencia artificial.">
+<link rel="canonical" href="https://malenfocat.com/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Malenfocat">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Malenfocat · Foto, vídeo, diseño, web e IA">
+<meta property="og:description" content="Portfolio de Martí Fontanet (Malenfocat): fotografía y vídeo de eventos y marcas, diseño, webs, tours 360° e inteligencia artificial.">
+<meta property="og:url" content="https://malenfocat.com/">
+<meta property="og:image" content="https://malenfocat.com/assets/images/og-malenfocat.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Malenfocat: foto, vídeo, diseño, web e IA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Malenfocat · Foto, vídeo, diseño, web e IA">
+<meta name="twitter:description" content="Portfolio de Martí Fontanet (Malenfocat): fotografía y vídeo de eventos y marcas, diseño, webs, tours 360° e inteligencia artificial.">
+<meta name="twitter:image" content="https://malenfocat.com/assets/images/og-malenfocat.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://malenfocat.com/#website","url":"https://malenfocat.com/","name":"Malenfocat","inLanguage":"es","publisher":{"@id":"https://malenfocat.com/#org"}},{"@type":"Organization","@id":"https://malenfocat.com/#org","name":"Malenfocat","alternateName":"Malenfocat Studio","url":"https://malenfocat.com/","image":"https://malenfocat.com/assets/images/og-malenfocat.jpg","sameAs":["https://instagram.com/mafsfam","https://es.linkedin.com/in/martifontanet/"],"founder":{"@id":"https://malenfocat.com/#person"}},{"@type":"Person","@id":"https://malenfocat.com/#person","name":"Martí Fontanet","url":"https://malenfocat.com/","image":"https://malenfocat.com/assets/images/og-malenfocat.jpg","jobTitle":"Creador audiovisual y multimedia","worksFor":{"@id":"https://malenfocat.com/#org"},"sameAs":["https://instagram.com/mafsfam","https://es.linkedin.com/in/martifontanet/"],"knowsAbout":["Fotografía","Vídeo","Motion graphics","Diseño gráfico","Diseño web","Inteligencia artificial generativa","Tours virtuales 360°"]}]}</script>
 <link rel="icon" href="assets/logos/favicon-light.ico" media="(prefers-color-scheme: light)">
 <link rel="icon" href="assets/logos/favicon-dark.ico" media="(prefers-color-scheme: dark)">
 <style>
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @font-face{font-family:'DM Sans';src:url('assets/fonts/dm-sans-latin-300-normal.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;}
 @font-face{font-family:'DM Sans';src:url('assets/fonts/dm-sans-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
 @font-face{font-family:'DM Sans';src:url('assets/fonts/dm-sans-latin-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
@@ -314,6 +332,7 @@ nav.sc .nav-logo{height:34px;}
 
 <!-- HERO -->
 <header id="hero">
+  <h1 class="sr-only">Malenfocat: foto, vídeo, diseño, web e IA</h1>
   <div class="hero-stick">
     <canvas id="hero-cv"></canvas>
     <div class="mq hero-row alt" data-text="Malenfocat|Malenfocat" data-rep="2" data-dir="normal" data-speed="50"></div>
@@ -361,7 +380,7 @@ nav.sc .nav-logo{height:34px;}
   <div class="stack">
 
     <article class="pcard" style="--i:0">
-      <a class="pcard-img" href="projects/photo.html" data-lbl="Ver"><img src="assets/projects/photo/Otto_002.jpg" alt="Photo Portfolio" loading="lazy" style="object-position:50% 30%"></a>
+      <a class="pcard-img" href="projects/photo.html" data-lbl="Ver"><img src="assets/projects/photo/Otto_002.webp" alt="Photo Portfolio" loading="lazy" style="object-position:50% 30%"></a>
       <div class="pcard-body">
         <h3>Photo Portfolio</h3>
         <p>Eventos corporativos, cultura, belleza y momentos únicos; una mirada que busca lo que otros pasan por alto.</p>
@@ -379,7 +398,7 @@ nav.sc .nav-logo{height:34px;}
     </article>
 
     <article class="pcard" style="--i:2">
-      <a class="pcard-img" href="projects/tfg.html" data-lbl="Ver"><img src="assets/projects/ia/ComfyUI_00546_.png" alt="AI Influencer" loading="lazy"></a>
+      <a class="pcard-img" href="projects/tfg.html" data-lbl="Ver"><img src="assets/projects/ia/ComfyUI_00546_.webp" alt="AI Influencer" loading="lazy"></a>
       <div class="pcard-body">
         <h3>AI Influencer</h3>
         <p>Creación de identidad digital, narrativa visual y mundo ficticio; explorando los límites de la imagen generada.</p>
@@ -479,7 +498,7 @@ const clientRows=[
  ['duin','parc','coelbo','dfusio','circutor','iberian','circontrol','betto','gispert','anas','aat']
 ];
 const tile=k=>{const[h,f,n,c]=C[k];return `<a href="${h}" target="_blank" rel="noopener" class="${c||''}"><img src="${L+encodeURI(f)}" alt="${n}" loading="lazy"></a>`;};
-const photo=n=>`<img src="${PH+encodeURI(n)}.jpg" alt="" loading="lazy">`;
+const photo=n=>`<img src="${PH+encodeURI(n)}.webp" alt="Fotografía del portfolio de Malenfocat" loading="lazy" decoding="async">`;
 
 /* marquesinas */
 function build(el,setHtml){
